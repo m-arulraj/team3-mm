@@ -21,8 +21,8 @@ public class RegisterUser {
 	@Id
 	@GeneratedValue
 	Long id;
+	
 	@Pattern(regexp = "[^0-9]*", message = "MM0111-invalid")
-
 	@NotEmpty(message = "MM0001-Name can’t be empty")
 	String name;
 	
@@ -30,10 +30,13 @@ public class RegisterUser {
 	@Email(message = "MM0022-Please enter a valid email")
 	String emailId;
 
-	@NotNull(message = "MM0017-Mobile Number can’t be empty")
+	@NotEmpty(message = "MM0017-Mobile Number can’t be empty")
+	@Size(min = 10, max = 10, message = "MM0018-Mobile number should be 10 digit")
+	@Pattern(regexp = "[^a-z]*", message = "MM0111-invalid")
 	//@Max(value = 9999999999L, message = "MM0018-Mobile number should be 10 digit")
-	Long mobileNumber;
+	String mobileNumber;
 
+	@NotEmpty(message = "MM0022-Gender can’t be empty")
 	String gender;
 
 	@NotEmpty(message = "MM0015- Password can’t be empty")

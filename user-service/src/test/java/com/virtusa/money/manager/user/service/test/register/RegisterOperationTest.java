@@ -44,7 +44,7 @@ public class RegisterOperationTest {
 		registration.setName("ajith kumar");
 		registration.setEmailId("ajith@gmail.com");
 		registration.setGender("male");
-		registration.setMobileNumber(3456789023L);
+		registration.setMobileNumber("3456789023");
 		registration.setPassword("ajither");
 		registration.setConfirmPassword("ajitherwe");
 		
@@ -70,7 +70,7 @@ public class RegisterOperationTest {
 		registration.setName("ajith343");
 		registration.setEmailId("ajith@gmail");
 		registration.setGender("male");
-		registration.setMobileNumber(121313131L);
+		registration.setMobileNumber("121313131");
 		registration.setPassword("ajith");
 		registration.setConfirmPassword("ajith");
 		
@@ -84,7 +84,7 @@ public class RegisterOperationTest {
 		RegisterUser registration = new RegisterUser();
 		registration.setEmailId("ajith@gmail");
 		registration.setGender("male");
-		registration.setMobileNumber(121313131L);
+		registration.setMobileNumber("121313131");
 		registration.setPassword("ajith");
 		registration.setConfirmPassword("ajith");
 		
@@ -99,7 +99,7 @@ public class RegisterOperationTest {
 		RegisterUser registration = new RegisterUser();
 		registration.setName("ajithkumar");
 		registration.setGender("male");
-		registration.setMobileNumber(121313131L);
+		registration.setMobileNumber("121313131");
 		registration.setPassword("ajith");
 		registration.setConfirmPassword("ajith");
 		
@@ -114,7 +114,7 @@ public class RegisterOperationTest {
 		registration.setName("ajith kumar");
 		registration.setEmailId("ajith");
 		registration.setGender("male");
-		registration.setMobileNumber(3456789023L);
+		registration.setMobileNumber("3456789023");
 		registration.setPassword("ajither");
 		registration.setConfirmPassword("ajitherwe");
 		
@@ -139,6 +139,96 @@ public class RegisterOperationTest {
 		
 	}
 	
+
+	@Test
+	public void registerWithInvalidMobileNumber() throws Exception {
+		RegisterUser registration = new RegisterUser();
+		registration.setName("ajith kumar");
+		registration.setEmailId("ajith@gmail.com");
+		registration.setMobileNumber("789023343s");
+		registration.setGender("male");
+		registration.setPassword("ajither");
+		registration.setConfirmPassword("ajitherwe");
+		
+		 mockMvc.perform(MockMvcRequestBuilders.post(URI).contentType(MediaType.APPLICATION_JSON)
+				.content(new Gson().toJson(registration)))
+				.andExpect(MockMvcResultMatchers.status().is(422));
+		
+	}
 	
+	@Test
+	public void registerWithoutPassword() throws Exception {
+		RegisterUser registration = new RegisterUser();
+		registration.setName("ajith kumar");
+		registration.setEmailId("ajith@gmail.com");
+		registration.setMobileNumber("6789023343");
+		registration.setGender("male");
+		registration.setPassword("ar");
+		registration.setConfirmPassword("ajitherwe");
+		
+		 mockMvc.perform(MockMvcRequestBuilders.post(URI).contentType(MediaType.APPLICATION_JSON)
+				.content(new Gson().toJson(registration)))
+				.andExpect(MockMvcResultMatchers.status().is(422));
+		
+	}
+	@Test
+	public void registerWithInvalidPassword() throws Exception {
+		RegisterUser registration = new RegisterUser();
+		registration.setName("ajith kumar");
+		registration.setEmailId("ajith@gmail.com");
+		registration.setMobileNumber("6789023343");
+		registration.setGender("male");
+		registration.setConfirmPassword("ajitherwe");
+		
+		 mockMvc.perform(MockMvcRequestBuilders.post(URI).contentType(MediaType.APPLICATION_JSON)
+				.content(new Gson().toJson(registration)))
+				.andExpect(MockMvcResultMatchers.status().is(422));
+		
+	}
 	
+	@Test
+	public void registerWithoutConfirmPassword() throws Exception {
+		RegisterUser registration = new RegisterUser();
+		registration.setName("ajith kumar");
+		registration.setEmailId("ajith@gmail.com");
+		registration.setMobileNumber("7890233435");
+		registration.setGender("male");
+		registration.setPassword("ajither");
+		
+		 mockMvc.perform(MockMvcRequestBuilders.post(URI).contentType(MediaType.APPLICATION_JSON)
+				.content(new Gson().toJson(registration)))
+				.andExpect(MockMvcResultMatchers.status().is(422));
+		
+	}
+	
+	@Test
+	public void registerWithInvalidConfirmPassword() throws Exception {
+		RegisterUser registration = new RegisterUser();
+		registration.setName("ajith kumar");
+		registration.setEmailId("ajith@gmail.com");
+		registration.setMobileNumber("7890233435");
+		registration.setGender("male");
+		registration.setPassword("ajither");
+		registration.setConfirmPassword("aj");
+		
+		 mockMvc.perform(MockMvcRequestBuilders.post(URI).contentType(MediaType.APPLICATION_JSON)
+				.content(new Gson().toJson(registration)))
+				.andExpect(MockMvcResultMatchers.status().is(422));
+		
+	}
+	
+	@Test
+	public void registerWithoutGender() throws Exception {
+		RegisterUser registration = new RegisterUser();
+		registration.setName("ajith kumar");
+		registration.setEmailId("ajith@gmail.com");
+		registration.setMobileNumber("7890233435");
+		registration.setPassword("ajither");
+		registration.setConfirmPassword("ajither");
+		
+		 mockMvc.perform(MockMvcRequestBuilders.post(URI).contentType(MediaType.APPLICATION_JSON)
+				.content(new Gson().toJson(registration)))
+				.andExpect(MockMvcResultMatchers.status().is(422));
+		
+	}
 }
