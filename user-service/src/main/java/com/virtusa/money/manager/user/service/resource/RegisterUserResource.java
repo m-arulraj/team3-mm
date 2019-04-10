@@ -55,6 +55,7 @@ public class RegisterUserResource {
 			User user = new User();
 			user.setUserName(registerUser.getEmailId());
 			user.setPassword(registerUser.getPassword());
+			
 			return ResponseEntity.created(new URI("/api/register/"+registerUser2.getId())).build();
 		}
 		

@@ -139,20 +139,6 @@ public class RegisterOperationTest {
 		
 	}
 	
-	@Test
-	public void registerWithInvalidMobileNumber() throws Exception {
-		RegisterUser registration = new RegisterUser();
-		registration.setName("ajith kumar");
-		registration.setEmailId("ajith@gmail.com");
-		registration.setGender("male");
-		registration.setMobileNumber(12121123L);
-		registration.setPassword("ajither");
-		registration.setConfirmPassword("ajitherwe");
-		
-		 mockMvc.perform(MockMvcRequestBuilders.post(URI).contentType(MediaType.APPLICATION_JSON)
-				.content(new Gson().toJson(registration)))
-				.andExpect(MockMvcResultMatchers.status().is(422));
-		
-	}
+	
 	
 }
