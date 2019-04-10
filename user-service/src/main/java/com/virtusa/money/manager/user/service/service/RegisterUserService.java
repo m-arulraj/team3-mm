@@ -9,30 +9,31 @@ import com.virtusa.money.manager.user.service.domain.RegisterUser;
 import com.virtusa.money.manager.user.service.domain.User;
 import com.virtusa.money.manager.user.service.repository.RegisterUserRepository;
 
-@Service	
+@Service
 public class RegisterUserService {
 
 	@Autowired
 	RegisterUserRepository registerUserRepository;
-	
+
 	@Autowired
 	UserService userService;
-	
-	public RegisterUser register(RegisterUser registration){
+
+	public RegisterUser register(RegisterUser registration) {
 		User user = new User();
 		user.setUserName(registration.getEmailId());
 		user.setPassword(registration.getPassword());
 		userService.saveUser(user);
 		return registerUserRepository.save(registration);
 	}
-	
-	public RegisterUser retriveRegisteredUser(Long id){
+
+	public RegisterUser retriveRegisteredUser(Long id) {
 		Optional<RegisterUser> registerUser = registerUserRepository.findById(id);
 
-		return 	registerUser.isPresent() ? registerUser.get():null;
-				}
-	public RegisterUser retriveRegisteredUserByEmailId(String emailId){
+		return registerUser.isPresent() ? registerUser.get() : null;
+	}
+
+	public RegisterUser retriveRegisteredUserByEmailId(String emailId) {
 		Optional<RegisterUser> registerUser = registerUserRepository.findByEmailId(emailId);
-		return 	registerUser.isPresent() ? registerUser.get():new RegisterUser();
-				}
+		return registerUser.isPresent() ? registerUser.get() : null;
+	}
 }

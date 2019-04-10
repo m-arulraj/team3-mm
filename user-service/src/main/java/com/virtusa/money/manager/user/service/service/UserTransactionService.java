@@ -30,23 +30,7 @@ public class UserTransactionService {
 	UserRepository userRepository;
 
 	public UserTransaction storeUserTransaction(UserTransaction userTransaction) {
-		Optional<Category> category= null;
-		Optional<CategoryList> categoryList = null;
-		User user = userRepository.findById(userTransaction.getUser().getId()).get();
-		category = categoryRepository.findById(userTransaction.getCategoryList().getCategory().getId());
-		categoryList=categoryListRepository.findById(userTransaction.getCategoryList().getId());
-		if(category.isPresent()) {
-			if(categoryList.isPresent()) {
-				categoryList.get().setCategory(category.get());
-				userTransaction.setCategoryList(categoryList.get());
-				userTransaction.setUser(user);
-				return userTransactionRepository.save(userTransaction);
-			}else {
-				CategoryList saveCategoryList = categoryListRepository.save(userTransaction.getCategoryList());
-				return null;/*categoryRepository.save(userTransaction.getCategoryList().setCategory(category.get()));*/
-			}
-		}
-		return userTransaction;
+		return userTransactionRepository.save(userTransaction);
 	}
 
 }

@@ -25,7 +25,7 @@ import com.virtusa.money.manager.user.service.domain.User;
 import com.virtusa.money.manager.user.service.service.RegisterUserService;
 
 @RestController
-@RequestMapping(value="/api/register")
+@RequestMapping(value = "/api/client")
 public class RegisterUserResource {
 
 	private ErrorResponse populateErrorMessage(List<ObjectError> errors) {
@@ -42,43 +42,42 @@ public class RegisterUserResource {
 		errorResponse.setMessages(messages);
 		return errorResponse;
 	}
-	
+
 	@Autowired
 	RegisterUserService registerUserService;
-	
-	@PostMapping("")
-	public ResponseEntity<?> register(@Valid @RequestBody RegisterUser registerUser ,BindingResult bindingResult) throws URISyntaxException{
-		if(bindingResult.hasErrors()) {
+
+	@PostMapping("/register")
+	public ResponseEntity<?> register(@Valid @RequestBody RegisterUser registerUser, BindingResult bindingResult)
+			throws URISyntaxException {
+		if (bindingResult.hasErrors()) {
 			return ResponseEntity.status(422).body(populateErrorMessage(bindingResult.getAllErrors()));
-		}else {
+		} else {
 			RegisterUser registerUser2 = registerUserService.register(registerUser);
 			User user = new User();
 			user.setUserName(registerUser.getEmailId());
 			user.setPassword(registerUser.getPassword());
-			
-			return ResponseEntity.created(new URI("/api/register/user/"+registerUser2.getEmailId())).build();
+
+			return ResponseEntity.created(new URI("/api/client/user/" + registerUser2.getEmailId())).build();
 		}
-		
 	}
-	
+
 	@GetMapping("/{id}")
-	public ResponseEntity<RegisterUser> getRegisteredUser(@PathVariable("id") Long id){
+	public ResponseEntity<RegisterUser> getRegisteredUser(@PathVariable("id") Long id) {
 		RegisterUser registerUser = registerUserService.retriveRegisteredUser(id);
-		if(registerUser != null){
+		if (registerUser != null) {
 			return ResponseEntity.ok().body(registerUser);
-		}else{
+		} else {
 			return ResponseEntity.notFound().build();
 		}
-		
 	}
+
 	@GetMapping("/user/{emailId}")
-	public ResponseEntity<RegisterUser> getRegisteredUserByEmail(@PathVariable("emailId") String emailId){
+	public ResponseEntity<RegisterUser> getRegisteredUserByEmail(@PathVariable("emailId") String emailId) {
 		RegisterUser registerUser = registerUserService.retriveRegisteredUserByEmailId(emailId);
-		if(registerUser != null){
+		if (registerUser != null) {
 			return ResponseEntity.ok().body(registerUser);
-		}else{
+		} else {
 			return ResponseEntity.notFound().build();
 		}
-		
 	}
 }
