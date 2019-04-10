@@ -47,6 +47,7 @@ public class RegisterOperationTest {
 		registration.setMobileNumber("3456789023");
 		registration.setPassword("ajither");
 		registration.setConfirmPassword("ajitherwe");
+		registration.setDateOfBirth("22-12-1996");
 		
 		String returnedStatusUri = mockMvc.perform(MockMvcRequestBuilders.post(URI).contentType(MediaType.APPLICATION_JSON)
 				.content(new Gson().toJson(registration))).andExpect(MockMvcResultMatchers.status().isCreated())
@@ -73,6 +74,7 @@ public class RegisterOperationTest {
 		registration.setMobileNumber("121313131");
 		registration.setPassword("ajith");
 		registration.setConfirmPassword("ajith");
+		registration.setDateOfBirth("22-12-1996");
 		
 		 mockMvc.perform(MockMvcRequestBuilders.post(URI).contentType(MediaType.APPLICATION_JSON)
 				.content(new Gson().toJson(registration)))
@@ -87,6 +89,7 @@ public class RegisterOperationTest {
 		registration.setMobileNumber("121313131");
 		registration.setPassword("ajith");
 		registration.setConfirmPassword("ajith");
+		registration.setDateOfBirth("22-12-1996");
 		
 		 mockMvc.perform(MockMvcRequestBuilders.post(URI).contentType(MediaType.APPLICATION_JSON)
 				.content(new Gson().toJson(registration)))
@@ -102,6 +105,7 @@ public class RegisterOperationTest {
 		registration.setMobileNumber("121313131");
 		registration.setPassword("ajith");
 		registration.setConfirmPassword("ajith");
+		registration.setDateOfBirth("22-12-1996");
 		
 		 mockMvc.perform(MockMvcRequestBuilders.post(URI).contentType(MediaType.APPLICATION_JSON)
 				.content(new Gson().toJson(registration)))
@@ -117,6 +121,7 @@ public class RegisterOperationTest {
 		registration.setMobileNumber("3456789023");
 		registration.setPassword("ajither");
 		registration.setConfirmPassword("ajitherwe");
+		registration.setDateOfBirth("22-12-1996");
 		
 		 mockMvc.perform(MockMvcRequestBuilders.post(URI).contentType(MediaType.APPLICATION_JSON)
 				.content(new Gson().toJson(registration)))
@@ -132,6 +137,7 @@ public class RegisterOperationTest {
 		registration.setGender("male");
 		registration.setPassword("ajither");
 		registration.setConfirmPassword("ajitherwe");
+		registration.setDateOfBirth("22-12-1996");
 		
 		 mockMvc.perform(MockMvcRequestBuilders.post(URI).contentType(MediaType.APPLICATION_JSON)
 				.content(new Gson().toJson(registration)))
@@ -149,6 +155,7 @@ public class RegisterOperationTest {
 		registration.setGender("male");
 		registration.setPassword("ajither");
 		registration.setConfirmPassword("ajitherwe");
+		registration.setDateOfBirth("22-12-1996");
 		
 		 mockMvc.perform(MockMvcRequestBuilders.post(URI).contentType(MediaType.APPLICATION_JSON)
 				.content(new Gson().toJson(registration)))
@@ -165,6 +172,7 @@ public class RegisterOperationTest {
 		registration.setGender("male");
 		registration.setPassword("ar");
 		registration.setConfirmPassword("ajitherwe");
+		registration.setDateOfBirth("22-12-1996");
 		
 		 mockMvc.perform(MockMvcRequestBuilders.post(URI).contentType(MediaType.APPLICATION_JSON)
 				.content(new Gson().toJson(registration)))
@@ -179,6 +187,7 @@ public class RegisterOperationTest {
 		registration.setMobileNumber("6789023343");
 		registration.setGender("male");
 		registration.setConfirmPassword("ajitherwe");
+		registration.setDateOfBirth("22-12-1996");
 		
 		 mockMvc.perform(MockMvcRequestBuilders.post(URI).contentType(MediaType.APPLICATION_JSON)
 				.content(new Gson().toJson(registration)))
@@ -194,6 +203,7 @@ public class RegisterOperationTest {
 		registration.setMobileNumber("7890233435");
 		registration.setGender("male");
 		registration.setPassword("ajither");
+		registration.setDateOfBirth("22-12-1996");
 		
 		 mockMvc.perform(MockMvcRequestBuilders.post(URI).contentType(MediaType.APPLICATION_JSON)
 				.content(new Gson().toJson(registration)))
@@ -210,6 +220,7 @@ public class RegisterOperationTest {
 		registration.setGender("male");
 		registration.setPassword("ajither");
 		registration.setConfirmPassword("aj");
+		registration.setDateOfBirth("22-12-1996");
 		
 		 mockMvc.perform(MockMvcRequestBuilders.post(URI).contentType(MediaType.APPLICATION_JSON)
 				.content(new Gson().toJson(registration)))
@@ -225,6 +236,22 @@ public class RegisterOperationTest {
 		registration.setMobileNumber("7890233435");
 		registration.setPassword("ajither");
 		registration.setConfirmPassword("ajither");
+		registration.setDateOfBirth("22-12-1996");
+		
+		 mockMvc.perform(MockMvcRequestBuilders.post(URI).contentType(MediaType.APPLICATION_JSON)
+				.content(new Gson().toJson(registration)))
+				.andExpect(MockMvcResultMatchers.status().is(422));
+		
+	}
+	@Test
+	public void registerWithoutDateOfBirth() throws Exception {
+		RegisterUser registration = new RegisterUser();
+		registration.setName("ajith kumar");
+		registration.setEmailId("ajith@gmail.com");
+		registration.setMobileNumber("6789023343");
+		registration.setGender("male");
+		registration.setPassword("ajitherwe");
+		registration.setConfirmPassword("ajitherwe");
 		
 		 mockMvc.perform(MockMvcRequestBuilders.post(URI).contentType(MediaType.APPLICATION_JSON)
 				.content(new Gson().toJson(registration)))

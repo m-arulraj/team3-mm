@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.virtusa.money.manager.user.service.domain.UserTransaction;
+import com.virtusa.money.manager.user.service.service.UserTransactionService;
 
 @RestController
 @RequestMapping("/user-transaction")

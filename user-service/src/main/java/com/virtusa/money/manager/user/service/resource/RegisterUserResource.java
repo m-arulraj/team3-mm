@@ -56,7 +56,7 @@ public class RegisterUserResource {
 			user.setUserName(registerUser.getEmailId());
 			user.setPassword(registerUser.getPassword());
 			
-			return ResponseEntity.created(new URI("/api/register/"+registerUser2.getId())).build();
+			return ResponseEntity.created(new URI("/api/register/user/"+registerUser2.getEmailId())).build();
 		}
 		
 	}
@@ -64,6 +64,16 @@ public class RegisterUserResource {
 	@GetMapping("/{id}")
 	public ResponseEntity<RegisterUser> getRegisteredUser(@PathVariable("id") Long id){
 		RegisterUser registerUser = registerUserService.retriveRegisteredUser(id);
+		if(registerUser != null){
+			return ResponseEntity.ok().body(registerUser);
+		}else{
+			return ResponseEntity.notFound().build();
+		}
+		
+	}
+	@GetMapping("/user/{emailId}")
+	public ResponseEntity<RegisterUser> getRegisteredUserByEmail(@PathVariable("emailId") String emailId){
+		RegisterUser registerUser = registerUserService.retriveRegisteredUserByEmailId(emailId);
 		if(registerUser != null){
 			return ResponseEntity.ok().body(registerUser);
 		}else{

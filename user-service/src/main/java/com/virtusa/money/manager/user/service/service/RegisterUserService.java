@@ -31,4 +31,8 @@ public class RegisterUserService {
 
 		return 	registerUser.isPresent() ? registerUser.get():null;
 				}
+	public RegisterUser retriveRegisteredUserByEmailId(String emailId){
+		Optional<RegisterUser> registerUser = registerUserRepository.findByEmailId(emailId);
+		return 	registerUser.isPresent() ? registerUser.get():new RegisterUser();
+				}
 }

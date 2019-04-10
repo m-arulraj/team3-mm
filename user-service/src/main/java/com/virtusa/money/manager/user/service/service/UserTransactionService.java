@@ -43,9 +43,10 @@ public class UserTransactionService {
 				return userTransactionRepository.save(userTransaction);
 			}else {
 				CategoryList saveCategoryList = categoryListRepository.save(userTransaction.getCategoryList());
-				categoryRepository.save(userTransaction.getCategoryList().setCategory(category.get()))
+				return null;/*categoryRepository.save(userTransaction.getCategoryList().setCategory(category.get()));*/
 			}
 		}
+		return userTransaction;
 	}
 
 }
