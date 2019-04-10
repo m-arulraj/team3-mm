@@ -1,0 +1,12 @@
+server:
+  port: 7070
+  
+spring:
+   profiles:
+      active: native
+   cloud:
+      config:
+         server:
+            native:
+               search-location:>
+                  classpath:/config
