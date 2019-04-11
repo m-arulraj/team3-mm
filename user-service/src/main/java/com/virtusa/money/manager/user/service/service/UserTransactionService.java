@@ -5,9 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.virtusa.money.manager.user.service.domain.Category;
 import com.virtusa.money.manager.user.service.domain.CategoryList;
-import com.virtusa.money.manager.user.service.domain.User;
 import com.virtusa.money.manager.user.service.domain.UserTransaction;
 import com.virtusa.money.manager.user.service.repository.CategoryListRepository;
 import com.virtusa.money.manager.user.service.repository.CategoryRepository;
@@ -16,35 +14,57 @@ import com.virtusa.money.manager.user.service.repository.UserTransactionReposito
 
 @Service
 public class UserTransactionService {
-	
+
 	@Autowired
 	UserTransactionRepository userTransactionRepository;
-	
+
 	@Autowired
 	CategoryRepository categoryRepository;
-	
+
 	@Autowired
 	CategoryListRepository categoryListRepository;
-	
+
 	@Autowired
 	UserRepository userRepository;
 
 	public UserTransaction storeUserTransaction(UserTransaction userTransaction) {
-		Optional<Category> category= null;
 		Optional<CategoryList> categoryList = null;
-		User user = userRepository.findById(userTransaction.getUser().getId()).get();
-		category = categoryRepository.findById(userTransaction.getCategoryList().getCategory().getId());
-		categoryList=categoryListRepository.findById(userTransaction.getCategoryList().getId());
-		if(category.isPresent()) {
-			if(categoryList.isPresent()) {
-				categoryList.get().setCategory(category.get());
-				userTransaction.setCategoryList(categoryList.get());
-				userTransaction.setUser(user);
-				return userTransactionRepository.save(userTransaction);
-			}else {
-				CategoryList saveCategoryList = categoryListRepository.save(userTransaction.getCategoryList());
-				categoryRepository.save(userTransaction.getCategoryList().setCategory(category.get()))
-			}
+		categoryList = categoryListRepository.findByName(userTransaction.getCategoryList().getName());
+		userTransaction.setUser(userRepository.findById(userTransaction.getUser().getId()).get());
+		if (categoryList.isPresent()) {
+			categoryList.get().setCategory(
+					categoryRepository.findById(userTransaction.getCategoryList().getCategory().getId()).get());
+			userTransaction.setCategoryList(categoryList.get());
+			return userTransactionRepository.save(userTransaction);
+		} else {
+			CategoryList saveCategoryList = categoryListRepository.save(userTransaction.getCategoryList());
+			userTransaction.setCategoryList(saveCategoryList);
+			return userTransactionRepository.save(userTransaction);
+		}
+	}
+
+	public int removeTransaction(Long id) {
+		if (userTransactionRepository.findById(id).isPresent()) {
+			userTransactionRepository.deleteById(id);
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+
+	public UserTransaction updateUserTransaction(UserTransaction userTransaction) {
+		Optional<UserTransaction> storedUserTransaction = userTransactionRepository.findById(userTransaction.getId());
+		if (storedUserTransaction.isPresent()) {
+
+			UserTransaction transaction = storedUserTransaction.get();
+			transaction.setId(userTransaction.getId());
+			transaction.setAmount(userTransaction.getAmount());
+			transaction.setDate(userTransaction.getDate());
+			transaction.setCategoryList(userTransaction.getCategoryList());
+			transaction.setUser(userTransaction.getUser());
+			return storeUserTransaction(transaction);
+		} else {
+			return null;
 		}
 	}
 
