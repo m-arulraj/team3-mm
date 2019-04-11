@@ -5,10 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -48,4 +46,7 @@ public class RegisterUser {
 	@Size(min = 6, max = 12, message = "MM0018-Password should be 6-12 characters")
 	@Transient
 	String confirmPassword;
+	
+	@NotEmpty(message = "MM0024- Date of Birth can’t be empty")
+	String dateOfBirth;
 }

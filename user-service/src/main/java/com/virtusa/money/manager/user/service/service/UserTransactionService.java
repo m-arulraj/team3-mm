@@ -28,6 +28,8 @@ public class UserTransactionService {
 	UserRepository userRepository;
 
 	public UserTransaction storeUserTransaction(UserTransaction userTransaction) {
+		
+		
 		Optional<CategoryList> categoryList = null;
 		categoryList = categoryListRepository.findByName(userTransaction.getCategoryList().getName());
 		userTransaction.setUser(userRepository.findById(userTransaction.getUser().getId()).get());
