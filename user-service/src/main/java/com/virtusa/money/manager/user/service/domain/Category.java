@@ -13,5 +13,6 @@ public class Category {
 	@Id
 	@GeneratedValue
 	Long id;
+	
 	String category;
 }
