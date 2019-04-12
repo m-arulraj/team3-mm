@@ -14,8 +14,10 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.virtusa.money.manager.user.service.domain.ErrorResponse;
@@ -79,5 +81,18 @@ public class RegisterUserResource {
 		} else {
 			return ResponseEntity.notFound().build();
 		}
+	}
+
+	@PutMapping("/updateProfile")
+	public ResponseEntity<?> updateProfile(@Valid @RequestBody RegisterUser registerUser, BindingResult bindingResult,
+			@RequestParam("emailId") String emailId) {
+
+		if (bindingResult.hasErrors()) {
+			return ResponseEntity.status(422).body(populateErrorMessage(bindingResult.getAllErrors()));
+		} else {
+			RegisterUser user = registerUserService.updateProfile(emailId, registerUser);
+			return ResponseEntity.ok().body(user);
+		}
+
 	}
 }

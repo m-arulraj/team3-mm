@@ -2,6 +2,8 @@ package com.virtusa.money.manager.user.service.service;
 
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,5 +37,17 @@ public class RegisterUserService {
 	public RegisterUser retriveRegisteredUserByEmailId(String emailId) {
 		Optional<RegisterUser> registerUser = registerUserRepository.findByEmailId(emailId);
 		return registerUser.isPresent() ? registerUser.get() : null;
+	}
+	
+	@Transactional
+	public RegisterUser updateProfile(String emailId, RegisterUser registerUser) {
+		RegisterUser user = retriveRegisteredUserByEmailId(emailId);
+
+		if (user != null) {
+			return registerUserRepository.save(user);
+		} else {
+			return registerUserRepository.save(registerUser);
+		}
+
 	}
 }
