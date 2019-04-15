@@ -15,8 +15,9 @@ public class CategoryList {
 	@Id
 	@GeneratedValue
 	Long id;
-	@Column(unique=true)
+	//@Column(unique=true)
 	String name;
+	
 	@ManyToOne
 	Category category;
 }
