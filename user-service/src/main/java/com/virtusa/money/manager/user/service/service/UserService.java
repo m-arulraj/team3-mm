@@ -19,13 +19,13 @@ public class UserService {
 	}
 	 
 
-	public User getUserById(Long id) {
-		Optional<User> userObj = userRepository.findById(id);
+	public User getUserByName(String name) {
+		Optional<User> userObj = userRepository.findByUserName(name);
 		return userObj.isPresent()?userObj.get():null;
 	}
 
 	public User modifyUser(User user) {
-		User storedUser = getUserById(user.getId());
+		User storedUser = getUserByName(user.getUserName());
 		if(storedUser!=null) {
 			storedUser.setUserName(user.getUserName());
 			storedUser.setPassword(user.getPassword());

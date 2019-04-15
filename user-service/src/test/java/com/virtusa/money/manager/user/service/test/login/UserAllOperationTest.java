@@ -47,9 +47,9 @@ public class UserAllOperationTest {
 		user.setPassword("gopikishor");
 		this.mockMvc
 				.perform(MockMvcRequestBuilders.post(USER_API_URI).contentType(MediaType.APPLICATION_JSON)
-						.content(mapper.writeValueAsString(user)))
+				.content(mapper.writeValueAsString(user)))
 				.andExpect(MockMvcResultMatchers.status().isCreated());
-		this.mockMvc.perform(MockMvcRequestBuilders.get(USER_API_URI + "/1").contentType(MediaType.APPLICATION_JSON))
+		this.mockMvc.perform(MockMvcRequestBuilders.get(USER_API_URI+"/gopi@gmail.com").contentType(MediaType.APPLICATION_JSON))
 				.andExpect(MockMvcResultMatchers.status().isOk())
 				.andExpect(jsonPath("$.userName", is("gopi@gmail.com")))
 				.andExpect(jsonPath("$.password", is("gopikishor")));
@@ -74,10 +74,10 @@ public class UserAllOperationTest {
 				.content(mapper.writeValueAsString(user))).andExpect(MockMvcResultMatchers.status().is(422));
 
 	}
-
+	
 	@Test
-	public void retriveUser() throws JsonProcessingException, Exception {
-		this.mockMvc.perform(MockMvcRequestBuilders.get(USER_API_URI + "/1").contentType(MediaType.APPLICATION_JSON))
+	public void retriveUserByName() throws JsonProcessingException, Exception {
+		this.mockMvc.perform(MockMvcRequestBuilders.get(USER_API_URI+"/gopi@gmail.com").contentType(MediaType.APPLICATION_JSON))
 				.andExpect(MockMvcResultMatchers.status().isOk())
 				.andExpect(jsonPath("$.userName", is("gopi@gmail.com")))
 				.andExpect(jsonPath("$.password", is("gopikishor")));
@@ -85,19 +85,18 @@ public class UserAllOperationTest {
 
 	@Test
 	public void retriveInvalidUser() throws JsonProcessingException, Exception {
-		this.mockMvc.perform(MockMvcRequestBuilders.get(USER_API_URI + "/0").contentType(MediaType.APPLICATION_JSON))
-				.andExpect(MockMvcResultMatchers.status().is(204));
+		this.mockMvc.perform(MockMvcRequestBuilders.get(USER_API_URI+"/pawan@gmail.com").contentType(MediaType.APPLICATION_JSON))
+				.andExpect(MockMvcResultMatchers.status().is(404));
 	}
 
 	@Test
 	public void modifyUser() throws JsonProcessingException, Exception {
 		User user = new User();
-		user.setId(1L);
 		user.setUserName("gopi@gmail.com");
 		user.setPassword("gopikishor");
 		this.mockMvc
 				.perform(MockMvcRequestBuilders.put(USER_API_URI).contentType(MediaType.APPLICATION_JSON)
-						.content(mapper.writeValueAsString(user)))
+				.content(mapper.writeValueAsString(user)))
 				.andExpect(MockMvcResultMatchers.status().isOk())
 				.andExpect(jsonPath("$.userName", is("gopi@gmail.com")))
 				.andExpect(jsonPath("$.password", is("gopikishor")));
@@ -106,17 +105,15 @@ public class UserAllOperationTest {
 	@Test
 	public void modifyInvalidUser() throws JsonProcessingException, Exception {
 		User user = new User();
-		user.setId(0L);
-		user.setUserName("gopi@gmail.com");
+		user.setUserName("pawan@gmail.com");
 		user.setPassword("gopikishor");
 		this.mockMvc.perform(MockMvcRequestBuilders.put(USER_API_URI).contentType(MediaType.APPLICATION_JSON)
-				.content(mapper.writeValueAsString(user))).andExpect(MockMvcResultMatchers.status().is(204));
+				.content(mapper.writeValueAsString(user))).andExpect(MockMvcResultMatchers.status().is(404));
 	}
 	
 	@Test
 	public void modifyUserWithInvalidUserName() throws JsonProcessingException, Exception {
 		User user = new User();
-		user.setId(1L);
 		user.setUserName("");
 		user.setPassword("gopikishor");
 		this.mockMvc.perform(MockMvcRequestBuilders.put(USER_API_URI).contentType(MediaType.APPLICATION_JSON)
@@ -126,7 +123,6 @@ public class UserAllOperationTest {
 	@Test
 	public void modifyUserWithInvalidPassword() throws JsonProcessingException, Exception {
 		User user = new User();
-		user.setId(1L);
 		user.setUserName("gopi@gmail.com");
 		user.setPassword("gopi");
 		this.mockMvc.perform(MockMvcRequestBuilders.put(USER_API_URI).contentType(MediaType.APPLICATION_JSON)

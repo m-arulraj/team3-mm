@@ -2,9 +2,12 @@ package com.virtusa.money.manager.user.service.domain;
 
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import lombok.Data;
 
 @Data
+@XmlRootElement(name="error")
 public class ErrorResponse {
 	
 	private boolean isError;
