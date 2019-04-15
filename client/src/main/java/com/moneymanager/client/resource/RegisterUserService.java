@@ -1,4 +1,4 @@
-package com.virtusa.money.manager.user.service.service;
+package com.moneymanager.client.resource;
 
 import java.util.Optional;
 
@@ -27,18 +27,18 @@ public class RegisterUserService {
 		userService.saveUser(user);
 		return registerUserRepository.save(registration);
 	}
-
+	
 	public RegisterUser retriveRegisteredUser(Long id) {
 		Optional<RegisterUser> registerUser = registerUserRepository.findById(id);
 
 		return registerUser.isPresent() ? registerUser.get() : null;
 	}
-
+	@Transactional
 	public RegisterUser retriveRegisteredUserByEmailId(String emailId) {
 		Optional<RegisterUser> registerUser = registerUserRepository.findByEmailId(emailId);
 		return registerUser.isPresent() ? registerUser.get() : null;
 	}
-	
+
 	@Transactional
 	public RegisterUser updateProfile(String emailId, RegisterUser registerUser) {
 		RegisterUser user = retriveRegisteredUserByEmailId(emailId);

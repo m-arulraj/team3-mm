@@ -11,5 +11,6 @@ public class Category {
 
 	@Id
 	Long id;
+	
 	String category;
 }
