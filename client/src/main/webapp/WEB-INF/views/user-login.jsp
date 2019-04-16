@@ -18,7 +18,7 @@
 	width: 419px;
 	height: 236px;
 }
-
+ 
 .vdo_ai_9305047-dimensions.vjs-fluid {
 	padding-top: 56.25%;
 }

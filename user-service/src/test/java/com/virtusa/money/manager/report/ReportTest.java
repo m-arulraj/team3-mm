@@ -113,7 +113,7 @@ public class ReportTest {
 		
 		
 	}
-
+ 
 	@Test
 	public void getReport() throws Exception {
 		mockMvc.perform(MockMvcRequestBuilders.get(REPORT_API_URI+"1").contentType(MediaType.APPLICATION_JSON))

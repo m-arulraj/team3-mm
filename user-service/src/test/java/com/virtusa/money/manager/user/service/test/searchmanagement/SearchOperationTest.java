@@ -106,7 +106,7 @@ public class SearchOperationTest {
 
 		transactionService.save(transaction2);
 
-	}
+	} 
 
 	@Test
 	public void getFullTransaction() throws Exception {

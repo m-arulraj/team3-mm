@@ -23,7 +23,7 @@ public class ReportResource {
 			Report report = reportService.getForReport(id);
 			if(report == null) {
 				return ResponseEntity.noContent().build();
-			}else {
+			}else { 
 				return ResponseEntity.ok().build();
 			}
 		} catch (Exception e) {

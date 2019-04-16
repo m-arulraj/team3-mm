@@ -1,10 +1,15 @@
 package com.moneymanager.client.resource;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.moneymanager.client.MoneyManagerApp;
+import com.moneymanager.client.domain.Report;
 
 @Controller
 public class HomeResource {
@@ -48,11 +53,16 @@ public class HomeResource {
 	}
 
 	@RequestMapping("/user-report")
-	public String reports() {
+	public String reports(Model model) {
 
 		logger.info("home resource user-repot page info");
 		logger.debug("home resource user-repot page debugging");
 
+		Report report = new Report();
+		Map<String,Long> expense = new TreeMap<String, Long>();
+		expense.put("2018-01", 2000L);
+		report.setExpence(expense);
+		model.addAttribute("report", report);
 		return "report";
 
 	}
