@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -32,7 +33,7 @@ public class SearchService {
 	@Autowired
 	UserRepository userRepository;
 
-	public static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+	public static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 	Comparator<UserTransaction> transactionBasedOnAmount = Comparator.comparing(UserTransaction::getAmount);
 	Comparator<UserTransaction> transactionBasedOnCategory = (UserTransaction u1, UserTransaction u2) -> u1
@@ -114,7 +115,7 @@ public class SearchService {
 	}
 
 	public List<UserTransaction> getTransactionByNameAndDateWithBoundries(String name, Long id, String startDate,
-			String endDate) throws Exception {
+			String endDate){
 		List<UserTransaction> userTransaction = userTransactionRepository.findAll();
 
 		List<UserTransaction> userTransactionOptional = userTransaction.stream()
@@ -131,7 +132,7 @@ public class SearchService {
 		List<UserTransaction> userTransactionOptional = new ArrayList<UserTransaction>();
 
 		userTransactionOptional = userTransaction.stream().filter(FINDTRANSACTIONFORCURRENTUSER(id))
-				.filter(FINDTRANSACTIONBYNAME(name)).filter(GETBASEDONAMOUNT(amount)).collect(Collectors.toList());
+				.filter(FINDTRANSACTIONBYNAME(name)).filter(GETBASEDONAMOUNT(200L)).collect(Collectors.toList());
 
 		return !userTransactionOptional.isEmpty() ? userTransactionOptional : null;
 	}
