@@ -828,7 +828,39 @@ h5 {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :rotate(359deg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -843,7 +875,39 @@ transform
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :rotate(359deg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -866,7 +930,39 @@ keyframes fa-spin { 0%{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :rotate(359deg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -881,7 +977,39 @@ transform
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :rotate(359deg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3692,8 +3820,19 @@ transform
 <link href="resources/css" rel="stylesheet">
 <!-- //google fonts -->
 
-
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+.bs-example {
+	margin: 20px;
+}
+</style>
 </head>
+
 <body style="">
 	<div class="signupform">
 		<div class="container">
@@ -3712,70 +3851,19 @@ transform
 					</div>
 				</div>
 
-				<div class="w3_info">
-					<!---728x90--->
-
-					<h2>User Registration</h2>
-					<p>Enter your details to SignUp.</p>
-					<form action="/login" method="post">
-						<label>User Name</label>
-						<div class="input-group">
-							<span class="fa fa-envelope" aria-hidden="true"></span> <input
-								type="email" placeholder="Enter Your Name" required="">
-						</div>
-						<label>Email Address</label>
-						<div class="input-group">
-							<span class="fa fa-envelope" aria-hidden="true"></span> <input
-								type="email" placeholder="Enter Your Email" required="">
-						</div>
-						<label>Mobile Number</label>
-						<div class="input-group">
-							<span class="fa fa-envelope" aria-hidden="true"></span> <input
-								type="email" placeholder="Enter Your Mobile Number" required="">
-						</div>
-						<label>DOB</label>
-						<div class="input-group  ">
-							<input type="date" required="">
-						</div>
-						<label>Gender</label> <br> <br>
-						<div>
-							<input type="radio" name="gender" value="male"> Male<br>
-							<input type="radio" name="gender" value="female"> Female<br>
-						</div>
+				<div class="w3_info" align="center">
 						<br>
-						<button class="btn btn-danger btn-block" type="submit">REGISTER</button>
-					</form>
-					<p class="account">
-						By clicking Register, you agree to our <a
-							href="https://www.signupto.com/legal/">Terms &amp;
-							Conditions!</a>
-					</p>
-
-					<!-- 	<form action="/welcome" method="post">
-						<label>Email Address</label>
-						<div class="input-group">
-							<span class="fa fa-envelope" aria-hidden="true"></span> <input
-								type="email" placeholder="Enter Your Email" required="">
-						</div>
-
-						<label>Password</label>
-						<div class="input-group">
-							<span class="fa fa-lock" aria-hidden="true"></span> <input
-								type="Password" placeholder="Enter Password" required="">
-						</div>
-				
-						<div class="login-check">
-							<label class="checkbox"><input type="checkbox"
-								name="checkbox" checked=""><i> </i> Remember me</label>
-						</div>
-						<button class="btn btn-danger btn-block" type="submit">Login</button>
-					</form> -->
-
+						<br><br><br>
+					<div class="bs-example">
+						<button type="button" class="btn btn-primary btn-lg btn-block">INVESTMENT</button>
+						<button type="button" class="btn btn-primary btn-lg btn-block">INCOME</button>
+						<button type="button" class="btn btn-primary btn-lg btn-block">EXPENSE</button>
+					</div>
 				</div>
+
 			</div>
 			<!-- //main content -->
 		</div>
-		<!---728x90--->
 
 		<!-- footer -->
 		<div class="footer">

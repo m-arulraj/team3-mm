@@ -27,6 +27,16 @@ public class HomeResource {
 
 	}
 
+	@RequestMapping("/user-home")
+	public String userHome() {
+
+		logger.info("home resource user-home page info");
+		logger.debug("home resource user-home page debugging");
+
+		return "user-home";
+
+	}
+
 	@RequestMapping("/user-registration")
 	public String registration() {
 
@@ -56,4 +66,5 @@ public class HomeResource {
 		return "report";
 
 	}
+
 }
