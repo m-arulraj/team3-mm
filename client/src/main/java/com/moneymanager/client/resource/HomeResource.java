@@ -23,6 +23,8 @@ public class HomeResource {
 	@RequestMapping("/login")
 	public String login()
 	{
+		logger.info("login ");
+
 		return "user-login";
 		
 	}
