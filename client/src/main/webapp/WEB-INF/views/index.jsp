@@ -8,7 +8,7 @@
 </head>
 <body>
 <div align="center">
-<a href="/login"></i>WELCOME</a>
+<a href="/user-login">WELCOME</a>
 </div>
 </body>
 </html>
