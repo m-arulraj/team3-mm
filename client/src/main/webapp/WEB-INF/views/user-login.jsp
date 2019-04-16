@@ -143,7 +143,9 @@
 							&amp; Conditions!</a>
 					</p>
 					<p class="account1">
-						Dont have an account? <a href="/registration">Register here</a>
+						Dont have an account? <a
+							href="/user-registration">Register
+							here</a>
 					</p>
 				</div>
 			</div>
