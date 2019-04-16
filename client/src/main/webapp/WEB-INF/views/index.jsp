@@ -4,11 +4,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Money Manager</title>
+<title>Insert title here</title>
 </head>
 <body>
-<div align="center">
 <a href="/user-login">WELCOME</a>
-</div>
 </body>
 </html>
