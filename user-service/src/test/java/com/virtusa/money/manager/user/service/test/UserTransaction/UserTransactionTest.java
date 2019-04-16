@@ -256,7 +256,7 @@ public class UserTransactionTest {
 		this.mockMvc
 				.perform(MockMvcRequestBuilders.put(USER_TRANSACTION_API_URI).contentType(MediaType.APPLICATION_JSON)
 						.content(mapper.writeValueAsString(transaction)))
-				.andExpect(MockMvcResultMatchers.status().is(204));
+				.andExpect(MockMvcResultMatchers.status().is(404));
 	}
 	
 	@Test
@@ -270,6 +270,6 @@ public class UserTransactionTest {
 	public void M_deletInvalidTransaction() throws JsonProcessingException, Exception {
 		this.mockMvc
 				.perform(MockMvcRequestBuilders.delete(USER_TRANSACTION_API_URI+"/1").contentType(MediaType.APPLICATION_JSON))
-				.andExpect(MockMvcResultMatchers.status().is(204));
+				.andExpect(MockMvcResultMatchers.status().is(404));
 	}
 }
