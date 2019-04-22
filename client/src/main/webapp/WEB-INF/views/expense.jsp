@@ -136,7 +136,7 @@ form span {
 <link href="font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
 </head>
 <h1>Your Money Manager</h1>
-<h2>Add an expence :</h2>
+<h2>Add an ${type} :</h2>
 
 <body>
 <script type="text/javascript" src="resources/javascript.js">
@@ -170,7 +170,7 @@ form span {
 
 <div id="button"><span>Done</span></div>
 
-<table>
+<!-- <table>
   <tr>
     <th id="type" class="center">type</th>
     <th>name</th>
@@ -181,6 +181,6 @@ form span {
     <td colspan="4"><span>Your added items will show up here!</span></td>
   </tr>
 
-</table>
+</table> -->
 </body>
 </html>

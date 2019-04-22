@@ -1,13 +1,23 @@
 package com.moneymanager.client.resource;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.moneymanager.client.MoneyManagerApp;
+import com.moneymanager.client.domain.RegisterUser;
+import com.moneymanager.client.domain.User;
+import com.moneymanager.client.service.ClientService;
 
 @Controller
 public class HomeResource {
+
+	@Autowired
+	ClientService clientService;
 	final static Logger logger = Logger.getLogger(MoneyManagerApp.class);
 
 	@RequestMapping("/")
@@ -16,13 +26,13 @@ public class HomeResource {
 		logger.debug("home resource index page debugging");
 		return "index";
 	}
+	@GetMapping("/user-login")
+	public String userLogin(Model model) {
 
-	@RequestMapping("/user-login")
-	public String login() {
+		logger.info("home resource user-home page info");
+		logger.debug("home resource user-home page debugging");
 
-		logger.info("home resource user-login page info");
-		logger.debug("home resource user-login page debugging");
-
+		model.addAttribute("login", new User());
 		return "user-login";
 
 	}
@@ -38,22 +48,13 @@ public class HomeResource {
 	}
 
 	@RequestMapping("/user-registration")
-	public String registration() {
+	public String registration(Model model) {
 
 		logger.info("home resource user-registration page info");
 		logger.debug("home resource user-registration page debugging");
 
+		model.addAttribute("register", new RegisterUser());
 		return "user-registration";
-
-	}
-
-	@RequestMapping("/welcome")
-	public String welcome() {
-
-		logger.info("home resource user-welcome page info");
-		logger.debug("home resource user-welcome page debugging");
-
-		return "welcome";
 
 	}
 
@@ -67,4 +68,35 @@ public class HomeResource {
 
 	}
 
+	@GetMapping("/expenseResource")
+	public String expenseResource(Model model) {
+
+		logger.info("home resource user-repot page info");
+		logger.debug("home resource user-repot page debugging");
+		model.addAttribute("type", "expense");
+		return "expense";
+
+	}
+
+	@GetMapping("/incomeResource")
+	public String incomeResource(Model model) {
+
+		logger.info("home resource user-repot page info");
+		logger.debug("home resource user-repot page debugging");
+
+		model.addAttribute("type", "income");
+		return "expense";
+
+	}
+
+	@GetMapping("/investmentResource")
+	public String investmentResource(Model model) {
+
+		logger.info("home resource user-repot page info");
+		logger.debug("home resource user-repot page debugging");
+
+		model.addAttribute("type", "investment");
+		return "expense";
+
+	}
 }
