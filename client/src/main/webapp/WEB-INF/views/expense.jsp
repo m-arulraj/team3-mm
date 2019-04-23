@@ -1,3 +1,6 @@
+<!DOCTYPE html><%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <html>
 <head>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
@@ -146,10 +149,11 @@ form span {
   <div>
     <span>Type:</span> 
       <select name="type">
-          <option value="card">Card</option>
-          <option value="cash">Cash</option>
-          <option value="cryptocoin">Cryptocoin</option>
-          <option value="other">Other</option>
+     <c:forEach items="${categoriesList}" var="categoriesList" >
+     
+         <option value="card">${categoriesList.getName()}</option>
+    
+      </c:forEach>
       </select>
   </div>
   

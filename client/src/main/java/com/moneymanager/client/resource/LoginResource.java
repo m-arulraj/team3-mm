@@ -6,10 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.client.HttpClientErrorException;
 
 import com.moneymanager.client.MoneyManagerApp;
-import com.moneymanager.client.domain.ErrorResponse;
 import com.moneymanager.client.domain.User;
 import com.moneymanager.client.service.ClientService;
 
@@ -31,34 +29,16 @@ public class LoginResource {
 		System.out.println(user.getUserName());
 		System.out.println(user.getPassword());
 
-		
-		try {
-			User userDb = clientService.getLoginUser(user.getUserName(), user.getPassword());
-			if( userDb != null && userDb.getUserName().equalsIgnoreCase(user.getUserName()) && userDb.getPassword().equalsIgnoreCase(user.getPassword())) {
-				return "redirect:user-home";
-			}else {
+		User userDb = clientService.getLoginUser(user.getUserName(), user.getPassword());
+		if( userDb != null && userDb.getUserName().equalsIgnoreCase(user.getUserName()) && userDb.getPassword().equalsIgnoreCase(user.getPassword())) {
+			
+			return "redirect:user-home";
+		}else {
 
-				model.addAttribute("login", new User());
-				model.addAttribute("error", "Invalid User Credientials");
-				return "user-login";
-			}
-		} catch (HttpClientErrorException  e) {
-			
 			model.addAttribute("login", new User());
-			
-		      model.addAttribute("error2", e.getResponseBodyAsString());
-		      return "user-login";
+			model.addAttribute("error", "Invalid User Credientials");
+			return "user-login";
 		}
-		
-		/*
-		 * if( userDb != null &&
-		 * userDb.getUserName().equalsIgnoreCase(user.getUserName()) &&
-		 * userDb.getPassword().equalsIgnoreCase(user.getPassword())) { return
-		 * "redirect:user-home"; }else {
-		 * 
-		 * model.addAttribute("login", new User()); model.addAttribute("error",
-		 * "Invalid User Credientials"); return "user-login"; }
-		 */
 		
 
 	}

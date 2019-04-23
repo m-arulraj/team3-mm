@@ -10,22 +10,24 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.moneymanager.client.domain.CategoryList;
-import com.moneymanager.client.domain.User;
 import com.moneymanager.client.util.EndPointUri;
 
 @Service
-public class ClientService {
-
+public class CategoryService {
 	@Autowired
 	RestTemplate restTemplate;
 
-	public User getLoginUser(String userName, String password) {
+	public List<CategoryList> getCategoriesList(Long id) {
+		String uri = EndPointUri.CATEGORIESLIST + "/list/" + id;
 
-		String uri = EndPointUri.USERLOGIN + userName;
-		ResponseEntity<User> response = restTemplate.getForEntity(uri, User.class);
-		User user1 = response.getBody();
-		return user1;
+		// ResponseEntity<Object> result = restTemplate.getForEntity(uri, Object.class);
+
+		ResponseEntity<List<CategoryList>> result = restTemplate.exchange(uri, HttpMethod.GET, null,
+				new ParameterizedTypeReference<List<CategoryList>>() {
+				});
+
+		List<CategoryList> categoriesList = result.getBody();
+		return categoriesList;
 	}
 
-	
 }

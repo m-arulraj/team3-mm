@@ -3806,7 +3806,7 @@ transform
 
 					<h2>Login to your Account</h2>
 					<p>Enter your details to login.</p>
-<p style="color: red">${error} ${error2}</p>
+<p style="color: red">${error}</p>
 
 					<form:form action="/user-home" method="post"
 						 modelAttribute="login">
