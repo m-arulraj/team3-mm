@@ -272,4 +272,12 @@ public class UserTransactionTest {
 				.perform(MockMvcRequestBuilders.delete(USER_TRANSACTION_API_URI+"/1").contentType(MediaType.APPLICATION_JSON))
 				.andExpect(MockMvcResultMatchers.status().is(404));
 	}
+	
+	@Test
+	public void N_gettingCategoryList() throws JsonProcessingException, Exception {
+		this.mockMvc.perform(
+				MockMvcRequestBuilders.get(USER_TRANSACTION_API_URI+"/getCategories/1").contentType(MediaType.APPLICATION_JSON))
+				.andExpect(MockMvcResultMatchers.status().is(200));
+	}
+	
 }

@@ -22,38 +22,42 @@ import com.virtusa.money.manager.user.service.service.UserTransactionService;
 @RestController
 @RequestMapping("/api/user-transaction")
 public class UserTransactionResource {
-	
+
 	@Autowired
 	UserTransactionService userTransactionService;
-	
+
 	@PostMapping("")
-	public ResponseEntity<?> storeUserTransaction(@Valid @RequestBody UserTransaction userTransaction,BindingResult result) throws ValidationException {
-		if(result.hasErrors()) {
+	public ResponseEntity<?> storeUserTransaction(@Valid @RequestBody UserTransaction userTransaction,
+			BindingResult result) throws ValidationException {
+		if (result.hasErrors()) {
 			throw new ValidationException(result.getAllErrors());
 		}
-		return ResponseEntity.status(HttpStatus.CREATED).body(userTransactionService.storeUserTransaction(userTransaction));
+		return ResponseEntity.status(HttpStatus.CREATED)
+				.body(userTransactionService.storeUserTransaction(userTransaction));
 	}
-	
+
 	@PutMapping("")
-	public ResponseEntity<?> updateUserTransacation(@Valid @RequestBody UserTransaction userTransaction,BindingResult result) throws ValidationException, EntityNotFoundException{
-		if(result.hasErrors()) {
+	public ResponseEntity<?> updateUserTransacation(@Valid @RequestBody UserTransaction userTransaction,
+			BindingResult result) throws ValidationException, EntityNotFoundException {
+		if (result.hasErrors()) {
 			throw new ValidationException(result.getAllErrors());
-		}else {
-			userTransaction=userTransactionService.updateUserTransaction(userTransaction);
-			if(userTransaction!=null) {
+		} else {
+			userTransaction = userTransactionService.updateUserTransaction(userTransaction);
+			if (userTransaction != null) {
 				return ResponseEntity.status(200).body(userTransaction);
-			}else {
+			} else {
 				throw new EntityNotFoundException("User data not found", "MM0013");
 			}
 		}
 	}
-	
+
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> removeTransaction(@PathVariable Long id) throws EntityNotFoundException{
-		if(userTransactionService.removeTransaction(id)==1) {
+	public ResponseEntity<?> removeTransaction(@PathVariable Long id) throws EntityNotFoundException {
+		if (userTransactionService.removeTransaction(id) == 1) {
 			return ResponseEntity.status(200).build();
-		}else {
+		} else {
 			throw new EntityNotFoundException("User data not found", "MM0013");
 		}
 	}
+	
 }

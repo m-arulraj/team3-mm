@@ -31,6 +31,7 @@ public class LoginResource {
 
 		User userDb = clientService.getLoginUser(user.getUserName(), user.getPassword());
 		if( userDb != null && userDb.getUserName().equalsIgnoreCase(user.getUserName()) && userDb.getPassword().equalsIgnoreCase(user.getPassword())) {
+			
 			return "redirect:user-home";
 		}else {
 
