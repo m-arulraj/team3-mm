@@ -29,7 +29,7 @@ public class UserResource {
 	@PostMapping("")
 	public ResponseEntity<?> saveUser(@Valid @RequestBody User user, BindingResult result) throws ValidationException{
 		if (result.hasErrors()) {
-			throw new ValidationException(result.getAllErrors());
+			throw new ValidationException(result.getAllErrors()); 
 		} else {
 			return ResponseEntity.status(HttpStatus.CREATED).body(userService.saveUser(user));
 		}

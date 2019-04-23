@@ -3854,10 +3854,10 @@ transform
 				<div class="w3_info" align="center">
 						<br>
 						<br><br><br>
-					<div class="bs-example">
-						<button type="button" class="btn btn-primary btn-lg btn-block">INVESTMENT</button>
-						<button type="button" class="btn btn-primary btn-lg btn-block">INCOME</button>
-						<button type="button" class="btn btn-primary btn-lg btn-block">EXPENSE</button>
+					<div class="bs-example" align="center">
+						&emsp;<a href='/investmentResource'><button type="button" class="btn btn-primary btn-lg btn-block">INVESTMENT</button></a>
+						&emsp;<a href='/incomeResource'><button type="button" class="btn btn-primary btn-lg btn-block">INCOME</button></a>
+						&emsp;<a href='/expenseResource'><button type="button" class="btn btn-primary btn-lg btn-block">EXPENSE</button></a>
 					</div>
 				</div>
 

@@ -39,7 +39,7 @@ public class UserAllOperationTest {
 	public void setup() {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(applicationContext).build();
 	}
-
+ 
 	@Test
 	public void storingUser() throws JsonProcessingException, Exception {
 		User user = new User();

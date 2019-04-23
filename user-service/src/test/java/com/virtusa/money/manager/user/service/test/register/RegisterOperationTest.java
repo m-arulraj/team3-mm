@@ -62,13 +62,13 @@ public class RegisterOperationTest {
 	@Test
 	public void getUserWithInvalidEmail() throws Exception{
 		mockMvc.perform(MockMvcRequestBuilders.get(URI+"/user/ajith").contentType(MediaType.APPLICATION_JSON))
-		.andExpect(MockMvcResultMatchers.status().is(404));
+		.andExpect(MockMvcResultMatchers.status().isNoContent());
 	}
 	
 	@Test
 	public void getUserWithInvalidId() throws Exception{
 		mockMvc.perform(MockMvcRequestBuilders.get(URI+"/0").contentType(MediaType.APPLICATION_JSON))
-		.andExpect(MockMvcResultMatchers.status().is(404));
+		.andExpect(MockMvcResultMatchers.status().isNoContent());
 	}
 	
 	@Test

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!-- saved from url=(0106)https://demo.w3layouts.com/demos_new/template_demo/23-02-2019/business_login_form-demo_Free/123711373/web/ -->
 <html lang="en">
 <head>
@@ -204,7 +205,21 @@ img {
 	font-weight: 700;
 }
 
-input[type="email"] {
+input[type="email"] ,input[type="number"],input[type="text"]{
+	font-size: 15px;
+	color: #333;
+	text-align: left;
+	letter-spacing: 1px;
+	padding: 14px 10px;
+	width: 93%;
+	display: inline-block;
+	box-sizing: border-box;
+	border: none;
+	outline: none;
+	background: transparent;
+	font-family: 'Raleway', sans-serif;
+}
+input[type="date"] {
 	font-size: 15px;
 	color: #333;
 	text-align: left;
@@ -677,7 +692,7 @@ h5 {
 		padding: 13px 12px;
 		font-size: 13px;
 	}
-	input[type="text"], input[type="email"], input[type="password"] {
+	input[type="text"], input[type="email"], input[type="number"], input[type="password"] {
 		font-size: 13px;
 	}
 	.footer p {
@@ -828,7 +843,11 @@ h5 {
 
 
 
+
+
 :rotate(359deg)
+
+
 
 
 
@@ -843,7 +862,11 @@ transform
 
 
 
+
+
 :rotate(359deg)
+
+
 
 
 
@@ -866,7 +889,11 @@ keyframes fa-spin { 0%{
 
 
 
+
+
 :rotate(359deg)
+
+
 
 
 
@@ -881,7 +908,11 @@ transform
 
 
 
+
+
 :rotate(359deg)
+
+
 
 
 
@@ -3715,40 +3746,66 @@ transform
 				<div class="w3_info">
 					<!---728x90--->
 
+
 					<h2>User Registration</h2>
 					<p>Enter your details to SignUp.</p>
-					<form action="/login" method="post">
+					<h5 style="color: red">${error} </h5>
+					<form:form action="/user/register" method="post" modelAttribute="register">
 						<label>User Name</label>
 						<div class="input-group">
-							<span class="fa fa-envelope" aria-hidden="true"></span> <input
-								type="email" placeholder="Enter Your Name" required="">
+							<span class="fa fa-envelope" aria-hidden="true"></span>
+							<form:input path="name" type="text"
+								placeholder="Enter Your Name" required="" />
 						</div>
 						<label>Email Address</label>
 						<div class="input-group">
-							<span class="fa fa-envelope" aria-hidden="true"></span> <input
-								type="email" placeholder="Enter Your Email" required="">
+							<span class="fa fa-envelope" aria-hidden="true"></span>
+							<form:input path="emailId" type="email" placeholder="Enter Your Email"
+								required="" />
 						</div>
 						<label>Mobile Number</label>
 						<div class="input-group">
-							<span class="fa fa-envelope" aria-hidden="true"></span> <input
-								type="email" placeholder="Enter Your Mobile Number" required="">
+							<span class="fa fa-envelope" aria-hidden="true"></span>
+							<form:input path="mobileNumber" type="number" placeholder="Enter Your Mobile Number"
+								required="" />
 						</div>
 						<label>DOB</label>
 						<div class="input-group  ">
-							<input type="date" required="">
+							<form:input path="dateOfBirth" type="date" required="" />
 						</div>
-						<label>Gender</label> <br> <br>
+						<label>Gender</label>
+						<br>
+						<br>
 						<div>
-							<input type="radio" name="gender" value="male"> Male<br>
-							<input type="radio" name="gender" value="female"> Female<br>
+							<form:radiobutton path="gender" value="male" />
+							Male
+							<form:radiobutton path="gender" value="female" />
+							Female
 						</div>
 						<br>
+						<label>Password</label>
+						<div class="input-group">
+							<span class="fa fa-envelope" aria-hidden="true"></span>
+							<form:input path="password" type="password" placeholder="Enter Your Password"
+								required="" /><br>
+								</div>
+								<label>Confirm Password</label>
+						<div class="input-group">
+							<span class="fa fa-envelope" aria-hidden="true"></span>
+							<form:input path="confirmPassword" type="password" placeholder="Re-Enter Your Password"
+								required="" /><br>
+								</div>
+						
 						<button class="btn btn-danger btn-block" type="submit">REGISTER</button>
-					</form>
+					</form:form>
 					<p class="account">
 						By clicking Register, you agree to our <a
 							href="https://www.signupto.com/legal/">Terms &amp;
 							Conditions!</a>
+					</p>
+					<p class="account1">
+						I have an account <a href="/user-login">Login
+							here</a>
 					</p>
 
 					<!-- 	<form action="/welcome" method="post">

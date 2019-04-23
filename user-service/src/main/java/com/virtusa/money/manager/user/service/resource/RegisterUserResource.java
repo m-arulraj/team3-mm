@@ -24,6 +24,7 @@ import com.virtusa.money.manager.user.service.domain.ErrorResponse;
 import com.virtusa.money.manager.user.service.domain.Message;
 import com.virtusa.money.manager.user.service.domain.RegisterUser;
 import com.virtusa.money.manager.user.service.domain.User;
+import com.virtusa.money.manager.user.service.exception.EntityNotFoundException;
 import com.virtusa.money.manager.user.service.service.RegisterUserService;
 
 @RestController
@@ -64,22 +65,22 @@ public class RegisterUserResource {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<RegisterUser> getRegisteredUser(@PathVariable("id") Long id) {
+	public ResponseEntity<?> getRegisteredUser(@PathVariable("id") Long id) throws EntityNotFoundException {
 		RegisterUser registerUser = registerUserService.retriveRegisteredUser(id);
 		if (registerUser != null) {
 			return ResponseEntity.ok().body(registerUser);
 		} else {
-			return ResponseEntity.notFound().build();
+		 throw new EntityNotFoundException("User data not found", "MM0013");
 		}
 	}
 
 	@GetMapping("/user/{emailId}")
-	public ResponseEntity<RegisterUser> getRegisteredUserByEmail(@PathVariable("emailId") String emailId) {
+	public ResponseEntity<RegisterUser> getRegisteredUserByEmail(@PathVariable("emailId") String emailId) throws EntityNotFoundException {
 		RegisterUser registerUser = registerUserService.retriveRegisteredUserByEmailId(emailId);
 		if (registerUser != null) {
 			return ResponseEntity.ok().body(registerUser);
 		} else {
-			return ResponseEntity.notFound().build();
+			 throw new EntityNotFoundException("User data not found", "MM0013");
 		}
 	}
 

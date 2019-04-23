@@ -2,21 +2,19 @@
 	pageEncoding="ISO-8859-1"%>
 <html>
   <head>
-  
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', {'packages':['bar']});
       google.charts.setOnLoadCallback(drawStuff);
 
       function drawStuff() {
-    		
         var data = new google.visualization.arrayToDataTable([
-        
-        	['Year ', 'Percentage'],
-          ["Income 2013", 10],
-          ["Expense", 31],
-          ["Inversment", 12]
-          
+          ['Opening Move', 'Percentage'],
+          ["King's pawn (e4)", 44],
+          ["Queen's pawn (d4)", 31],
+          ["Knight to King 3 (Nf3)", 12],
+          ["Queen's bishop pawn (c4)", 10],
+          ['Other', 3]
         ]);
 
         var options = {

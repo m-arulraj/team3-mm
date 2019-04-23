@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<!-- saved from url=(0106)https://demo.w3layouts.com/demos_new/template_demo/23-02-2019/business_login_form-demo_Free/123711373/web/ -->
+<!DOCTYPE html><%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -18,7 +18,7 @@
 	width: 419px;
 	height: 236px;
 }
- 
+
 .vdo_ai_9305047-dimensions.vjs-fluid {
 	padding-top: 56.25%;
 }
@@ -820,9 +820,82 @@ h5 {
 
 100%{
 -webkit-transform
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :rotate(359deg)
-;transform
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+;
+transform
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :rotate(359deg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 }
 @
@@ -833,9 +906,82 @@ keyframes fa-spin { 0%{
 
 100%{
 -webkit-transform
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :rotate(359deg)
-;transform
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+;
+transform
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :rotate(359deg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 }
 .fa-rotate-90 {
@@ -3660,23 +3806,26 @@ keyframes fa-spin { 0%{
 
 					<h2>Login to your Account</h2>
 					<p>Enter your details to login.</p>
-					<form action="/welcome" method="post">
+<p style="color: red">${error} ${error2}</p>
+
+					<form:form action="/user-home" method="post"
+						 modelAttribute="login">
 						<label>Email Address</label>
 						<div class="input-group">
-							<span class="fa fa-envelope" aria-hidden="true"></span> <input
-								type="email" placeholder="Enter Your Email" required="">
+							<span class="fa fa-envelope" aria-hidden="true"></span>
+							<form:input  path="userName" type="email"
+								placeholder="Enter Your Email" required="" />
 						</div>
 						<label>Password</label>
 						<div class="input-group">
-							<span class="fa fa-lock" aria-hidden="true"></span> <input
-								type="Password" placeholder="Enter Password" required="">
+							<span class="fa fa-lock" aria-hidden="true"></span>
+							<form:input path="password" type="password"
+								placeholder="Enter Password" required="" />
+
 						</div>
-						<div class="login-check">
-							<label class="checkbox"><input type="checkbox"
-								name="checkbox" checked=""><i> </i> Remember me</label>
-						</div>
-						<button class="btn btn-danger btn-block custom" type="submit">Login</button>
-					</form>
+				
+						<button class="btn btn-danger btn-block custom" type="submit">LOGIN</button>
+					</form:form>
 					<p class="account">
 						By clicking login, you agree to our <a
 							href="https://www.signupto.com/legal/">Terms &amp;
