@@ -1,7 +1,5 @@
 package com.moneymanager.client.resource;
 
-import java.util.List;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.moneymanager.client.MoneyManagerApp;
-import com.moneymanager.client.domain.CategoryList;
 import com.moneymanager.client.domain.RegisterUser;
 import com.moneymanager.client.domain.User;
 import com.moneymanager.client.service.ClientService;
@@ -68,9 +65,19 @@ public class HomeResource {
 		logger.info("home resource user-repot page info");
 		logger.debug("home resource user-repot page debugging");
 
-		return "report";
+		return "reports";
 
 	}
 
 	
+	
+	@RequestMapping("/INCOME vs INVESTMENT")
+	public String expenseReport() {
+
+		logger.info("home resource user-repot page info");
+		logger.debug("home resource user-repot page debugging");
+
+		return "INCOME vs INVESTMENT-report";
+
+	}
 }

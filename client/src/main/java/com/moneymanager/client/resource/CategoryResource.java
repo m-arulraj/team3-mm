@@ -26,7 +26,7 @@ public class CategoryResource {
 		logger.info("home resource user-repot page info");
 		logger.debug("home resource user-repot page debugging");
 
-		List<CategoryList> list = categoryService.getCategoriesList(1L);
+		List<CategoryList> list = categoryService.getCategoriesList(3L);
 		model.addAttribute("categoriesList", list);
 		model.addAttribute("type", "expense");
 		return "expense";
@@ -39,13 +39,13 @@ public class CategoryResource {
 		logger.info("home resource user-repot page info");
 		logger.debug("home resource user-repot page debugging");
 
-		List<CategoryList> list = categoryService.getCategoriesList(1L);
+		List<CategoryList> list = categoryService.getCategoriesList(2L);
 
 		System.out.println(list);
 		model.addAttribute("categoriesList", list);
 
 		model.addAttribute("type", "income");
-		return "expense";
+		return "income";
 
 	}
 
@@ -57,7 +57,7 @@ public class CategoryResource {
 		List<CategoryList> list = categoryService.getCategoriesList(1L);
 		model.addAttribute("categoriesList", list);
 		model.addAttribute("type", "investment");
-		return "expense";
+		return "investment";
 
 	}
 

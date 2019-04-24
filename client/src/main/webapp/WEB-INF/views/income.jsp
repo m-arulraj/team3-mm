@@ -4,6 +4,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <link
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
 	rel="stylesheet">
@@ -20,8 +24,9 @@
 }
 
 h1, h2 {
-	color: blue;
+	color: #BB29F8;
 	text-align: center;
+	
 }
 
 h1 {
@@ -35,7 +40,9 @@ h2 {
 }
 
 body {
-	background-image: url("https://d2e70e9yced57e.cloudfront.net/wallethub/posts/58860/2019-best-worst-cities-at-money-management-og-image-.png");
+	
+	background-image:
+		url("http://www.hdfs.ie/wp-content/uploads/2016/01/Protect.jpg");
 	height: 100%;
 	/* Center and scale the image nicely */
 	background-repeat: no-repeat;
@@ -71,12 +78,12 @@ table td {
 #button {
 	position: relative;
 	top: 0;
-	color: #F5F7FA;
+	color: BLUE;
 	padding: 20px;
 	text-align: center;
 	line-height: 24px;
 	width: 200px;
-	background-color: teal;
+	background-color: #EECEFB;
 	border-radius: 3px;
 	cursor: pointer;
 	margin: auto;
@@ -122,7 +129,7 @@ form div {
 }
 
 form span {
-	color: blue;
+	color : blue;
 	font-size: 1.5em;
 	font-weight: 100;
 	display: inline-block;
@@ -154,8 +161,8 @@ form span {
 <link href="font-awesome.min.css" rel="stylesheet" type="text/css"
 	media="all">
 </head>
-<h1>Your Money Manager</h1>
-<h2>Add an Expense :</h2>
+<h1 >Your Money Manager</h1>
+<h2>Add an Income :</h2>
 
 <body>
 	<script type="text/javascript" src="resources/javascript.js">
@@ -164,7 +171,7 @@ form span {
 	<div id="form-box">
 		<form>
 			<div>
-				<span>Type:</span> <select name="type">
+				<span >Type:</span> <select name="type">
 					<option value="SELECT CATEGORY">SELECT CATEGORY</option>
 					<c:forEach items="${categoriesList}" var="categoriesList">
 
@@ -207,5 +214,19 @@ form span {
   </tr>
 
 </table> -->
+<br><br><br><br>
+<div class="container">
+  <div class="progress" style="height:50px">
+    <div class="progress-bar bg-success" style="width:40%">
+      Income(40)
+    </div>
+    <div class="progress-bar bg-warning" style="width:30%">
+      Expense(30)
+    </div>
+    <div class="progress-bar bg-danger" style="width:30%">
+      Investment(30)
+    </div>
+  </div>
+</div>
 </body>
 </html>

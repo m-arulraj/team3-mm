@@ -3852,13 +3852,12 @@ transform
 				</div>
 
 				<div class="w3_info" align="center">
-						<br>
-						<br><br><br>
+				<h2>User Reports</h2>
+						<br><br>
 					<div class="bs-example" align="center">
-						&emsp;<a href='/investmentResource'><button type="button" class="btn btn-primary btn-lg btn-block">INVESTMENT</button></a>
-						&emsp;<a href='/incomeResource'><button type="button" class="btn btn-primary btn-lg btn-block">INCOME</button></a>
-						&emsp;<a href='/expenseResource'><button type="button" class="btn btn-primary btn-lg btn-block">EXPENSE</button></a>
-						&emsp;<a href='/user-report'><button type="button" class="btn btn-primary btn-lg btn-block">REPORTS</button></a>
+						&emsp;<a href='/INCOME vs INVESTMENT vs EXPENSE'><button type="button" class="btn btn-primary btn-lg btn-block">INCOME vs INVESTMENT vs EXPENSE</button></a>
+						&emsp;<a href='/INCOME vs INVESTMENT'><button type="button" class="btn btn-primary btn-lg btn-block">INCOME vs INVESTMENT</button></a>
+						&emsp;<a href='/EXPENSES REPORT'><button type="button" class="btn btn-primary btn-lg btn-block">EXPENSES</button></a>
 					
 					</div>
 				</div>
