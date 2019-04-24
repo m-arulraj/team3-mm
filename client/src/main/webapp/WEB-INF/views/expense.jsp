@@ -145,34 +145,34 @@ form span {
 <script type="text/javascript" src="resources/javascript.js">
 </script>
 <div id="form-box">
-<form>
+<form:form modelAttribute="transaction" action="/user-transaction" method="get">
   <div>
     <span>Type:</span> 
-      <select name="type">
+      <form:select name="type" path="categoryListId">
      <c:forEach items="${categoriesList}" var="categoriesList" >
      
-         <option value="card">${categoriesList.getName()}</option>
+         <form:option value="${categoriesList.getId()}">${categoriesList.getName()}</form:option>
     
       </c:forEach>
-      </select>
+      </form:select>
   </div>
   
   <div>
-    <span>Name:</span> <input type="text" name="item-name" placeholder="What did you spend on?">
+    <span>Name:</span> <form:input path="note" type="text" name="item-name" placeholder="What did you spend on?"/>
   </div>
   
   <div>
-    <span>Date:</span> <input type="date" name="date">
+    <span>Date:</span> <form:input type="date" path="date" name="date"/>
   </div>
   
   <div>
-    <span>Amount:</span> <input type="number" name="amount" placeholder="How much?">
+    <span>Amount:</span> <form:input type="number" path="amount" name="amount" placeholder="How much?"/>
   </div>
-  
-</form>
+  <br><input type="submit" id="button" value="save">
+</form:form>
 </div>
 
-<div id="button"><span>Done</span></div>
+
 
 <!-- <table>
   <tr>

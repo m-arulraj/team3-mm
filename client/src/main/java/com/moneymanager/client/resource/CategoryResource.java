@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.moneymanager.client.MoneyManagerApp;
 import com.moneymanager.client.domain.CategoryList;
+import com.moneymanager.client.domain.UserTransaction;
 import com.moneymanager.client.service.CategoryService;
 
 @Controller
@@ -29,6 +30,7 @@ public class CategoryResource {
 		List<CategoryList> list = categoryService.getCategoriesList(1L);
 		model.addAttribute("categoriesList", list);
 		model.addAttribute("type", "expense");
+		model.addAttribute("transaction",new UserTransaction());
 		return "expense";
 
 	}
@@ -44,6 +46,7 @@ public class CategoryResource {
 		System.out.println(list);
 		model.addAttribute("categoriesList", list);
 
+		model.addAttribute("transaction",new UserTransaction());
 		model.addAttribute("type", "income");
 		return "expense";
 
@@ -57,6 +60,7 @@ public class CategoryResource {
 		List<CategoryList> list = categoryService.getCategoriesList(1L);
 		model.addAttribute("categoriesList", list);
 		model.addAttribute("type", "investment");
+		model.addAttribute("transaction",new UserTransaction());
 		return "expense";
 
 	}
