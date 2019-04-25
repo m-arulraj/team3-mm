@@ -3859,7 +3859,7 @@ transform
 						&emsp;<a href='/incomeResource'><button type="button" class="btn btn-primary btn-lg btn-block">INCOME</button></a>
 						&emsp;<a href='/expenseResource'><button type="button" class="btn btn-primary btn-lg btn-block">EXPENSE</button></a>
 						&emsp;<a href='/user-reports'><button type="button" class="btn btn-primary btn-lg btn-block">REPORTS</button></a>
-						&emsp;<a href='/user-transactions'><button type="button" class="btn btn-primary btn-lg btn-block">TRANSACTIONS</button></a>
+						&emsp;<a href='/user-transaction/all-transactions'><button type="button" class="btn btn-primary btn-lg btn-block">TRANSACTIONS</button></a>
 						
 					</div>
 				</div>
