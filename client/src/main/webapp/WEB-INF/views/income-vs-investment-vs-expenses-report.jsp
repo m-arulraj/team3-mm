@@ -25,6 +25,7 @@
 
 var myChart = new Chart(ctx, {
 	type: 'line',
+	theme: "dark2",
   data: {
     labels: ["January", "February", "March", "April", "May", "June", "July", "August", "", "September","October","November","December"],
     datasets: [{
