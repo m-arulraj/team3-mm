@@ -3856,7 +3856,7 @@ transform
 						<br><br>
 					<div class="bs-example" align="center">
 						&emsp;<a href='/INCOME vs INVESTMENT vs EXPENSE'><button type="button" class="btn btn-primary btn-lg btn-block">INCOME vs INVESTMENT vs EXPENSE</button></a>
-						&emsp;<a href='/INCOME vs INVESTMENT'><button type="button" class="btn btn-primary btn-lg btn-block">INCOME vs INVESTMENT</button></a>
+						&emsp;<a href='/income-vs-investment'><button type="button" class="btn btn-primary btn-lg btn-block">INCOME vs INVESTMENT</button></a>
 						&emsp;<a href='/EXPENSES REPORT'><button type="button" class="btn btn-primary btn-lg btn-block">EXPENSES</button></a>
 					
 					</div>

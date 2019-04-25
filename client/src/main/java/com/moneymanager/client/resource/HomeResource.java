@@ -72,11 +72,13 @@ public class HomeResource {
 	
 	
 	@RequestMapping("/INCOME vs INVESTMENT")
-	public String expenseReport() {
+	public String expenseReport(Model model) {
 
 		logger.info("home resource user-repot page info");
 		logger.debug("home resource user-repot page debugging");
 
+		model.addAttribute("income", 10);
+		
 		return "INCOME vs INVESTMENT-report";
 
 	}

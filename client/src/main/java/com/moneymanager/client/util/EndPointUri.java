@@ -7,5 +7,8 @@ public class EndPointUri {
 	public static final String CATEGORIESLIST = "http://localhost:7073/api/user-category/";
 	public static final String CATEGORY = "http://localhost:7073/category-list/";
 	public static final String TRANSACTION = "http://localhost:7073/api/user-transaction";
+	public static final String REPORT ="http://localhost:7073/api/user/report/";
+		
+	
 
 }

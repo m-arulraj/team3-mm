@@ -18,11 +18,22 @@ public class TransactionResource {
 	@Autowired
 	TransactionService service;
 	
-	@GetMapping("")
-	public String saveTransaction(@ModelAttribute("Transaction")UserTransaction userTransaction,HttpSession session) {
-		System.out.println("******************"+session.getAttribute("name"));
+	@GetMapping("/expense")
+	public String saveTransactionForExpense(@ModelAttribute("Transaction")UserTransaction userTransaction,HttpSession session) {
 		String name = (String) session.getAttribute("name");
 		service.saveTransaction(userTransaction, name);
-		return "redirect:expenseResource";
+		return "redirect:/expenseResource";
+	}
+	@GetMapping("/income")
+	public String saveTransactionForIncome(@ModelAttribute("Transaction")UserTransaction userTransaction,HttpSession session) {
+		String name = (String) session.getAttribute("name");
+		service.saveTransaction(userTransaction, name);
+		return "redirect:/incomeResource";
+	}
+	@GetMapping("/investment")
+	public String saveTransactionForInverstment(@ModelAttribute("Transaction")UserTransaction userTransaction,HttpSession session) {
+		String name = (String) session.getAttribute("name");
+		service.saveTransaction(userTransaction, name);
+		return "redirect:/investmentResource";
 	}
 }

@@ -17,7 +17,7 @@
 <script src="https://www.amcharts.com/lib/4/charts.js"></script>
 <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
 
-<!-- Chart code -->
+<!-- Chart code --><body>
 <script>
 am4core.ready(function() {
 
@@ -32,10 +32,10 @@ var chart = am4core.create("chartdiv", am4charts.PieChart);
 chart.data = [ 
 {
   "country": "INCOME",
-  "litres": 55
+  "litres": ${income}
 }, {
   "country": "INVESTMENT",
-  "litres": 45
+  "litres": ${investment}
 }];
 
 // Add and configure Series
@@ -52,7 +52,7 @@ pieSeries.hiddenState.properties.endAngle = -90;
 pieSeries.hiddenState.properties.startAngle = -90;
 
 }); // end am4core.ready()
-</script>
+</script></body>
 </head>
 <body>
 <div id="chartdiv" title="Expenses"></div>

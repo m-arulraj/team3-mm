@@ -14,6 +14,13 @@ public class ClientService {
 	@Autowired
 	RestTemplate restTemplate;
 
+	public User getUserByEmailId(String emailId) {
+		String uri = EndPointUri.USERLOGIN + emailId;
+		ResponseEntity<User> response = restTemplate.getForEntity(uri, User.class);
+		User user1 = response.getBody();
+		return user1;
+	}
+	
 	public User getLoginUser(String userName, String password) {
 
 		String uri = EndPointUri.USERLOGIN + userName;

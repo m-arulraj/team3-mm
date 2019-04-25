@@ -30,7 +30,7 @@ public class UserTransactionService {
 	public UserTransaction storeUserTransaction(UserTransaction userTransaction) {
 
 		Optional<CategoryList> categoryList = null;
-		categoryList = categoryListRepository.findByName(userTransaction.getCategoryList().getName());
+		categoryList = categoryListRepository.findById(userTransaction.getCategoryList().getId());
 		userTransaction.setUser(userRepository.findById(userTransaction.getUser().getId()).get());
 		if (categoryList.isPresent()) {
 			categoryList.get().setCategory(

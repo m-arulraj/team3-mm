@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,4 +30,15 @@ public class CategoryListResource {
 		}
 
 	}
+	@PostMapping(value = "/{id}")
+	public ResponseEntity<?> saveCategoryList(@RequestBody CategoryList categoryList ,@PathVariable("id")Long id) throws EntityNotFoundException {
+		CategoryList categoryList2=categoryListService.saveCategoryList(id, categoryList);
+		if (categoryList2 != null) {
+			return ResponseEntity.ok().body(categoryList2);
+		} else {
+			throw new EntityNotFoundException("List data not found", "MM0013");
+		}
+
+	}
+	
 }

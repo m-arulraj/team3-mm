@@ -77,7 +77,7 @@ table td {
 	text-align: center;
 	line-height: 24px;
 	width: 200px;
-	background-color:#1F6FF9;
+	background-color: #1F6FF9;
 	border-radius: 3px;
 	cursor: pointer;
 	margin: auto;
@@ -150,63 +150,174 @@ form span {
 	margin: auto;
 	text-align: center;
 }
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.alertInput {
+	width: 70%;,
+	text-align: center;
+	
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+
+   opacity: 1;
+
+}
+.button {
+	position: relative;
+	top: 0;
+	color: #F5F7FA;
+	padding: 20px;
+	text-align: center;
+	line-height: 24px;
+	width: 200px;
+	background-color: teal;
+	border-radius: 3px;
+	cursor: pointer;
+	margin: auto;
+	box-shadow: 0 3px #4A89DC;
+	transition: 0.1s ease;
+}
+
+.button:active {
+	position: relative;
+	box-shadow: 0 0px #4A89DC;
+	top: 3px;
+	box-shadow: 0 0;
+}
 </style>
 
 <link href="font-awesome.min.css" rel="stylesheet" type="text/css"
 	media="all">
 </head>
-<h1>Your Money Manager</h1>
-<h2>Add an Investment :</h2>
 
 <body>
+	<h1>Your Money Manager</h1>
+	<h2>Add an Investment :</h2>
+	<div style="text-align: center">
+		<button id="myBtn" class="button">Add Type</button>
+	</div>
 	<script type="text/javascript" src="resources/javascript.js">
 		
 	</script>
 	<div id="form-box">
-		<form>
+		<form:form modelAttribute="transaction" action="/user-transaction/investment"
+			method="get">
 			<div>
-				<span>Type:</span> <select name="type">
-					<option value="SELECT CATEGORY">SELECT CATEGORY</option>
+				<span>Type:</span>
+				<form:select name="type" path="categoryListId">
 					<c:forEach items="${categoriesList}" var="categoriesList">
 
-						<option value="${categoriesList.getId()}">${categoriesList.getName()}</option>
+						<form:option value="${categoriesList.getId()}">${categoriesList.getName()}</form:option>
 
 					</c:forEach>
-				</select>
+				</form:select>
 			</div>
 
 			<div>
-				<span>Note:</span> <input type="text" name="item-name"
-					placeholder="What did you spend on?">
+				<span>Note:</span>
+				<form:input path="note" type="text" name="item-name"
+					placeholder="What did you spend on?" />
 			</div>
 
 			<div>
-				<span>Date:</span> <input type="date" name="date">
+				<span>Date:</span>
+				<form:input type="date" path="date" name="date" />
 			</div>
 
-			<div>
-				<span>Amount:</span> <input type="number" name="amount"
-					placeholder="How much?">
+		<%-- 	<div>
+				<span>Amount:</span>
+				<form:input type="number" path="amount" name="amount"
+					placeholder="How much?" />
+			</div> --%>
+				<div>
+				<span>Amount:</span>
+				<form:input path="amount" type="number"
+					placeholder="how much?" />
 			</div>
-
-		</form>
+			<br>
+			<br>
+			<center>
+				<input type="submit" id="button" value="Add Invest">
+			</center>
+		</form:form>
 	</div>
+	<div id="myModal" class="modal">
 
-	<div id="button">
-		<span>INEVST</span>
+		<!-- Modal content -->
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<div style="text-align: center">
+				<form action="/investment/category-list" method="get">
+					<input class="alertInput" type="text" name="typeName"
+						placeholder="Add new Type...." /><br> <input id="button"
+						type="submit" value="add Type" />
+				</form>
+			</div>
+		</div>
+
 	</div>
+	<script>
+		// Get the modal
+		var modal = document.getElementById('myModal');
 
-	<!-- <table>
-  <tr>
-    <th id="type" class="center">type</th>
-    <th>name</th>
-    <th id="date">date</th>
-    <th style="text-align: right" id="amount">amount</th>
-  </tr>
-  <tr id="if-empty">
-    <td colspan="4"><span>Your added items will show up here!</span></td>
-  </tr>
+		// Get the button that opens the modal
+		var btn = document.getElementById("myBtn");
 
-</table> -->
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+
+		// When the user clicks the button, open the modal 
+		btn.onclick = function() {
+			modal.style.display = "block";
+		}
+
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function() {
+			modal.style.display = "none";
+		}
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+	</script>
 </body>
 </html>

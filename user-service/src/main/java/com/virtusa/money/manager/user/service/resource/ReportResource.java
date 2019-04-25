@@ -24,7 +24,7 @@ public class ReportResource {
 			if(report == null) {
 				return ResponseEntity.noContent().build();
 			}else { 
-				return ResponseEntity.ok().build();
+				return ResponseEntity.ok().body(report);
 			}
 		} catch (Exception e) {
 			return ResponseEntity.noContent().build();

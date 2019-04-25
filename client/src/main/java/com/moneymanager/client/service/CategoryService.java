@@ -20,14 +20,18 @@ public class CategoryService {
 	public List<CategoryList> getCategoriesList(Long id) {
 		String uri = EndPointUri.CATEGORIESLIST + "/list/" + id;
 
-		// ResponseEntity<Object> result = restTemplate.getForEntity(uri, Object.class);
-
+		
 		ResponseEntity<List<CategoryList>> result = restTemplate.exchange(uri, HttpMethod.GET, null,
 				new ParameterizedTypeReference<List<CategoryList>>() {
 				});
 
 		List<CategoryList> categoriesList = result.getBody();
 		return categoriesList;
+	}
+	
+	public void saveCategory(Long id ,CategoryList categoryList) {
+		String uri = EndPointUri.CATEGORY+ id;
+		restTemplate.postForEntity(uri, categoryList, String.class);
 	}
 
 }
