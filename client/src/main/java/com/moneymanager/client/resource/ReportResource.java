@@ -44,11 +44,14 @@ public class ReportResource {
 
 	}
 	@RequestMapping("/expenses-report")
-	public String expensesReport() {
+	public String expensesReport(Model model,HttpSession httpSession) {
 
 		logger.info("ReportResource expenses-report");
 		logger.debug("ReportResource expenses-report");
-
+		String email = (String) httpSession.getAttribute("name");
+		Report report = reportService.getReport(email);
+		model.addAttribute("fullExpense", report.getFullExpence());
+		model.addAttribute("name", "food");
 		return "expenses-report";
 
 	}
