@@ -1,6 +1,5 @@
 package com.virtusa.money.manager.user.service.resource;
 
-import java.time.DateTimeException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;

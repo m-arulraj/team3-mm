@@ -1,4 +1,4 @@
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -172,16 +172,7 @@ table.table td i {
 							User <b>Transactions</b>
 						</h2>
 					</div>
-				<!-- 	<div class="col-sm-4">
-					
-						<select class="ui search dropdown" >
-							<option value="">CATEGORY</option>
-							<option value="">INCOME</option>
-							<option value="">INVESTMENT</option>
-							<option value="">EXPENSES</option>
-				
-						</select>
-					</div> -->
+
 					<div class="col-sm-4">
 						<div class="search-box">
 							<i class="material-icons">&#xE8B6;</i> <input type="text"
@@ -203,20 +194,24 @@ table.table td i {
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>1</td>
-						<td>Food</td>
-						<td>1000</td>
-						<td>24 - 04 - 2019</td>
-						<td>Ordered food on velidis</td>
-						<td>EXPENSE</td>
+					<c:forEach items="${transactionsList}" var="transactionsList">
+						<tr>
+							<%!int data = 1;%>
+							<td><%=data%></td>
+							<td>${transactionsList.getCategoryList().getName()}</td>
+							<td>${transactionsList.getAmount()}</td>
+							<td>${transactionsList.getDate()}</td>
+							<td>${transactionsList.getNote()}</td>
+							<td>${transactionsList.getCategoryList().getCategory().getCategory()}</td>
 
-						<td><a href="#" class="edit" title="Edit"
-							data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-							<a href="#" class="delete" title="Delete" data-toggle="tooltip"><i
-								class="material-icons">&#xE872;</i></a></td>
-					</tr>
-
+							<td><a href="/" class="edit" title="Edit"
+								data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+								<a href="#" class="delete" title="Delete" data-toggle="tooltip"><i
+									class="material-icons">&#xE872;</i></a></td>
+							
+							<%data++; %>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 

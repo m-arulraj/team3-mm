@@ -1,11 +1,15 @@
 package com.moneymanager.client.resource;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.moneymanager.client.domain.UserTransaction;
@@ -36,4 +40,13 @@ public class TransactionResource {
 		service.saveTransaction(userTransaction, name);
 		return "redirect:/investmentResource";
 	}
+	
+	@GetMapping("/all-transactions")
+	public String getTransactionsOfExpense(HttpSession session,Model model) {
+		String name = (String) session.getAttribute("name");
+		List<UserTransaction> transactionsList=service.getTransactions(name);
+		model.addAttribute("transactionsList",transactionsList);
+		return "user-transactions";
+	}
+
 }
