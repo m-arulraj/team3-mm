@@ -25,12 +25,13 @@ public class ReportResource {
 		logger.info("ReportResource income-vs-investment");
 		logger.debug("ReportResource income-vs-investment");
 		
-		String email = (String) httpSession.getAttribute("name");
-		Report report = reportService.getReport(email);
-		model.addAttribute("income", report.getIncome());
-
-		model.addAttribute("investment", report.getInversment());
-		
+		/*
+		 * String email = (String) httpSession.getAttribute("name"); Report report =
+		 * reportService.getReport(email); model.addAttribute("income",
+		 * report.getIncome());
+		 * 
+		 * model.addAttribute("investment", report.getInversment());
+		 */
 		return "INCOME vs INVESTMENT-report";
 
 	}

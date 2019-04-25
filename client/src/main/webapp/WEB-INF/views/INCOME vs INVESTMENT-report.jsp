@@ -32,10 +32,10 @@ var chart = am4core.create("chartdiv", am4charts.PieChart);
 chart.data = [ 
 {
   "country": "INCOME",
-  "litres": ${income}
+  "litres": 2323
 }, {
   "country": "INVESTMENT",
-  "litres": ${investment}
+  "litres": 23322
 }];
 
 // Add and configure Series
@@ -58,3 +58,5 @@ pieSeries.hiddenState.properties.startAngle = -90;
 <div id="chartdiv" title="Expenses"></div>
 </body>
 </html>
+
+
