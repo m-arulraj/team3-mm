@@ -3855,9 +3855,9 @@ transform
 				<h2>User Reports</h2>
 						<br><br>
 					<div class="bs-example" align="center">
-						&emsp;<a href='/incomeVsInvestmentVsExpensesReport'><button type="button" class="btn btn-primary btn-lg btn-block">INCOME vs INVESTMENT vs EXPENSE</button></a>
+						&emsp;<a href='/income-vs-investment-vs-expenses-report'><button type="button" class="btn btn-primary btn-lg btn-block">INCOME vs INVESTMENT vs EXPENSE</button></a>
 						&emsp;<a href='/income-vs-investment'><button type="button" class="btn btn-primary btn-lg btn-block">INCOME vs INVESTMENT</button></a>
-						&emsp;<a href='/expensesReport'><button type="button" class="btn btn-primary btn-lg btn-block">EXPENSES</button></a>
+						&emsp;<a href='/expenses-report'><button type="button" class="btn btn-primary btn-lg btn-block">EXPENSES</button></a>
 					
 					</div>
 				</div>

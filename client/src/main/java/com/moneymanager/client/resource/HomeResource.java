@@ -19,7 +19,7 @@ public class HomeResource {
 	ClientService clientService;
 
 	final static Logger logger = Logger.getLogger(MoneyManagerApp.class);
-
+	
 	@RequestMapping("/")
 	public String index() {
 		logger.info("home resource index page info");
@@ -70,25 +70,7 @@ public class HomeResource {
 	}
 
 	
-	@RequestMapping("/expensesReport")
-	public String expensesReport() {
-
-		logger.info("home resource user-repot page info");
-		logger.debug("home resource user-repot page debugging");
-
-		return "expenses-report";
-
-	}
 	
-	@RequestMapping("/incomeVsInvestmentVsExpensesReport")
-	public String iieReport() {
-
-		logger.info("home resource user-repot page info");
-		logger.debug("home resource user-repot page debugging");
-
-		return "income-vs-investment-vs-expenses-report";
-
-	}
 	@RequestMapping("/user-transactions")
 
 	public String userTransactions() {
