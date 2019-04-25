@@ -1,4 +1,7 @@
-<!DOCTYPE HTML>
+<!DOCTYPE HTML><%@ taglib prefix="spring"
+	uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>  
 <script>
@@ -18,8 +21,12 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		showInLegend: true, 
 		legendMarkerColor: "grey",
 		legendText: "TYPE OF EXPENSE",
-		dataPoints: [        
-			{ y: 300878, label: "FOOD" },
+		dataPoints: [  
+			<c:forEach items="${fullExpense}" var="expense" >
+	     
+			{ y: ${expense.key}, label: "${expense.value}" },
+     </c:forEach>    
+			
 			{ y: 266455,  label: "GROCERY" },
 			{ y: 169709,  label: "RENT OF A PROPERTY" },
 			{ y: 158400,  label: "RENT OF A VEHICLE" },

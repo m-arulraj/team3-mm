@@ -1,5 +1,9 @@
 package com.moneymanager.client.resource;
 
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +26,14 @@ public class ReportResource {
 
 		String email = (String) httpSession.getAttribute("name");
 		Report report = reportService.getReport(email);
-		model.addAttribute("income", report.getIncome());
+		Collection<Long> income = report.getIncome().values();
+		Long incomeAmount = income.stream().mapToLong(Long::longValue).sum();
+		
+		Collection<Long> investment = report.getInversment().values();
+		Long investmentAmount = investment.stream().mapToLong(Long::longValue).sum();
+		model.addAttribute("income", incomeAmount);
 
-		model.addAttribute("investment", report.getInversment());
+		model.addAttribute("investment", investmentAmount);
 		
 		return "INCOME vs INVESTMENT-report";
 

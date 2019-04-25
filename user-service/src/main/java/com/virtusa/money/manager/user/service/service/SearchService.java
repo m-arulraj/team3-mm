@@ -43,8 +43,8 @@ public class SearchService {
 
 	private static final Predicate<UserTransaction> BASEDONDATERANGE(String startDate, String endDate) {
 
-		return i -> LocalDate.parse(i.getDate(), formatter).isAfter(LocalDate.parse(startDate, formatter))
-				&& LocalDate.parse(i.getDate(), formatter).isBefore(LocalDate.parse(endDate, formatter));
+		return i -> LocalDate.parse(i.getDate()).isAfter(LocalDate.parse(startDate))
+				&& LocalDate.parse(i.getDate()).isBefore(LocalDate.parse(endDate));
 
 	}
 

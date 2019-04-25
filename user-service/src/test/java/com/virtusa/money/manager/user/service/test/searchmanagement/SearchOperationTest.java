@@ -85,7 +85,7 @@ public class SearchOperationTest {
 		UserTransaction transaction3 = new UserTransaction();
 		transaction3.setAmount(200L);
 		transaction3.setCategoryList(savedCategoryIncome1);
-		transaction3.setDate("11/09/2000");
+		transaction3.setDate("2019-04-10");
 		transaction3.setUser(user);
 
 		transactionService.save(transaction3);
@@ -93,7 +93,7 @@ public class SearchOperationTest {
 		UserTransaction transaction = new UserTransaction();
 		transaction.setAmount(1000L);
 		transaction.setCategoryList(savedCategoryExpence1);
-		transaction.setDate("11/09/2000");
+		transaction.setDate("2018-06-13");
 		transaction.setUser(user);
 
 		transactionService.save(transaction);
@@ -101,7 +101,7 @@ public class SearchOperationTest {
 		UserTransaction transaction2 = new UserTransaction();
 		transaction2.setAmount(1001313L);
 		transaction2.setCategoryList(savedCategoryExpence2);
-		transaction2.setDate("11/09/2000");
+		transaction2.setDate("2018-06-13");
 		transaction2.setUser(user);
 
 		transactionService.save(transaction2);
@@ -172,13 +172,13 @@ public class SearchOperationTest {
 
 	@Test
 	public void searchCategoryListByNameAndDateWithBoundries() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get(URI + "1/type/fuel/dates").param("startDate", "22/09/1999").param("endDate", "22/09/2019")
+		mockMvc.perform(MockMvcRequestBuilders.get(URI + "1/type/fuel/dates").param("startDate", "1999-04-10").param("endDate", "2019-04-10")
 				.contentType(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk());
 	}
 
 	@Test
 	public void searchCategoryListByNameAndDateWithBoundriesNoInfo() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get(URI + "1/type/fuel/dates").param("startDate", "22/09/2013").param("endDate", "22/09/2019")
+		mockMvc.perform(MockMvcRequestBuilders.get(URI + "1/type/fuel/dates").param("startDate", "1999-04-10").param("endDate", "2000-04-10")
 				.contentType(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().is(204));
 	}
 
