@@ -59,20 +59,18 @@ public class HomeResource {
 
 	}
 
-	@RequestMapping("/user-report")
+	@RequestMapping("/user-reports")
 	public String reports() {
 
 		logger.info("home resource user-repot page info");
 		logger.debug("home resource user-repot page debugging");
 
-		return "reports";
+		return "user-reports";
 
 	}
 
-	
-	
 	@RequestMapping("/INCOME vs INVESTMENT")
-	public String expenseReport() {
+	public String incomeVsInvestmentReport() {
 
 		logger.info("home resource user-repot page info");
 		logger.debug("home resource user-repot page debugging");
@@ -80,4 +78,35 @@ public class HomeResource {
 		return "INCOME vs INVESTMENT-report";
 
 	}
+
+	@RequestMapping("/expensesReport")
+	public String expensesReport() {
+
+		logger.info("home resource user-repot page info");
+		logger.debug("home resource user-repot page debugging");
+
+		return "expenses-report";
+
+	}
+	
+	@RequestMapping("/incomeVsInvestmentVsExpensesReport")
+	public String iieReport() {
+
+		logger.info("home resource user-repot page info");
+		logger.debug("home resource user-repot page debugging");
+
+		return "income-vs-investment-vs-expenses-report";
+
+	}
+	@RequestMapping("/user-transactions")
+
+	public String userTransactions() {
+
+		logger.info("home resource user-repot page info");
+		logger.debug("home resource user-repot page debugging");
+
+		return "user-transactions";
+
+	}
+
 }
