@@ -16,4 +16,6 @@ public class RegisterService {
 	public void registerUser(RegisterUser registerUser) {
 		restTemplate.postForEntity(EndPointUri.USERREGISTER, registerUser, String.class);
 	}
+	
+	
 }

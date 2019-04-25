@@ -16,7 +16,7 @@
   }
 </script>
 </head>
-<body translate="no" bgcolor="#1C2833">
+<body translate="no" bgcolor="#273746">
 <canvas id="myChart" style="height: 500px; width: 100%;"></canvas>
 <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js'></script>
@@ -30,7 +30,7 @@ var myChart = new Chart(ctx, {
     labels: ["January", "February", "March", "April", "May", "June", "July", "August", "", "September","October","November","December"],
     datasets: [{
       label: 'INCOME', // Name the series
-      data: [500, 50, 2424, 14040, 14141, 4111, 4544, 47, 5555, 6811], // Specify the data values array
+      data: ${report.getIncomeForYear()}, // Specify the data values array
       fill: false,
       borderColor: '#2196f3', // Add custom color border (Line)
       backgroundColor: '#2196f3', // Add custom color background (Points and Fill)
@@ -38,7 +38,7 @@ var myChart = new Chart(ctx, {
     },
     {
       label: 'INVESTMENT', // Name the series
-      data: [1288, 88942, 44545, 7588, 99, 242, 1417, 5504, 75, 457], // Specify the data values array
+      data: ${report.getInvestmentForYear()}, // Specify the data values array
       fill: false,
       borderColor: '#4CAF50', // Add custom color border (Line)
       backgroundColor: '#4CAF50', // Add custom color background (Points and Fill)
@@ -46,7 +46,7 @@ var myChart = new Chart(ctx, {
     },
     {
         label: 'EXPENSES', // Name the series
-        data: [55188, 88888, 55545, 7988, 59, 342, 1517, 5604, 95, 857], // Specify the data values array
+        data: ${report.getExpenseForYear()}, // Specify the data values array
         fill: false,
         borderColor: 'red', // Add custom color border (Line)
         backgroundColor: 'red', // Add custom color background (Points and Fill)

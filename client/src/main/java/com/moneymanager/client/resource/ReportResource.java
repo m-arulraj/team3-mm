@@ -1,6 +1,8 @@
 package com.moneymanager.client.resource;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.moneymanager.client.MoneyManagerApp;
 import com.moneymanager.client.domain.Report;
@@ -57,11 +60,21 @@ public class ReportResource {
 	}
 	
 	@RequestMapping("/income-vs-investment-vs-expenses-report")
-	public String iieReport() {
+	public String iieReport(Model model,HttpSession httpSession) {
 
 		logger.info("ReportResource income-vs-investment-vs-expenses-report ");
 		logger.debug("ReportResource income-vs-investment-vs-expenses-report ");
 
+		Long year =null;
+		String email = (String) httpSession.getAttribute("name");
+		Report report = new Report();
+		if(year == null) {
+			report = reportService.getReport(2019L,email);
+		}else {
+			report = reportService.getReport(year,email);
+		}
+		
+		model.addAttribute("report", report);
 		return "income-vs-investment-vs-expenses-report";
 
 	}

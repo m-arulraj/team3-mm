@@ -14,15 +14,28 @@ public class ReportService {
 
 	@Autowired
 	RestTemplate restTemplate;
-	
+
 	@Autowired
 	ClientService clientService;
-	
+
 	public Report getReport(String name) {
-		User user =clientService.getUserByEmailId(name);
-		
-		ResponseEntity<Report> result = restTemplate.getForEntity(EndPointUri.REPORT+user.getId(), Report.class);
+		User user = clientService.getUserByEmailId(name);
+
+		ResponseEntity<Report> result = restTemplate.getForEntity(EndPointUri.REPORT + user.getId(), Report.class);
 		return result.getBody();
 	}
+
+	public Report getReport(Long year, String email) {
+		User user = clientService.getUserByEmailId(email);
+
+		ResponseEntity<Report> result = restTemplate.getForEntity(EndPointUri.REPORT + user.getId()+"/year/"+year, Report.class);
 	
+		if(result.getBody() == null) {
+			return new Report();
+		}else {
+			return result.getBody();
+		}
+		
+	}
+
 }

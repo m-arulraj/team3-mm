@@ -4,7 +4,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head> 
-<script>
+
+</head>
+<body bgcolor="teal"> 
+<div id="chartContainer" style="height: 600px; width: 100%;"></div><script>
 window.onload = function () {
 
 var chart = new CanvasJS.Chart("chartContainer", {
@@ -22,18 +25,11 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		legendMarkerColor: "grey",
 		legendText: "TYPE OF EXPENSE",
 		dataPoints: [  
-			/* <c:forEach items="${fullExpense}" var="expense" >
+			<c:forEach items="${fullExpense}" var="expense" >
 	     
-			{ y: ${expense.key}, label: "${expense.value}" },
-     </c:forEach>   */  
+			{ y: ${expense.value} , label: "${expense.key}" },
+     </c:forEach>    
 			
-			{ y: 266455,  label: "jabdja" },
-			{ y: 169709,  label: "RENT OF A PROPERTY" },
-			{ y: 158400,  label: "RENT OF A VEHICLE" },
-			{ y: 142503,  label: "FUEL" },
-			{ y: 101500, label: "MEDICAl" },
-			{ y: 97800,  label: "TRAVELING" },
-			{ y: 80000,  label: "CHILDERNS" }
 		]
 	}]
 });
@@ -41,9 +37,6 @@ chart.render();
 
 }
 </script>
-</head>
-<body bgcolor="teal"> ${name}
-<div id="chartContainer" style="height: 600px; width: 100%;"></div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </body>
 </html>

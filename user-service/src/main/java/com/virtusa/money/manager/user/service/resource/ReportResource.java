@@ -32,4 +32,20 @@ public class ReportResource {
 		
 		
 	}
+	
+	@GetMapping(value="{id}/year/{year}")
+	public ResponseEntity<?> getReportForAll(@PathVariable("id") Long id,@PathVariable("year")Long year){
+		try {
+			Report report = reportService.getForReport(id,year);
+			if(report == null) {
+				return ResponseEntity.noContent().build();
+			}else { 
+				return ResponseEntity.ok().body(report);
+			}
+		} catch (Exception e) {
+			return ResponseEntity.noContent().build();
+		}
+		
+		
+	}
 }
