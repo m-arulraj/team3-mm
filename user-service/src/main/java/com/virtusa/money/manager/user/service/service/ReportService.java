@@ -19,11 +19,15 @@ import com.virtusa.money.manager.user.service.domain.UserTransaction;
 @Service
 public class ReportService {
 
-	private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
 	Function<UserTransaction, String> getYearAndMonth() {
-		return i -> LocalDate.parse(i.getDate(), formatter).getYear() + "-"
-				+ LocalDate.parse(i.getDate(), formatter).getMonthValue();
+		return i -> LocalDate.parse(i.getDate()).getYear() + "-"
+				+ LocalDate.parse(i.getDate()).getMonthValue();
+	};
+	
+	Function<UserTransaction, String> getExpenseType() {
+		return i -> i.getCategoryList().getName();
 	};
 
 	
@@ -39,23 +43,26 @@ public class ReportService {
 		
 		List<UserTransaction> allTransaction = transactionService.getUserFullTransaction(id);
 		Report report =new Report();
-		Map<String, Long> income = allTransaction.stream()
-				.filter(i -> i.getCategoryList().getCategory().equals("income"))
+			Map<String, Long> income = allTransaction.stream()
+				.filter(i -> i.getCategoryList().getCategory().getCategory().equals("income"))
 				.sorted(Comparator.comparing(UserTransaction::getDate))
 				.collect(Collectors.groupingBy(getYearAndMonth(), Collectors.summingLong(UserTransaction::getAmount)));
 		Map<String, Long> expence = allTransaction.stream()
-				.filter(i -> i.getCategoryList().getCategory().equals("income"))
+				.filter(i -> i.getCategoryList().getCategory().getCategory().equals("expense"))
 				.sorted(Comparator.comparing(UserTransaction::getDate))
 				.collect(Collectors.groupingBy(getYearAndMonth(), Collectors.summingLong(UserTransaction::getAmount)));
 		Map<String, Long> inversment = allTransaction.stream()
-				.filter(i -> i.getCategoryList().getCategory().equals("income"))
+				.filter(i -> i.getCategoryList().getCategory().getCategory().equals("inverstment"))
 				.sorted(Comparator.comparing(UserTransaction::getDate))
 				.collect(Collectors.groupingBy(getYearAndMonth(), Collectors.summingLong(UserTransaction::getAmount)));
+		Map<String, Long> fullExpense = allTransaction.stream()
+				.filter(i -> i.getCategoryList().getCategory().getCategory().equals("expense"))
+					.collect(Collectors.groupingBy(getExpenseType(), Collectors.summingLong(UserTransaction::getAmount)));
 	
-		
 		report.setIncome(income);
 		report.setExpence(expence);
 		report.setInversment(inversment);
+		report.setFullExpence(fullExpense);
 		return report ;
 	}
 }

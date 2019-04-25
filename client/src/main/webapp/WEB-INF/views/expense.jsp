@@ -225,7 +225,7 @@ form span {
 	</script>
 	<div style="text-align:center">  <button id="myBtn" class="button">Add Type</button></div>
 	
-	<div id="form-box">
+<!-- 	<div id="form-box"> -->
 		<form:form modelAttribute="transaction" action="/user-transaction/expense" method="get">
   <div>
     <span>Type:</span> 

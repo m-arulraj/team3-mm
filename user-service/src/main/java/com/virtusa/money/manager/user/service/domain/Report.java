@@ -12,6 +12,8 @@ public class Report {
 	Map<String,Long> income = new TreeMap<String,Long>();
 	Map<String,Long> inversment = new TreeMap<String,Long>();
 	
+	//for expense report
+	Map<String, Long> fullExpence = new TreeMap<String,Long>();
 	
 	
 }

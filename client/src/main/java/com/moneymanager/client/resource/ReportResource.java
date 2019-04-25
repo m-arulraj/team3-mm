@@ -1,5 +1,9 @@
 package com.moneymanager.client.resource;
 
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
@@ -25,13 +29,17 @@ public class ReportResource {
 		logger.info("ReportResource income-vs-investment");
 		logger.debug("ReportResource income-vs-investment");
 		
-		/*
-		 * String email = (String) httpSession.getAttribute("name"); Report report =
-		 * reportService.getReport(email); model.addAttribute("income",
-		 * report.getIncome());
-		 * 
-		 * model.addAttribute("investment", report.getInversment());
-		 */
+		String email = (String) httpSession.getAttribute("name");
+		Report report = reportService.getReport(email);
+		Collection<Long> income = report.getIncome().values();
+		Long incomeAmount = income.stream().mapToLong(Long::longValue).sum();
+		
+		Collection<Long> investment = report.getInversment().values();
+		Long investmentAmount = investment.stream().mapToLong(Long::longValue).sum();
+		model.addAttribute("income", incomeAmount);
+
+		model.addAttribute("investment", investmentAmount);
+		
 		return "INCOME vs INVESTMENT-report";
 
 	}
