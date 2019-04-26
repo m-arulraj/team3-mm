@@ -194,9 +194,10 @@ table.table td i {
 					</tr>
 				</thead>
 				<tbody>
+				<%!int data = 1;%>
 					<c:forEach items="${transactionsList}" var="transactionsList">
 						<tr>
-							<%!int data = 1;%>
+							
 							<td><%=data%></td>
 							<td>${transactionsList.getCategoryList().getName()}</td>
 							<td>${transactionsList.getAmount()}</td>
@@ -204,14 +205,15 @@ table.table td i {
 							<td>${transactionsList.getNote()}</td>
 							<td>${transactionsList.getCategoryList().getCategory().getCategory()}</td>
 
-							<td><a href="/" class="edit" title="Edit"
-								data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-								<a href="#" class="delete" title="Delete" data-toggle="tooltip"><i
-									class="material-icons">&#xE872;</i></a></td>
+							<td><a href="/user-transaction" class="edit" title="Edit"
 							
-							<%data++; %>
+								data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+								<a href="/user-transaction" class="delete" title="Delete" data-toggle="tooltip"><i
+									class="material-icons">&#xE872;</i></a></td>
 						</tr>
+							<%data++;%>
 					</c:forEach>
+				
 				</tbody>
 			</table>
 

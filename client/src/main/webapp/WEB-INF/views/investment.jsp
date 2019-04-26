@@ -237,7 +237,7 @@ input[type=number]::-webkit-outer-spin-button {
 	</script>
 	<div id="form-box">
 		<form:form modelAttribute="transaction" action="/user-transaction/investment"
-			method="get">
+			method="get" onsubmit="myFunction()">
 			<div>
 				<span>Type:</span>
 				<form:select name="type" path="categoryListId">
@@ -276,6 +276,11 @@ input[type=number]::-webkit-outer-spin-button {
 				<input type="submit" id="button" value="Add Invest">
 			</center>
 		</form:form>
+		 <script>
+function myFunction() {
+  alert("Invested Successfully.....");
+}
+</script>
 	</div>
 	<div id="myModal" class="modal">
 

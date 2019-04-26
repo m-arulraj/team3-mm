@@ -233,7 +233,7 @@ form span {
 		
 	</script>
 	<div id="form-box">
-		 <form:form modelAttribute="transaction" action="/user-transaction/income" method="get">
+		 <form:form modelAttribute="transaction" action="/user-transaction/income" method="get" onsubmit="myFunction()">
   <div>
     <span>Type:</span> 
       <form:select name="type" path="categoryListId">
@@ -260,6 +260,11 @@ form span {
   <br><center><input  type="submit" id="button" value="Add Income">
   </center>
 </form:form>
+ <script>
+function myFunction() {
+  alert("Added Successfully.......");
+}
+</script>
 	</div>
 
 	

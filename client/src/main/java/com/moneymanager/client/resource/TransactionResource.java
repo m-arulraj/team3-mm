@@ -7,9 +7,10 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.moneymanager.client.domain.UserTransaction;
@@ -48,5 +49,19 @@ public class TransactionResource {
 		model.addAttribute("transactionsList",transactionsList);
 		return "user-transactions";
 	}
-
+	
+	@PutMapping("")
+	public String updateTransactionResource(HttpSession session,Model model) {
+		String name = (String) session.getAttribute("name");
+		List<UserTransaction> transactionsList=service.getTransactions(name);
+		model.addAttribute("transactionsList",transactionsList);
+		return "user-transactions";
+	}
+	@DeleteMapping("")
+	public String deleteTransactionResource(HttpSession session,Model model) {
+		String name = (String) session.getAttribute("name");
+		List<UserTransaction> transactionsList=service.getTransactions(name);
+		model.addAttribute("transactionsList",transactionsList);
+		return "user-transactions";
+	}
 }
