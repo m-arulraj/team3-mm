@@ -125,6 +125,18 @@ public class ReportTest {
 		mockMvc.perform(MockMvcRequestBuilders.get(REPORT_API_URI+"2").contentType(MediaType.APPLICATION_JSON))
 				.andExpect(MockMvcResultMatchers.status().isNoContent());
 	}
+	
+	@Test
+	public void getReportForYear() throws Exception {
+		mockMvc.perform(MockMvcRequestBuilders.get(REPORT_API_URI+"1/year/2000").contentType(MediaType.APPLICATION_JSON))
+				.andExpect(MockMvcResultMatchers.status().isOk());
+	}
+	
+	@Test
+	public void getInvalidReportForYear() throws Exception {
+		mockMvc.perform(MockMvcRequestBuilders.get(REPORT_API_URI+"2/year/1000").contentType(MediaType.APPLICATION_JSON))
+				.andExpect(MockMvcResultMatchers.status().isNoContent());
+	}
 
 
 }
