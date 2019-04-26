@@ -1,3 +1,4 @@
+
 package com.moneymanager.client.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
