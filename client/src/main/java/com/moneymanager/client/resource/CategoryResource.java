@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.moneymanager.client.MoneyManagerApp;
 import com.moneymanager.client.domain.CategoryList;
@@ -66,11 +67,12 @@ public class CategoryResource {
 	}
 	
 	@GetMapping("/expense/category-list")
-	public String saveExpenseCategory(@RequestParam("typeName")String name ,Model model) {
+	public String saveExpenseCategory(@RequestParam("typeName")String name ,Model model,RedirectAttributes attributes) {
 
 		CategoryList categoryList = new CategoryList();
 		categoryList.setName(name);
 		categoryService.saveCategory(1L, categoryList);
+		attributes.addFlashAttribute("success", "Object has been removed successfully.");
 		return "redirect:/expenseResource";
 
 	}
