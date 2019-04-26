@@ -68,5 +68,10 @@ public class UserTransactionService {
 			return null;
 		}
 	}
+
+	public UserTransaction getOneTransaction(Long id) {
+		Optional<UserTransaction> result = userTransactionRepository.findById(id);
+		return result.isPresent() ? result.get() : new UserTransaction();
+	}
 	
 }

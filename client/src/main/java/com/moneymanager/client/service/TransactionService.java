@@ -50,4 +50,10 @@ public class TransactionService {
 		return result.getBody();
 	}
 
+	public UserTransaction getOneTransaction(Long id) {
+		ResponseEntity<UserTransaction> transaction = restTemplate.getForEntity(EndPointUri.TRANSACTION+"/"+id,
+				UserTransaction.class);
+		return transaction.getBody();
+	}
+
 }

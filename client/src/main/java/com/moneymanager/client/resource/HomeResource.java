@@ -1,11 +1,14 @@
 package com.moneymanager.client.resource;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.moneymanager.client.MoneyManagerApp;
 import com.moneymanager.client.domain.RegisterUser;
@@ -81,5 +84,16 @@ public class HomeResource {
 		return "user-transactions";
 
 	}
+	/*
+	 * @RequestMapping("/user-logout")
+	 * 
+	 * public String logout(SessionStatus status,HttpSession httpSession) {
+	 * 
+	 * 
+	 * status.isComplete(); String name = (String)httpSession.getAttribute("name");
+	 * System.out.println("************************"+name); return "index";
+	 * 
+	 * }
+	 */
 
 }
