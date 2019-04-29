@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.moneymanager.client.MoneyManagerApp;
 import com.moneymanager.client.domain.User;
@@ -43,6 +44,7 @@ public class LoginResource {
 			return "user-login";
 		}
 		
-
 	}
+	
+	
 }

@@ -59,7 +59,7 @@ public class ReportService {
 				.sorted(Comparator.comparing(UserTransaction::getDate))
 				.collect(Collectors.groupingBy(getYearAndMonth(), Collectors.summingLong(UserTransaction::getAmount)));
 		Map<String, Long> inversment = allTransaction.stream()
-				.filter(i -> i.getCategoryList().getCategory().getCategory().equals("inverstment"))
+				.filter(i -> i.getCategoryList().getCategory().getCategory().equals("investment"))
 				.sorted(Comparator.comparing(UserTransaction::getDate))
 				.collect(Collectors.groupingBy(getYearAndMonth(), Collectors.summingLong(UserTransaction::getAmount)));
 		Map<String, Long> fullExpense = allTransaction.stream()
@@ -89,7 +89,7 @@ public class ReportService {
 				.sorted(Comparator.comparing(UserTransaction::getDate)).filter(basedOnYear(year))
 				.forEach(i -> expenseForYear.set(LocalDate.parse(i.getDate()).getMonthValue()-1, expenseForYear.get(LocalDate.parse(i.getDate()).getMonthValue())+i.getAmount()));
 		
-		allTransaction.stream().filter(i -> i.getCategoryList().getCategory().getCategory().equals("inverstment"))
+		allTransaction.stream().filter(i -> i.getCategoryList().getCategory().getCategory().equals("investment"))
 				.sorted(Comparator.comparing(UserTransaction::getDate)).filter(basedOnYear(year))
 				.forEach(i -> investmentForYear.set(LocalDate.parse(i.getDate()).getMonthValue() -1, investmentForYear.get(LocalDate.parse(i.getDate()).getMonthValue())+i.getAmount()));
 

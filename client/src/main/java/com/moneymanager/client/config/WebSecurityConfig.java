@@ -11,7 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
-		httpSecurity.authorizeRequests().antMatchers("/").hasRole("USER").and().formLogin();
+		httpSecurity.authorizeRequests().antMatchers("/welcome").hasRole("USER").and().formLogin().loginPage("/user-login");
 	}
 
 	@Autowired

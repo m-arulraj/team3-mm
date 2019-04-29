@@ -3896,7 +3896,7 @@ transform
   <div class="header-right">
    
     <a href="/#">UPDATE PROFILE</a>
-    <a href="/#">LOGOUT</a>
+    <a href="/logout">LOGOUT</a>
   </div>
 </div>
 	<div class="signupform">

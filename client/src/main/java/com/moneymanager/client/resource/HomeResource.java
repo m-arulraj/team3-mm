@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.context.request.WebRequest;
 
 import com.moneymanager.client.MoneyManagerApp;
 import com.moneymanager.client.domain.RegisterUser;
@@ -29,6 +30,13 @@ public class HomeResource {
 		logger.debug("home resource index page debugging");
 		return "index";
 	}
+	
+	@RequestMapping("/welcome")
+	public String welcome() {
+		logger.info("home resource index page info");
+		logger.debug("home resource index page debugging");
+		return "index";
+	}
 
 	@GetMapping("/user-login")
 	public String userLogin(Model model) {
@@ -40,7 +48,14 @@ public class HomeResource {
 		return "user-login";
 
 	}
+	@GetMapping("/logout")
+	public String userLogout(SessionStatus status,HttpSession httpSession) {
+		logger.info("Logout resource ");
+		status.isComplete();
+		httpSession.invalidate();
+		return "index";
 
+	}
 	@RequestMapping("/user-home")
 	public String userHome() {
 
@@ -95,5 +110,6 @@ public class HomeResource {
 	 * 
 	 * }
 	 */
+
 
 }
