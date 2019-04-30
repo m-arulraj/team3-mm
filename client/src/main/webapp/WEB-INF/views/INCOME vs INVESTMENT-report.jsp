@@ -93,7 +93,7 @@ chart.render();
     <a href="/user-transaction/all-transactions">TRANSACTIONS</a>
   </div>
 </div>
-<div id="chartContainer" style="height: 600px; width: 100%;"></div>
+<div id="chartContainer" style="height: 530px; width: 100%;"></div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </body>
 </html>

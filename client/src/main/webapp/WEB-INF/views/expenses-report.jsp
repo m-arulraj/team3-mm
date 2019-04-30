@@ -71,7 +71,7 @@ body {
     <a href="/user-transaction/all-transactions">TRANSACTIONS</a>
   </div>
 </div>
-<div id="chartContainer" style="height: 600px; width: 100%;"></div><script>
+<div id="chartContainer" style="height: 535px; width: 100%;"></div><script>
 window.onload = function () {
 
 var chart = new CanvasJS.Chart("chartContainer", {

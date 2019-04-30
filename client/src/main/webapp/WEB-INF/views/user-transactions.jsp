@@ -2,60 +2,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <style>
-* {box-sizing: border-box;}
+* {
+	box-sizing: border-box;
+}
 
-body { 
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+body {
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 .header {
-  overflow: hidden;
-  background-color:#2A201E;
-  padding: 5px 10px;
+	overflow: hidden;
+	background-color: #2A201E;
+	padding: 5px 10px;
 }
 
 .header a {
-  float: left;
-  color: white;
-  text-align: center;
-  padding: 12px;
-  text-decoration: none;
-  font-size: 18px; 
-  line-height: 25px;
-  border-radius: 4px;
+	float: left;
+	color: white;
+	text-align: center;
+	padding: 12px;
+	text-decoration: none;
+	font-size: 18px;
+	line-height: 25px;
+	border-radius: 4px;
 }
 
 .header a.logo {
-  font-size: 25px;
-  font-weight: bold;
+	font-size: 25px;
+	font-weight: bold;
 }
 
 .header a:hover {
-  background-color: white;
-  color: green;
+	background-color: white;
+	color: green;
 }
 
 .header a.active {
-  background-color: #2A201E;
-  color: blue;
+	background-color: #2A201E;
+	color: blue;
 }
 
 .header-right {
-  float: right;
+	float: right;
 }
 
 @media screen and (max-width: 500px) {
-  .header a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-  
-  .header-right {
-    float: none;
-  }
+	.header a {
+		float: none;
+		display: block;
+		text-align: left;
+	}
+	.header-right {
+		float: none;
+	}
 }
 </style>
 <meta charset="utf-8">
@@ -76,8 +81,12 @@ body {
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style type="text/css">
 body {
-	color: #566787;
-	background: #f5f5f5;
+	background-image:
+		url("https://mir-s3-cdn-cf.behance.net/project_modules/disp/6a0e3449505405.58b6d98da6d9d.gif");
+	height: 100%;
+	/* Center and scale the image nicely */
+	background-repeat: no-repeat;
+	background-size: cover;
 	font-family: 'Roboto', sans-serif;
 }
 
@@ -212,11 +221,106 @@ table.table td i {
 	font-size: 95%;
 }
 </style>
+
+<style type="text/css">
+    body {
+		font-family: 'Varela Round', sans-serif;
+	}
+	.modal-confirm {		
+		color: #636363;
+		width: 400px;
+	}
+	.modal-confirm .modal-content {
+		padding: 20px;
+		border-radius: 5px;
+		border: none;
+        text-align: center;
+		font-size: 14px;
+	}
+	.modal-confirm .modal-header {
+		border-bottom: none;   
+        position: relative;
+	}
+	.modal-confirm h4 {
+		text-align: center;
+		font-size: 26px;
+		margin: 30px 0 -10px;
+	}
+	.modal-confirm .close {
+        position: absolute;
+		top: -5px;
+		right: -2px;
+	}
+	.modal-confirm .modal-body {
+		color: #999;
+	}
+	.modal-confirm .modal-footer {
+		border: none;
+		text-align: center;		
+		border-radius: 5px;
+		font-size: 13px;
+		padding: 10px 15px 25px;
+	}
+	.modal-confirm .modal-footer a {
+		color: #999;
+	}		
+	.modal-confirm .icon-box {
+		width: 80px;
+		height: 80px;
+		margin: 0 auto;
+		border-radius: 50%;
+		z-index: 9;
+		text-align: center;
+		border: 3px solid #f15e5e;
+	}
+	.modal-confirm .icon-box i {
+		color: #f15e5e;
+		font-size: 46px;
+		display: inline-block;
+		margin-top: 13px;
+	}
+    .modal-confirm .btn {
+        color: #fff;
+        border-radius: 4px;
+		background: #60c7c1;
+		text-decoration: none;
+		transition: all 0.4s;
+        line-height: normal;
+		min-width: 120px;
+        border: none;
+		min-height: 40px;
+		border-radius: 3px;
+		margin: 0 5px;
+		outline: none !important;
+    }
+	.modal-confirm .btn-info {
+        background: #c1c1c1;
+    }
+    .modal-confirm .btn-info:hover, .modal-confirm .btn-info:focus {
+        background: #a8a8a8;
+    }
+    .modal-confirm .btn-danger {
+        background: #f15e5e;
+    }
+    .modal-confirm .btn-danger:hover, .modal-confirm .btn-danger:focus {
+        background: #ee3535;
+    }
+	.trigger-btn {
+		display: inline-block;
+		margin: 100px auto;
+	}
+</style>
+
+
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('[data-toggle="tooltip"]').tooltip();
 	});
 </script>
+ <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="http://johannburkard.de/resources/Johann/jquery.highlight-5.js"></script>
 </head>
 <body>
 	<div class="header">
@@ -239,14 +343,14 @@ table.table td i {
 
 					<div class="col-sm-4">
 						<div class="search-box">
-							<i class="material-icons">&#xE8B6;</i> <input type="text"
-								class="form-control" placeholder="Search&hellip;">
+							<i class="material-icons">&#xE8B6;</i> <input class="form-control" id="myInput" type="text" placeholder="Search..">
 						</div>
 					</div>
 				</div>
 			</div>
 			<table class="table table-striped table-hover table-bordered">
 				<thead>
+					<%!int data = 1;%>
 					<tr>
 						<th>#</th>
 						<th align="center">TYPE</th>
@@ -257,8 +361,8 @@ table.table td i {
 						<th align="center">Actions</th>
 					</tr>
 				</thead>
-				<tbody>
-				<%!int data = 1;%>
+				<tbody id="myTable">
+			
 					<c:forEach items="${transactionsList}" var="transactionsList">
 						<tr>
 							
@@ -272,18 +376,59 @@ table.table td i {
 							<td>
 							<a  href="/user-transaction/update-transaction?id=${transactionsList.getId()}" class="edit" title="Edit"
 							
-								data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>							
-								<a href="/user-transaction"  class="delete" title="Delete" data-toggle="tooltip"><i
+								data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>	
+														
+								<a href="#myModal" class="trigger-btn" data-toggle="modal"  title="Delete" ><i
 									class="material-icons">&#xE872;</i></a>
 									</td>
+									
 						</tr>
 							<%data++;%>
+							<div id="myModal" class="modal fade">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="icon-box">
+					<i class="material-icons">&#xE5CD;</i>
+				</div>				
+				<h4 class="modal-title">Are you sure?</h4>	
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body">
+				<p>Do you really want to delete this record? This process cannot be undone.</p>
+			</div>
+			<div class="modal-footer" align="left">
+				<button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+				<button onclick="window.location.href = '/user-transaction/delete-transaction?id=${transactionsList.getId()}';" type="button" class="btn btn-danger">Delete</button>
+			</div>
+		</div>
+	</div>
+</div>   	
 					</c:forEach>
-				
+				<%data = 1;%>
 				</tbody>
 			</table>
 
 		</div>
 	</div>
+
+<!-- Modal HTML -->
+
+	
+	<script type="text/javascript">
+	$('#myInput').click(function(){
+		$('#myTable').removeHighlight().highlight($('#myInput').val());
+	})
+</script>
+	<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
 </body>
 </html>

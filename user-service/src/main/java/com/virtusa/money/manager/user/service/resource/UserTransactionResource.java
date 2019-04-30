@@ -51,7 +51,7 @@ public class UserTransactionResource {
 		}
 	}
 
-	@PutMapping("")
+	@PostMapping("/transaction")
 	public ResponseEntity<?> updateUserTransacation(@Valid @RequestBody UserTransaction userTransaction,
 			BindingResult result) throws ValidationException, EntityNotFoundException {
 		if (result.hasErrors()) {

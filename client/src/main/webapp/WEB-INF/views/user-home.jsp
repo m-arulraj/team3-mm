@@ -3895,7 +3895,7 @@ transform
   </a>
   <div class="header-right">
    
-    <a href="/#">UPDATE PROFILE</a>
+    <a href="/profile-updation">UPDATE PROFILE</a>
     <a href="/#">LOGOUT</a>
   </div>
 </div>

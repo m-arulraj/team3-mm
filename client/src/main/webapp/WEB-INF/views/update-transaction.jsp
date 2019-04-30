@@ -85,7 +85,7 @@ body {
 }
 
 h1, h2 {
-	color: #BB29F8;
+	color: blue;
 	text-align: center;
 }
 
@@ -101,7 +101,7 @@ h2 {
 
 body {
 	background-image:
-		url("http://www.hdfs.ie/wp-content/uploads/2016/01/Protect.jpg");
+		url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOCC4yMjnxIayyLVtysJEVZo9-e_Jo57C2dFMxJbZZ025Yf4VK");
 	height: 100%;
 	/* Center and scale the image nicely */
 	background-repeat: no-repeat;
@@ -296,105 +296,52 @@ form span {
 </div>
 
 <body>
-	<h1>Your Money Manager</h1>
-	<h2>Add an Income :</h2>
-	<div style="text-align: center">
-		<button id="myBtn" class="button">Add Type</button>
-	</div>
-	<script type="text/javascript" src="resources/javascript.js">
-		
-	</script>
+	<h1>Updating Transaction</h1>
+
 	<div id="form-box">
 		<form:form modelAttribute="transaction"
-			action="/user-transaction/income" method="get"
+			action="/user-transaction/update-transaction" method="post"
 			onsubmit="myFunction()">
 			<div>
+
+<form:input path="id" type="hidden" value="${transaction.getId()}"/>
 				<span>Type:</span>
 				<form:select name="type" path="categoryListId">
-					<c:forEach items="${categoriesList}" var="categoriesList">
 
-						<form:option value="${categoriesList.getId()}">${categoriesList.getName()}</form:option>
-
-					</c:forEach>
+					<form:option value="${transaction.getCategoryList().getId()}">${transaction.getCategoryList().getName()}</form:option>
+					
 				</form:select>
 			</div>
 
 			<div>
 				<span>Note:</span>
-				<form:input path="note" type="text" name="item-name"
-					placeholder="What did you spend on?" />
+				<form:input path="note" maxlength="50" type="text" name="item-name"
+					value="${transaction.getNote()}" />
 			</div>
 
 			<div>
 				<span>Date:</span>
-				<form:input type="date" path="date" name="date" />
+				<form:input type="date" path="date" name="date"
+					value="${transaction.getDate()}" />
 			</div>
 
 			<div>
 				<span>Amount:</span>
-				<form:input type="number" path="amount" name="amount"
-					placeholder="How much?" />
+				<form:input type="number" path="amount" name="amount"  min="1" max="10000"
+					value="${transaction.getAmount()}" />
 			</div>
 			<br>
 			<br>
 			<center>
-				<input type="submit" id="button" value="Add Income">
+				<input type="submit" id="button" value="Update Transaction">
 			</center>
 		</form:form>
 		<script>
 			function myFunction() {
-				alert("Added Successfully.......");
+				alert("Updated Successfully.......");
 			}
 		</script>
 	</div>
 
-
-
-	<div id="myModal" class="modal">
-
-		<!-- Modal content -->
-		<div class="modal-content">
-			<span class="close">&times;</span>
-			<div style="text-align: center">
-				<form action="/income/category-list" method="get">
-					<input class="alertInput" type="text" name="typeName"
-						placeholder="Add new Type...." /><br> <input id="button"
-						type="submit" value="add Type" />
-				</form>
-			</div>
-		</div>
-
-	</div>
-	<br>
-	<br>
-	<br>
-	<br>
-	<script>
-		// Get the modal
-		var modal = document.getElementById('myModal');
-
-		// Get the button that opens the modal
-		var btn = document.getElementById("myBtn");
-
-		// Get the <span> element that closes the modal
-		var span = document.getElementsByClassName("close")[0];
-
-		// When the user clicks the button, open the modal 
-		btn.onclick = function() {
-			modal.style.display = "block";
-		}
-
-		// When the user clicks on <span> (x), close the modal
-		span.onclick = function() {
-			modal.style.display = "none";
-		}
-
-		// When the user clicks anywhere outside of the modal, close it
-		window.onclick = function(event) {
-			if (event.target == modal) {
-				modal.style.display = "none";
-			}
-		}
-	</script>
 </body>
 </html>

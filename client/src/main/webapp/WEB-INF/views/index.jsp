@@ -668,8 +668,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<div class="case flw" id="story">
 			<div class="container">
 				<div class="fw-heading text-center flw mb60 mt80">
-					<i class="fw-title ion-android-wifi">A penny saved is a penny
-						gained!</i>
+				
 					<h3 class="fw-special-title">
 						Tips <span>to save money</span>
 					</h3>

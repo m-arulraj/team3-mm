@@ -21,6 +21,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.virtusa.money.manager.user.service.UserServiceApplication;
 import com.virtusa.money.manager.user.service.domain.Category;
 import com.virtusa.money.manager.user.service.domain.CategoryList;
 import com.virtusa.money.manager.user.service.domain.User;
@@ -30,7 +31,7 @@ import com.virtusa.money.manager.user.service.repository.CategoryRepository;
 import com.virtusa.money.manager.user.service.repository.UserRepository;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = WebEnvironment.DEFINED_PORT)
+@SpringBootTest(classes=UserServiceApplication.class,webEnvironment = WebEnvironment.DEFINED_PORT)
 @ActiveProfiles("test")
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class UserTransactionTest {
@@ -169,7 +170,7 @@ public class UserTransactionTest {
 		transaction.setCategoryList(categoryList);
 		transaction.setUser(user);
 		this.mockMvc
-				.perform(MockMvcRequestBuilders.put(USER_TRANSACTION_API_URI).contentType(MediaType.APPLICATION_JSON)
+				.perform(MockMvcRequestBuilders.post(USER_TRANSACTION_API_URI+"/transaction").contentType(MediaType.APPLICATION_JSON)
 						.content(mapper.writeValueAsString(transaction)))
 				.andExpect(MockMvcResultMatchers.status().isOk())
 				.andExpect(MockMvcResultMatchers.jsonPath("$.date", is("19/10/2001")))

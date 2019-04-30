@@ -61,6 +61,7 @@ public class UserTransactionService {
 			transaction.setId(userTransaction.getId());
 			transaction.setAmount(userTransaction.getAmount());
 			transaction.setDate(userTransaction.getDate());
+			transaction.setNote(userTransaction.getNote());
 			transaction.setCategoryList(userTransaction.getCategoryList());
 			transaction.setUser(userTransaction.getUser());
 			return storeUserTransaction(transaction);

@@ -7,10 +7,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -49,26 +48,29 @@ public class TransactionResource {
 		List<UserTransaction> transactionsList=service.getTransactions(name);
 		model.addAttribute("transactionsList",transactionsList);
 		return "user-transactions";
+		//return "sample";
 	}
 	@GetMapping("/update-transaction")
-	public String updateTransaction(@RequestParam("id")Long id ,Model model) {
+	public String updateTransactionPage(@RequestParam("id")Long id ,Model model) {
 		UserTransaction transaction = service.getOneTransaction(id);
+		
+		System.out.println(transaction);
 		model.addAttribute("transaction", transaction);
 		return "update-transaction";
 	}
-	/*
-	 * @GetMapping("/transaction") public String
-	 * updateTransactionResource(HttpSession session,Model model) { String name =
-	 * (String) session.getAttribute("name"); List<UserTransaction>
-	 * transactionsList=service.getTransactions(name);
-	 * model.addAttribute("transactionsList",transactionsList); return
-	 * "user-transactions"; }
-	 * 
-	 * @GetMapping("/transaction") public String
-	 * deleteTransactionResource(HttpSession session,Model model) { String name =
-	 * (String) session.getAttribute("name"); List<UserTransaction>
-	 * transactionsList=service.getTransactions(name);
-	 * model.addAttribute("transactionsList",transactionsList); return
-	 * "user-transactions"; }
-	 */
+	@PostMapping("/update-transaction")
+	public String updateTransaction(@ModelAttribute("transaction") UserTransaction transaction ,Model model,HttpSession httpSession) {
+		String email = (String) httpSession.getAttribute("name");
+		transaction.setUserEmail(email);
+		service.updateTransaction(transaction);
+		return "redirect:/user-transaction/all-transactions";
+	}
+
+	@GetMapping("/delete-transaction")
+	public String deleteTransaction(@RequestParam("id")Long id) {
+		service.deleteTransaction(id);
+		return "redirect:/user-transaction/all-transactions";
+	}
+
+	
 }

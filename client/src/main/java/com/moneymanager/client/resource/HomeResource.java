@@ -1,14 +1,12 @@
 package com.moneymanager.client.resource;
 
-import javax.servlet.http.HttpSession;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.support.SessionStatus;
 
 import com.moneymanager.client.MoneyManagerApp;
 import com.moneymanager.client.domain.RegisterUser;
@@ -22,7 +20,7 @@ public class HomeResource {
 	ClientService clientService;
 
 	final static Logger logger = Logger.getLogger(MoneyManagerApp.class);
-	
+
 	@RequestMapping("/")
 	public String index() {
 		logger.info("home resource index page info");
@@ -72,8 +70,6 @@ public class HomeResource {
 
 	}
 
-	
-	
 	@RequestMapping("/user-transactions")
 
 	public String userTransactions() {
@@ -81,19 +77,17 @@ public class HomeResource {
 		logger.info("home resource user-repot page info");
 		logger.debug("home resource user-repot page debugging");
 
-		return "user-transactions";
+		// return "user-transactions";
+		return "sample";
 
 	}
-	/*
-	 * @RequestMapping("/user-logout")
-	 * 
-	 * public String logout(SessionStatus status,HttpSession httpSession) {
-	 * 
-	 * 
-	 * status.isComplete(); String name = (String)httpSession.getAttribute("name");
-	 * System.out.println("************************"+name); return "index";
-	 * 
-	 * }
-	 */
+
+	@RequestMapping("/profile-updation")
+	  
+	  public String logout(@ModelAttribute("profile")User user,Model model) {
+		
+		model.addAttribute("profile",new RegisterUser());
+		return "profile-updation"; 
+	  }
 
 }

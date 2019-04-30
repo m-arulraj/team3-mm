@@ -3,6 +3,7 @@ package com.virtusa.money.manager.user.service.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -48,4 +49,7 @@ public class RegisterUser {
 	
 	@NotEmpty(message = "MM0024- Date of Birth can’t be empty")
 	String dateOfBirth;
+	
+	@OneToOne
+	User user;
 }

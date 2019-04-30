@@ -42,8 +42,9 @@ public class TransactionService {
 	}
 
 	public List<UserTransaction> getTransactions(String name) {
-		User user= clientService.getUserByEmailId(name);
-		ResponseEntity<List<UserTransaction>> result = restTemplate.exchange(EndPointUri.USERTRANSACTIONS+"user/"+user.getId(), HttpMethod.GET, null,
+		User user = clientService.getUserByEmailId(name);
+		ResponseEntity<List<UserTransaction>> result = restTemplate.exchange(
+				EndPointUri.USERTRANSACTIONS + "user/" + user.getId(), HttpMethod.GET, null,
 				new ParameterizedTypeReference<List<UserTransaction>>() {
 				});
 
@@ -51,9 +52,24 @@ public class TransactionService {
 	}
 
 	public UserTransaction getOneTransaction(Long id) {
-		ResponseEntity<UserTransaction> transaction = restTemplate.getForEntity(EndPointUri.TRANSACTION+"/"+id,
+
+		ResponseEntity<UserTransaction> transaction = restTemplate.getForEntity(EndPointUri.TRANSACTION + "/" + id,
 				UserTransaction.class);
+
 		return transaction.getBody();
+	}
+
+	public void updateTransaction(UserTransaction transaction) {
+
+		transaction.setCategoryList(getCategoryList(transaction.getCategoryListId()));
+		clientService.getUserByEmailId(transaction.getUserEmail());
+		transaction.setUser(clientService.getUserByEmailId(transaction.getUserEmail()));
+		restTemplate.postForEntity(EndPointUri.TRANSACTION + "/transaction", transaction, UserTransaction.class);
+	}
+
+	public void deleteTransaction(Long id) {
+
+		restTemplate.delete(EndPointUri.TRANSACTION +"/"+id);
 	}
 
 }
