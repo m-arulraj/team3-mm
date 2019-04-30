@@ -82,7 +82,7 @@ body {
 <style type="text/css">
 body {
 	background-image:
-		url("https://mir-s3-cdn-cf.behance.net/project_modules/disp/6a0e3449505405.58b6d98da6d9d.gif");
+		url("http://3.bp.blogspot.com/-7_SL72jHg-Y/ThFs5MwZUBI/AAAAAAAAAJ8/GLV1x9j__8I/s400/blue-serenity-animated-wavy+2.gif");
 	height: 100%;
 	/* Center and scale the image nicely */
 	background-repeat: no-repeat;
