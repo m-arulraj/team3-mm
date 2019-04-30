@@ -3808,24 +3808,24 @@ transform
 					<p>Enter your details to login.</p>
 <p style="color: red">${error}</p>
 
-					<form:form action="/user-home" method="post"
-						 modelAttribute="login">
+					<form action="/user-login" method="post"
+						>
 						<label>Email Address</label>
 						<div class="input-group">
 							<span class="fa fa-envelope" aria-hidden="true"></span>
-							<form:input  path="userName" type="email"
-								placeholder="Enter Your Email" required="" />
+							<input   type="email" name="username"
+								placeholder="Enter Your Email"  />
 						</div>
 						<label>Password</label>
 						<div class="input-group">
 							<span class="fa fa-lock" aria-hidden="true"></span>
-							<form:input path="password" type="password"
-								placeholder="Enter Password" required="" />
+							<input  type="password" name="password"
+								placeholder="Enter Password"/>
 
 						</div>
 				
 						<button class="btn btn-danger btn-block custom" type="submit">LOGIN</button>
-					</form:form>
+					</form>
 					<p class="account">
 						By clicking login, you agree to our <a
 							href="https://www.signupto.com/legal/">Terms &amp;

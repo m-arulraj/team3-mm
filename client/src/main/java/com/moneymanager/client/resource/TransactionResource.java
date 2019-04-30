@@ -1,5 +1,6 @@
 package com.moneymanager.client.resource;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -31,8 +32,9 @@ public class TransactionResource {
 		return "redirect:/expenseResource";
 	}
 	@GetMapping("/income")
-	public String saveTransactionForIncome(@ModelAttribute("Transaction")UserTransaction userTransaction,HttpSession session) {
-		String name = (String) session.getAttribute("name");
+	public String saveTransactionForIncome(@ModelAttribute("Transaction")UserTransaction userTransaction,Principal session) {
+		String name = session.getName();
+		System.out.println("*******************************"+name);
 		service.saveTransaction(userTransaction, name);
 		return "redirect:/incomeResource";
 	}
@@ -44,8 +46,9 @@ public class TransactionResource {
 	}
 	
 	@GetMapping("/all-transactions")
-	public String getTransactionsOfExpense(HttpSession session,Model model) {
-		String name = (String) session.getAttribute("name");
+	public String getTransactionsOfExpense(Principal session,Model model) {
+		String name = session.getName();
+		System.out.println(name);
 		List<UserTransaction> transactionsList=service.getTransactions(name);
 		model.addAttribute("transactionsList",transactionsList);
 		return "user-transactions";

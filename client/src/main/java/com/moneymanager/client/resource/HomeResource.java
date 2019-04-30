@@ -8,8 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.moneymanager.client.MoneyManagerApp;
 import com.moneymanager.client.domain.RegisterUser;
@@ -23,14 +25,14 @@ public class HomeResource {
 	ClientService clientService;
 
 	final static Logger logger = Logger.getLogger(MoneyManagerApp.class);
-	
+
 	@RequestMapping("/")
 	public String index() {
 		logger.info("home resource index page info");
 		logger.debug("home resource index page debugging");
 		return "index";
 	}
-	
+
 	@RequestMapping("/welcome")
 	public String welcome() {
 		logger.info("home resource index page info");
@@ -48,21 +50,16 @@ public class HomeResource {
 		return "user-login";
 
 	}
-	@GetMapping("/logout")
-	public String userLogout(SessionStatus status,HttpSession httpSession) {
-		logger.info("Logout resource ");
-		status.isComplete();
-		httpSession.invalidate();
-		return "index";
 
-	}
-	@RequestMapping("/user-home")
-	public String userHome() {
+	
+
+	@RequestMapping(value = "/user-home", method = RequestMethod.GET)
+	public ModelAndView userHome() {
 
 		logger.info("home resource user-home page info");
 		logger.debug("home resource user-home page debugging");
 
-		return "user-home";
+		return new ModelAndView("user-home");
 
 	}
 
@@ -87,8 +84,6 @@ public class HomeResource {
 
 	}
 
-	
-	
 	@RequestMapping("/user-transactions")
 
 	public String userTransactions() {
@@ -99,17 +94,6 @@ public class HomeResource {
 		return "user-transactions";
 
 	}
-	/*
-	 * @RequestMapping("/user-logout")
-	 * 
-	 * public String logout(SessionStatus status,HttpSession httpSession) {
-	 * 
-	 * 
-	 * status.isComplete(); String name = (String)httpSession.getAttribute("name");
-	 * System.out.println("************************"+name); return "index";
-	 * 
-	 * }
-	 */
-
+	
 
 }
