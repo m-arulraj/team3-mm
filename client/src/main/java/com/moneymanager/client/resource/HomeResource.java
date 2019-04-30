@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.moneymanager.client.MoneyManagerApp;
 import com.moneymanager.client.domain.RegisterUser;
@@ -28,6 +30,13 @@ public class HomeResource {
 		return "index";
 	}
 
+	@RequestMapping("/welcome")
+	public String welcome() {
+		logger.info("home resource index page info");
+		logger.debug("home resource index page debugging");
+		return "index";
+	}
+
 	@GetMapping("/user-login")
 	public String userLogin(Model model) {
 
@@ -39,13 +48,15 @@ public class HomeResource {
 
 	}
 
-	@RequestMapping("/user-home")
-	public String userHome() {
+	
+
+	@RequestMapping(value = "/user-home", method = RequestMethod.GET)
+	public ModelAndView userHome() {
 
 		logger.info("home resource user-home page info");
 		logger.debug("home resource user-home page debugging");
 
-		return "user-home";
+		return new ModelAndView("user-home");
 
 	}
 
