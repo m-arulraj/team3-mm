@@ -3,8 +3,6 @@ package com.moneymanager.client.resource;
 import java.security.Principal;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,28 +23,28 @@ public class TransactionResource {
 	TransactionService service;
 	
 	@GetMapping("/expense")
-	public String saveTransactionForExpense(@ModelAttribute("Transaction")UserTransaction userTransaction,HttpSession session) {
-		String name = (String) session.getAttribute("name");
+	public String saveTransactionForExpense(@ModelAttribute("Transaction")UserTransaction userTransaction,Principal principal) {
+		String name = principal.getName();
 		service.saveTransaction(userTransaction, name);
 		return "redirect:/expenseResource";
 	}
 	@GetMapping("/income")
-	public String saveTransactionForIncome(@ModelAttribute("Transaction")UserTransaction userTransaction,Principal session) {
-		String name = session.getName();
-		System.out.println("*******************************"+name);
+	public String saveTransactionForIncome(@ModelAttribute("Transaction")UserTransaction userTransaction,Principal principal) {
+		String name = principal.getName();
+		
 		service.saveTransaction(userTransaction, name);
 		return "redirect:/incomeResource";
 	}
 	@GetMapping("/investment")
-	public String saveTransactionForInverstment(@ModelAttribute("Transaction")UserTransaction userTransaction,HttpSession session) {
-		String name = (String) session.getAttribute("name");
+	public String saveTransactionForInverstment(@ModelAttribute("Transaction")UserTransaction userTransaction,Principal principal) {
+		String name = principal.getName();
 		service.saveTransaction(userTransaction, name);
 		return "redirect:/investmentResource";
 	}
 	
 	@GetMapping("/all-transactions")
-	public String getTransactionsOfExpense(Principal session,Model model) {
-		String name = session.getName();
+	public String getTransactionsOfExpense(Principal principal,Model model) {
+		String name = principal.getName();
 		System.out.println(name);
 		List<UserTransaction> transactionsList=service.getTransactions(name);
 		model.addAttribute("transactionsList",transactionsList);
@@ -62,8 +60,8 @@ public class TransactionResource {
 		return "update-transaction";
 	}
 	@PostMapping("/update-transaction")
-	public String updateTransaction(@ModelAttribute("transaction") UserTransaction transaction ,Model model,HttpSession httpSession) {
-		String email = (String) httpSession.getAttribute("name");
+	public String updateTransaction(@ModelAttribute("transaction") UserTransaction transaction ,Model model,Principal principal) {
+		String email = principal.getName();
 		transaction.setUserEmail(email);
 		service.updateTransaction(transaction);
 		return "redirect:/user-transaction/all-transactions";
