@@ -15,6 +15,7 @@ import com.virtusa.money.manager.user.service.domain.Message;
 @ControllerAdvice
 public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
+
 	@ExceptionHandler(EntityNotFoundException.class)
 	public ResponseEntity<ErrorResponse> handle(EntityNotFoundException exception) {
 		 ErrorResponse errorResponse = new ErrorResponse(); 
@@ -45,4 +46,6 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 		System.out.println(errorResponse);
 		return new ResponseEntity<ErrorResponse>(errorResponse,HttpStatus.UNPROCESSABLE_ENTITY);
 	}
+	
+		
 }

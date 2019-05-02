@@ -3845,7 +3845,7 @@ body {
 						<div class="input-group">
 							<span class="fa fa-envelope" aria-hidden="true"></span>
 							<form:input path="emailId" type="email"
-								placeholder="Enter Your Email" readonly="" />
+								placeholder="Enter Your Email" readonly="true" />
 						</div>
 						<label>Mobile Number</label>
 						<div class="input-group">

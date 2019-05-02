@@ -42,7 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.defaultSuccessUrl("/user-home", true).failureUrl("/user-login").permitAll().and().logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/welcome?logout=true")
 				.deleteCookies("JSESSIONID").invalidateHttpSession(true).and().exceptionHandling()
-				.accessDeniedPage("/api/403").and().csrf().disable();
+				.accessDeniedPage("/error").and().csrf().disable();
 
 	}
 }

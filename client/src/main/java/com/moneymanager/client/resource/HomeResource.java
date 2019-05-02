@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,13 +16,12 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.moneymanager.client.MoneyManagerApp;
-import com.moneymanager.client.domain.ErrorResponse;
 import com.moneymanager.client.domain.RegisterUser;
 import com.moneymanager.client.domain.User;
 import com.moneymanager.client.service.ClientService;
 
 @Controller
-public class HomeResource {
+public class HomeResource  {
 
 	@Autowired
 	ClientService clientService;
@@ -54,11 +54,12 @@ public class HomeResource {
 	}
 
 	@RequestMapping(value = "/user-home", method = RequestMethod.GET)
-	public ModelAndView userHome() {
+	public ModelAndView userHome(Principal principal) {
 
 		logger.info("home resource user-home page info");
 		logger.debug("home resource user-home page debugging");
 
+		principal.getName();
 		return new ModelAndView("user-home");
 
 	}
@@ -75,8 +76,9 @@ public class HomeResource {
 	}
 
 	@RequestMapping("/user-reports")
-	public String reports() {
+	public String reports(Principal principal) {
 
+		principal.getName();
 		logger.info("home resource user-repot page info");
 		logger.debug("home resource user-repot page debugging");
 
@@ -124,5 +126,10 @@ public class HomeResource {
 		}
 		
 	}
+	@ExceptionHandler(NullPointerException.class)
+	public String handleError() {
 
+		return "error-page";
+	}
+	
 }

@@ -1,11 +1,13 @@
 package com.moneymanager.client.resource;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -24,8 +26,9 @@ public class CategoryResource {
 	CategoryService categoryService;
 
 	@GetMapping("/expenseResource")
-	public String expenseResource(Model model) {
+	public String expenseResource(Model model,Principal principal) {
 
+		principal.getName();
 		logger.info("home resource user-repot page info");
 		logger.debug("home resource user-repot page debugging");
 
@@ -38,25 +41,23 @@ public class CategoryResource {
 	}
 
 	@GetMapping("/incomeResource")
-	public String incomeResource(Model model) {
+	public String incomeResource(Model model,Principal principal) {
 
+		principal.getName();
 		logger.info("home resource user-repot page info");
 		logger.debug("home resource user-repot page debugging");
 
 		List<CategoryList> list = categoryService.getCategoriesList(2L);
-
-		System.out.println(list);
 		model.addAttribute("categoriesList", list);
-
 		model.addAttribute("transaction",new UserTransaction());
 		model.addAttribute("type", "income");
 		return "income";
-
 	}
 
 	@GetMapping("/investmentResource")
-	public String investmentResource(Model model) {
+	public String investmentResource(Model model,Principal principal) {
 
+		principal.getName();
 		logger.info("home resource user-repot page info");
 		logger.debug("home resource user-repot page debugging");
 		List<CategoryList> list = categoryService.getCategoriesList(3L);
@@ -65,7 +66,6 @@ public class CategoryResource {
 		model.addAttribute("transaction",new UserTransaction());
 		return "investment";
 	}
-	
 	@GetMapping("/expense/category-list")
 	public String saveExpenseCategory(@RequestParam("typeName")String name ,Model model,RedirectAttributes attributes) {
 
@@ -94,7 +94,12 @@ public class CategoryResource {
 		return "redirect:/investmentResource";
 
 	}
-	
+	@ExceptionHandler(NullPointerException.class)
+	public String handleError(Exception e) {
+
+		System.out.println(e.getMessage());
+		return "error-page";
+	}
 	
 
 }

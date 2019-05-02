@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,46 +22,54 @@ public class TransactionResource {
 
 	@Autowired
 	TransactionService service;
-	
+
 	@GetMapping("/expense")
-	public String saveTransactionForExpense(@ModelAttribute("Transaction")UserTransaction userTransaction,Principal principal) {
+	public String saveTransactionForExpense(@ModelAttribute("Transaction") UserTransaction userTransaction,
+			Principal principal) {
 		String name = principal.getName();
 		service.saveTransaction(userTransaction, name);
 		return "redirect:/expenseResource";
 	}
+
 	@GetMapping("/income")
-	public String saveTransactionForIncome(@ModelAttribute("Transaction")UserTransaction userTransaction,Principal principal) {
+	public String saveTransactionForIncome(@ModelAttribute("Transaction") UserTransaction userTransaction,
+			Principal principal) {
 		String name = principal.getName();
-		
+
 		service.saveTransaction(userTransaction, name);
 		return "redirect:/incomeResource";
 	}
+
 	@GetMapping("/investment")
-	public String saveTransactionForInverstment(@ModelAttribute("Transaction")UserTransaction userTransaction,Principal principal) {
+	public String saveTransactionForInverstment(@ModelAttribute("Transaction") UserTransaction userTransaction,
+			Principal principal) {
 		String name = principal.getName();
 		service.saveTransaction(userTransaction, name);
 		return "redirect:/investmentResource";
 	}
-	
+
 	@GetMapping("/all-transactions")
-	public String getTransactionsOfExpense(Principal principal,Model model) {
+	public String getTransactionsOfExpense(Principal principal, Model model) {
 		String name = principal.getName();
 		System.out.println(name);
-		List<UserTransaction> transactionsList=service.getTransactions(name);
-		model.addAttribute("transactionsList",transactionsList);
+		List<UserTransaction> transactionsList = service.getTransactions(name);
+		model.addAttribute("transactionsList", transactionsList);
 		return "user-transactions";
-		//return "sample";
+		// return "sample";
 	}
+
 	@GetMapping("/update-transaction")
-	public String updateTransactionPage(@RequestParam("id")Long id ,Model model) {
+	public String updateTransactionPage(@RequestParam("id") Long id, Model model) {
 		UserTransaction transaction = service.getOneTransaction(id);
-		
+
 		System.out.println(transaction);
 		model.addAttribute("transaction", transaction);
 		return "update-transaction";
 	}
+
 	@PostMapping("/update-transaction")
-	public String updateTransaction(@ModelAttribute("transaction") UserTransaction transaction ,Model model,Principal principal) {
+	public String updateTransaction(@ModelAttribute("transaction") UserTransaction transaction, Model model,
+			Principal principal) {
 		String email = principal.getName();
 		transaction.setUserEmail(email);
 		service.updateTransaction(transaction);
@@ -68,10 +77,15 @@ public class TransactionResource {
 	}
 
 	@GetMapping("/delete-transaction")
-	public String deleteTransaction(@RequestParam("id")Long id) {
+	public String deleteTransaction(@RequestParam("id") Long id) {
 		service.deleteTransaction(id);
 		return "redirect:/user-transaction/all-transactions";
 	}
 
-	
+	@ExceptionHandler(NullPointerException.class)
+	public String handleError() {
+
+		return "error-page";
+	}
+
 }
