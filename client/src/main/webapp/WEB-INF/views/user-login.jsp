@@ -3814,13 +3814,13 @@ transform
 						<div class="input-group">
 							<span class="fa fa-envelope" aria-hidden="true"></span>
 							<input   type="email" name="username"
-								placeholder="Enter Your Email"  />
+								placeholder="Enter Your Email" required="required" />
 						</div>
 						<label>Password</label>
 						<div class="input-group">
 							<span class="fa fa-lock" aria-hidden="true"></span>
 							<input  type="password" name="password"
-								placeholder="Enter Password"/>
+								placeholder="Enter Password" required="required"/>
 
 						</div>
 				

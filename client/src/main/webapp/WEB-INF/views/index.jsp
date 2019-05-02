@@ -33,11 +33,12 @@
 	content="C0AbNLZ9Ak5iQxi7X6K4wxfI7-gOHGObqKe1w0N4Wq0" />
 <link rel="profile" href="#profile">
 <link rel="icon" type="image/png" href="assets/MDPI.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- Mobile specific meta -->
 <meta name="viewport"
 	content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
 <meta name="format-detection" content="telephone-no">
-
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 <!-- CSS files -->
 <style type="text/css">
 /*!
@@ -146,7 +147,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 								<!-- box right -->
 								<div class="menu-box-right">
 									<ul class="primary-menu">
-										<li class="current-style-menu-1"><a href="#home">home</a>
+										<li class="current-style-menu-1"><a href="#home"><i class="fas fa-home"></i> home</a>
 									</li>
 										<li><a href="#case">Features</a>
 											<ul class="sub-primary-menu">
@@ -156,10 +157,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 												<li><a href="feature/balance">Balance</a></li>
 											</ul></li>
 										<li><a
-											href="/user-login">SignIn</a>
+											href="/user-login"><i class="fa fa-sign-in" aria-hidden="true"></i> SignIn</a>
 											</li>
 												<li><a 
-											href="/user-registration">SignUp</a>
+											href="/user-registration"><i class="fas fa-user-plus"></i> SignUp</a>
 											</li>
 							</ul>
 								</div>

@@ -15,7 +15,6 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.moneymanager.client.MoneyManagerApp;
-import com.moneymanager.client.domain.ErrorResponse;
 import com.moneymanager.client.domain.RegisterUser;
 import com.moneymanager.client.domain.User;
 import com.moneymanager.client.service.ClientService;

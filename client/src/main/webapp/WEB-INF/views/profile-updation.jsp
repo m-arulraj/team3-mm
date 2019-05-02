@@ -3798,6 +3798,7 @@ body {
 <link href="resources/css" rel="stylesheet">
 <!-- //google fonts -->
 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
 </head>
 <body style="">
@@ -3806,7 +3807,7 @@ body {
   </a>
   <div class="header-right">
    
-    <a href="/user-home">Home</a>
+    <a href="/user-home"><span class="fa fa-home"></span> Home</a>
   </div>
 </div>
 	<div class="signupform">
@@ -3837,7 +3838,7 @@ body {
 						modelAttribute="profile">
 						<label>User Name</label>
 						<div class="input-group">
-							<span class="fa fa-envelope" aria-hidden="true"></span>
+							<span class="fa fa-user" aria-hidden="true"></span>
 							<form:input path="name" type="text" placeholder="Enter Your Name"
 								required="" />
 						</div>
@@ -3845,16 +3846,17 @@ body {
 						<div class="input-group">
 							<span class="fa fa-envelope" aria-hidden="true"></span>
 							<form:input path="emailId" type="email"
-								placeholder="Enter Your Email" readonly="" />
+								placeholder="Enter Your Email" readonly="true" />
 						</div>
 						<label>Mobile Number</label>
 						<div class="input-group">
-							<span class="fa fa-envelope" aria-hidden="true"></span>
+							<span class="fa fa-phone" aria-hidden="true"></span>
 							<form:input path="mobileNumber" type="number"
-								placeholder="Enter Your Mobile Number" required="" />
+								placeholder="Enter Your Mobile Number" required=""  />
 						</div>
 						<label>DOB</label>
 						<div class="input-group  ">
+						<span class="fa fa-calendar" aria-hidden="true"></span>
 							<form:input path="dateOfBirth" type="date" required=""  />
 						</div>
 						
