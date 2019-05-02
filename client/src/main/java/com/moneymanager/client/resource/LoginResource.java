@@ -1,6 +1,7 @@
 package com.moneymanager.client.resource;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class LoginResource {
 	final static Logger logger = Logger.getLogger(MoneyManagerApp.class);
 
 	@PostMapping("/user-home")
-	public String validateUserCredientials(@ModelAttribute User user,Model model,HttpSession httpSession ) {
+	public String validateUserCredientials(@Valid@ModelAttribute User user,Model model,HttpSession httpSession ) {
 
 		logger.info("home resource user-login page info");
 		logger.debug("home resource user-login page debugging");

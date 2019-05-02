@@ -3780,6 +3780,8 @@ transform
 	clip: auto
 }
 </style>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body style="">
 	<script src="/jquery.min.js.download"></script>
@@ -3806,7 +3808,7 @@ transform
 
 					<h2>Login to your Account</h2>
 					<p>Enter your details to login.</p>
-<p style="color: red">${error}</p>
+					<p style="color: red">${error}</p>
 
 					<form action="/user-login" method="post"
 						>
@@ -3821,10 +3823,13 @@ transform
 							<span class="fa fa-lock" aria-hidden="true"></span>
 							<input  type="password" name="password"
 								placeholder="Enter Password" required="required"/>
-
 						</div>
-				
-						<button class="btn btn-danger btn-block custom" type="submit">LOGIN</button>
+						<div>
+										<p class="account" align="right">
+						Forgot Password? <a href="/forgot-password">Click
+							here</a>
+						</div>
+						<button class="btn btn-danger btn-block custom" type="submit"><i class="fa fa-sign-in" style="font-size:20px" aria-hidden="true"></i> LOGIN</button>
 					</form>
 					<p class="account">
 						By clicking login, you agree to our <a

@@ -118,9 +118,6 @@ public class HomeResource  {
 		return "profile-updation";
 		}catch (HttpClientErrorException e) {
 			model.addAttribute("register", new RegisterUser());
-
-			
-			System.out.println("******************"+e.getResponseBodyAsString());
 			model.addAttribute("error", e.getResponseBodyAsString());
 			return "user-registration";
 		}
@@ -130,6 +127,25 @@ public class HomeResource  {
 	public String handleError() {
 
 		return "error-page";
+	}
+	
+	@RequestMapping("/forgot-password")
+	public String forgotPassword(Model model) {
+		logger.info("home resource forgot-password page info");
+		logger.debug("home resource forgot-password page debugging");
+		model.addAttribute("forgotPassword", new RegisterUser());
+		return "forgot-password";
+
+	}
+	@PostMapping("/forgotPassword")
+	public String forgotUserPassword(@ModelAttribute("forgotPassword")RegisterUser registerUser) {
+		String emailId=registerUser.getEmailId();
+		
+		RegisterUser  object=clientService.getUserDetailsByEmailId(emailId);
+		 System.out.println(object);
+		logger.info("home resource forgot-password page info");
+		logger.debug("home resource forgot-password page debugging");
+		return "forgot-password";
 	}
 	
 }

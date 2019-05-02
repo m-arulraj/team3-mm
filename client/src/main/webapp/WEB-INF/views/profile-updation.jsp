@@ -3856,7 +3856,7 @@ body {
 						</div>
 						<label>DOB</label>
 						<div class="input-group  ">
-						<span class="fa fa-calendar" aria-hidden="true"></span>
+						<span class="fa fa-birthday-cake" aria-hidden="true"></span>
 							<form:input path="dateOfBirth" type="date" required=""  />
 						</div>
 						
