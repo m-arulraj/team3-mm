@@ -1,6 +1,8 @@
 package com.moneymanager.client.resource;
 
 import java.security.Principal;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -34,8 +36,11 @@ public class CategoryResource {
 
 		List<CategoryList> list = categoryService.getCategoriesList(1L);
 		model.addAttribute("categoriesList", list);
+		
 		model.addAttribute("type", "expense");
-		model.addAttribute("transaction",new UserTransaction());
+		UserTransaction transaction=new UserTransaction();
+		transaction.setDate(LocalDate.now().toString());
+		model.addAttribute("transaction",transaction);
 		return "expense";
 
 	}
@@ -49,7 +54,9 @@ public class CategoryResource {
 
 		List<CategoryList> list = categoryService.getCategoriesList(2L);
 		model.addAttribute("categoriesList", list);
-		model.addAttribute("transaction",new UserTransaction());
+		UserTransaction transaction=new UserTransaction();
+		transaction.setDate(LocalDate.now().toString());
+		model.addAttribute("transaction",transaction);
 		model.addAttribute("type", "income");
 		return "income";
 	}
@@ -63,7 +70,9 @@ public class CategoryResource {
 		List<CategoryList> list = categoryService.getCategoriesList(3L);
 		model.addAttribute("categoriesList", list);
 		model.addAttribute("type", "investment");
-		model.addAttribute("transaction",new UserTransaction());
+		UserTransaction transaction=new UserTransaction();
+		transaction.setDate(LocalDate.now().toString());
+		model.addAttribute("transaction",transaction);
 		return "investment";
 	}
 	@GetMapping("/expense/category-list")

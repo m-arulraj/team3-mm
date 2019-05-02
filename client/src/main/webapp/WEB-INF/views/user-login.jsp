@@ -1,4 +1,5 @@
-<!DOCTYPE html><%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<!DOCTYPE html><%@ taglib prefix="spring"
+	uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html lang="en">
 <head>
@@ -838,7 +839,11 @@ h5 {
 
 
 
+
+
 :rotate(359deg)
+
+
 
 
 
@@ -877,7 +882,11 @@ transform
 
 
 
+
+
 :rotate(359deg)
+
+
 
 
 
@@ -924,7 +933,11 @@ keyframes fa-spin { 0%{
 
 
 
+
+
 :rotate(359deg)
+
+
 
 
 
@@ -963,7 +976,11 @@ transform
 
 
 
+
+
 :rotate(359deg)
+
+
 
 
 
@@ -3806,24 +3823,23 @@ transform
 
 					<h2>Login to your Account</h2>
 					<p>Enter your details to login.</p>
-<p style="color: red">${error}</p>
+					<p style="color: red">${error}</p>
 
-					<form action="/user-login" method="post"
-						>
+					<form action="/user-login" method="post">
 						<label>Email Address</label>
 						<div class="input-group">
-							<span class="fa fa-envelope" aria-hidden="true"></span>
-							<input   type="email" name="username"
-								placeholder="Enter Your Email" required="required" />
+							<span class="fa fa-envelope" aria-hidden="true"></span> <input
+								type="email" name="username" placeholder="Enter Your Email"
+								required="required" />
 						</div>
 						<label>Password</label>
 						<div class="input-group">
-							<span class="fa fa-lock" aria-hidden="true"></span>
-							<input  type="password" name="password"
-								placeholder="Enter Password" required="required"/>
+							<span class="fa fa-lock" aria-hidden="true"></span> <input
+								type="password" name="password" placeholder="Enter Password"
+								required="required" />
 
 						</div>
-				
+
 						<button class="btn btn-danger btn-block custom" type="submit">LOGIN</button>
 					</form>
 					<p class="account">
