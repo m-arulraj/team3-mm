@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.moneymanager.client.MoneyManagerApp;
+import com.moneymanager.client.domain.ErrorResponse;
 import com.moneymanager.client.domain.RegisterUser;
 import com.moneymanager.client.domain.User;
 import com.moneymanager.client.service.ClientService;
@@ -118,6 +120,9 @@ public class HomeResource  {
 		return "profile-updation";
 		}catch (HttpClientErrorException e) {
 			model.addAttribute("error", e.getResponseBodyAsString());
+			Gson gson = new Gson();
+			ErrorResponse conerted = gson.fromJson(e.getResponseBodyAsString(),ErrorResponse.class);
+			
 			String emailId = principal.getName();
 			RegisterUser registerUser = clientService.getUserDetailsByEmailId(emailId);
 			registerUser.setPassword(registerUser.getUser().getPassword());
