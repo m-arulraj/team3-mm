@@ -1,5 +1,6 @@
 package com.moneymanager.client.resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.client.HttpClientErrorException;
 
+import com.moneymanager.client.MoneyManagerApp;
 import com.moneymanager.client.domain.ErrorResponse;
 import com.moneymanager.client.domain.RegisterUser;
 import com.moneymanager.client.domain.User;
@@ -15,6 +17,8 @@ import com.moneymanager.client.service.RegisterService;
 @Controller
 public class RegisterResource {
 
+	final static Logger logger = Logger.getLogger(MoneyManagerApp.class);
+	
 	@Autowired
 	RegisterService registerService;
 
