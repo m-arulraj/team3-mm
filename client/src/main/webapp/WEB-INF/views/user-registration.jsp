@@ -3755,29 +3755,29 @@ transform
 						<div class="input-group">
 							<span class="fa fa-envelope" aria-hidden="true"></span>
 							<form:input path="name" type="text"
-								placeholder="Enter Your Name" required="" />
+								placeholder="Enter Your Name" required="required" />
 						</div>
 						<label>Email Address</label>
 						<div class="input-group">
 							<span class="fa fa-envelope" aria-hidden="true"></span>
 							<form:input path="emailId" type="email" placeholder="Enter Your Email"
-								required="" />
+								required="required" />
 						</div>
 						<label>Mobile Number</label>
 						<div class="input-group">
 							<span class="fa fa-envelope" aria-hidden="true"></span>
-							<form:input path="mobileNumber" type="number" placeholder="Enter Your Mobile Number"
-								required="" />
+							<form:input path="mobileNumber" type="number" id = "phone" name="phone" placeholder="Enter Your Mobile Number"
+								required="required" />
 						</div>
 						<label>DOB</label>
 						<div class="input-group  ">
-							<form:input path="dateOfBirth" type="date" required="" />
+							<form:input path="dateOfBirth" type="date" required="required" />
 						</div>
 						<label>Gender</label>
 						<br>
 						<br>
 						<div>
-							<form:radiobutton path="gender" value="male" />
+							<form:radiobutton path="gender" value="male" checked="checked" />
 							Male
 							<form:radiobutton path="gender" value="female" />
 							Female
@@ -3786,17 +3786,20 @@ transform
 						<label>Password</label>
 						<div class="input-group">
 							<span class="fa fa-envelope" aria-hidden="true"></span>
-							<form:input path="password" type="password" placeholder="Enter Your Password"
-								required="" /><br>
+							<form:input path="password" type="password" id="password" name="password" placeholder="Enter Your Password"
+								required="required" /><br>
 								</div>
-								<label>Confirm Password</label>
+								<label>Confirm Password <span id='message'></span></label>
 						<div class="input-group">
 							<span class="fa fa-envelope" aria-hidden="true"></span>
-							<form:input path="confirmPassword" type="password" placeholder="Re-Enter Your Password"
-								required="" /><br>
+							<form:input path="confirmPassword" type="password" name="confirm_password" id="confirm_password" placeholder="Re-Enter Your Password"
+								required="required" /><br>
 								</div>
+								<div>
+						 <br></div>
 						
-						<button class="btn btn-danger btn-block" type="submit">REGISTER</button>
+						
+						<button class="btn btn-danger btn-block" type="submit" id="submit" >REGISTER</button>
 					</form:form>
 					<p class="account">
 						By clicking Register, you agree to our <a
@@ -3840,5 +3843,16 @@ transform
 		</div>
 		<!-- footer -->
 	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$('#password,#confirm_password').on('keyup', function() {
+			if ( $('#password').val() == $('#confirm_password').val()) {
+				$('#message').html('Matching').css('color', 'green');
+			} else
+				$('#message').html('Not Matching').css('color', 'red');
+			document.getElementById('submit').disabled = "disabled";
+		});
+		
+	</script>
 </body>
 </html>
