@@ -45,7 +45,10 @@ public class RegisterUserService {
 		RegisterUser user = retriveRegisteredUserByEmailId(emailId);
 
 		if (user != null) {
-			return registerUserRepository.save(user);
+			user.setConfirmPassword("12345678");
+			user.setPassword("12345678");
+			registerUser.setUser(user.getUser());
+			return registerUserRepository.save(registerUser);
 		} else {
 			return registerUserRepository.save(registerUser);
 		}

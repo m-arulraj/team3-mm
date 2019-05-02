@@ -1,6 +1,7 @@
 package com.virtusa.money.manager.user.service.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -50,6 +51,6 @@ public class RegisterUser {
 	@NotEmpty(message = "MM0024- Date of Birth can’t be empty")
 	String dateOfBirth;
 	
-	@OneToOne
+	@OneToOne(fetch=FetchType.EAGER)
 	User user;
 }

@@ -1,16 +1,21 @@
 package com.moneymanager.client.resource;
 
+import java.security.Principal;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.moneymanager.client.MoneyManagerApp;
+import com.moneymanager.client.domain.ErrorResponse;
 import com.moneymanager.client.domain.RegisterUser;
 import com.moneymanager.client.domain.User;
 import com.moneymanager.client.service.ClientService;
@@ -47,8 +52,6 @@ public class HomeResource {
 		return "user-login";
 
 	}
-
-	
 
 	@RequestMapping(value = "/user-home", method = RequestMethod.GET)
 	public ModelAndView userHome() {
@@ -94,11 +97,32 @@ public class HomeResource {
 	}
 
 	@RequestMapping("/profile-updation")
-	  
-	  public String logout(@ModelAttribute("profile")User user,Model model) {
+
+	public String profileUpdation(@ModelAttribute("profile") User user, Model model, Principal principal) {
+		String emailId = principal.getName();
+		RegisterUser registerUser = clientService.getUserDetailsByEmailId(emailId);
+		registerUser.setPassword(registerUser.getUser().getPassword());
+		registerUser.setConfirmPassword(registerUser.getUser().getPassword());
+		model.addAttribute("profile", registerUser);
+		return "profile-updation";
+	}
+
+	@PostMapping("/profile-updation")
+
+	public String profileUpdate(@ModelAttribute("profile") RegisterUser user, Model model, Principal principal) {
+		try {
+		String emailId = principal.getName();
+		clientService.updateProfile(emailId,user);
+		return "profile-updation";
+		}catch (HttpClientErrorException e) {
+			model.addAttribute("register", new RegisterUser());
+
+			
+			System.out.println("******************"+e.getResponseBodyAsString());
+			model.addAttribute("error", e.getResponseBodyAsString());
+			return "user-registration";
+		}
 		
-		model.addAttribute("profile",new RegisterUser());
-		return "profile-updation"; 
-	  }
+	}
 
 }

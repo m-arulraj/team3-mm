@@ -15,9 +15,9 @@ public class RegisterService {
 	@Autowired
 	RestTemplate restTemplate;
 	
-	public ResponseEntity<ErrorResponse> registerUser(RegisterUser registerUser) {
-		 ResponseEntity<ErrorResponse> result = restTemplate.postForEntity(EndPointUri.USERREGISTER, registerUser, ErrorResponse.class);
-		return result;
+	public void registerUser(RegisterUser registerUser) {
+		 ResponseEntity<String> result = restTemplate.postForEntity(EndPointUri.USERREGISTER, registerUser, String.class);
+		
 	}
 	
 	

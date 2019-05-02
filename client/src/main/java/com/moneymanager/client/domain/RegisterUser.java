@@ -41,4 +41,6 @@ public class RegisterUser {
 	
 	@NotEmpty(message = "MM0024- Date of Birth can’t be empty")
 	String dateOfBirth;
+	
+	User user;
 }

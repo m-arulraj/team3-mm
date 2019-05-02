@@ -14,7 +14,6 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -84,9 +83,9 @@ public class RegisterUserResource {
 		}
 	}
 
-	@PutMapping("/updateProfile")
+	@PostMapping("/updateProfile/{emailId}")
 	public ResponseEntity<?> updateProfile(@Valid @RequestBody RegisterUser registerUser, BindingResult bindingResult,
-			@RequestParam("emailId") String emailId) {
+			@PathVariable("emailId") String emailId) {
 
 		if (bindingResult.hasErrors()) {
 			return ResponseEntity.status(422).body(populateErrorMessage(bindingResult.getAllErrors()));

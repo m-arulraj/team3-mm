@@ -9,5 +9,7 @@ public class EndPointUri {
 	public static final String TRANSACTION = "http://localhost:7073/api/user-transaction";
 	public static final String REPORT = "http://localhost:7073/api/user/report/";
 	public static final String USERTRANSACTIONS = "http://localhost:7073/api/report/transaction/";
+	public static final String USERDETAILS = "http://localhost:7073/api/client/";
+	
 
 }
