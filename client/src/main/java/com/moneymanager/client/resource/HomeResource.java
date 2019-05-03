@@ -1,6 +1,9 @@
 package com.moneymanager.client.resource;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +24,7 @@ import com.moneymanager.client.domain.User;
 import com.moneymanager.client.service.ClientService;
 
 @Controller
-public class HomeResource  {
+public class HomeResource {
 
 	@Autowired
 	ClientService clientService;
@@ -113,22 +116,23 @@ public class HomeResource  {
 
 	public String profileUpdate(@ModelAttribute("profile") RegisterUser user, Model model, Principal principal) {
 		try {
-		String emailId = principal.getName();
-		clientService.updateProfile(emailId,user);
-		return "profile-updation";
-		}catch (HttpClientErrorException e) {
+			String emailId = principal.getName();
+			clientService.updateProfile(emailId, user);
+			return "profile-updation";
+		} catch (HttpClientErrorException e) {
 			model.addAttribute("register", new RegisterUser());
 			model.addAttribute("error", e.getResponseBodyAsString());
 			return "user-registration";
 		}
-		
+
 	}
+
 	@ExceptionHandler(NullPointerException.class)
 	public String handleError() {
 
 		return "error-page";
 	}
-	
+
 	@RequestMapping("/forgot-password")
 	public String forgotPassword(Model model) {
 		logger.info("home resource forgot-password page info");
@@ -137,15 +141,41 @@ public class HomeResource  {
 		return "forgot-password";
 
 	}
+
 	@PostMapping("/forgotPassword")
-	public String forgotUserPassword(@ModelAttribute("forgotPassword")RegisterUser registerUser) {
-		String emailId=registerUser.getEmailId();
+	public String forgotUserPassword(@ModelAttribute("forgotPassword") RegisterUser registerUser, Model model) {
+
+		String emailId = registerUser.getEmailId();
+		List<RegisterUser> users = clientService.getAllUserDetails();
+
+		List<RegisterUser> userList = users.stream().filter(i -> i.getEmailId().equalsIgnoreCase(emailId))
+				.collect(Collectors.toList());
+
+		if (userList.isEmpty()) {
+			model.addAttribute("errorMsg", "EmailId Is Wrong");
+			return "forgot-password";
+		} else if (userList.get(0).getDateOfBirth().equals(registerUser.getDateOfBirth())) {
 		
-		RegisterUser  object=clientService.getUserDetailsByEmailId(emailId);
-		 System.out.println(object);
-		logger.info("home resource forgot-password page info");
-		logger.debug("home resource forgot-password page debugging");
-		return "forgot-password";
+			RegisterUser user= new RegisterUser();
+			user.setEmailId(registerUser.getEmailId());
+			model.addAttribute("changePassword", user);
+			return "change-password";
+		} else {
+			model.addAttribute("errorMsg", "Date of Birth Is Wrong");
+			return "forgot-password";
+		}
 	}
-	
+
+	@PostMapping("/changePassword")
+	public String changeUserPassword(@ModelAttribute("changePassword") RegisterUser registerUser, Model model) {
+
+		RegisterUser user = clientService.forgotPassword(registerUser);
+		if (user == null) {
+			return "change-password";
+		} else {
+			return "redirect:/user-login";
+		}
+
+	}
+
 }

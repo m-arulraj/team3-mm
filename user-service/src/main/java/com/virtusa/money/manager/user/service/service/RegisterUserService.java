@@ -1,8 +1,10 @@
 package com.virtusa.money.manager.user.service.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,5 +55,23 @@ public class RegisterUserService {
 			return registerUserRepository.save(registerUser);
 		}
 
+	}
+	@Transactional
+	public RegisterUser forgotPassword(String emailId,RegisterUser registerUser) {
+		RegisterUser user = retriveRegisteredUserByEmailId(emailId);
+		if (user != null) {
+			user.setConfirmPassword(registerUser.getConfirmPassword());
+			user.setPassword(registerUser.getPassword());
+			User user2 =userService.saveUser(registerUser.getUser());
+			registerUser.setUser(user2);
+			return registerUserRepository.save(registerUser);
+		} else {
+			return registerUserRepository.save(registerUser);
+		}
+	}
+
+	public List<RegisterUser> retriveAllRegisteredUserByEmailId() {
+		
+		return registerUserRepository.findAll();
 	}
 }

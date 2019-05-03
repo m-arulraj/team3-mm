@@ -1,10 +1,15 @@
 package com.moneymanager.client.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.moneymanager.client.domain.CategoryList;
 import com.moneymanager.client.domain.RegisterUser;
 import com.moneymanager.client.domain.User;
 import com.moneymanager.client.util.EndPointUri;
@@ -41,9 +46,38 @@ public class ClientService {
 
 		ResponseEntity<RegisterUser> result = restTemplate
 				.postForEntity(EndPointUri.USERDETAILS + "updateProfile/"+emailId, user, RegisterUser.class);
-
 		return result.getBody();
-
 	}
+
+	public RegisterUser forgotPassword(String emailId, RegisterUser user) {
+
+		ResponseEntity<RegisterUser> result = restTemplate
+				.postForEntity(EndPointUri.USERDETAILS + "forgotPassword/"+emailId, user, RegisterUser.class);
+		return result.getBody();
+	}
+
+	public RegisterUser forgotPassword(RegisterUser registerUser) {
+		// TODO Auto-generated method stub
+		String email =registerUser.getEmailId();
+		RegisterUser user = getUserDetailsByEmailId(email);
+		user.setPassword(registerUser.getConfirmPassword());
+		user.setConfirmPassword(registerUser.getConfirmPassword());
+		user.getUser().setPassword(registerUser.getPassword());
+		ResponseEntity<RegisterUser> result = restTemplate
+				.postForEntity(EndPointUri.USERDETAILS + "forgotPassword/"+registerUser.getEmailId(), user, RegisterUser.class);
+		return result.getBody();
+	}
+
+	public List<RegisterUser> getAllUserDetails() {
+		
+		ResponseEntity<List<RegisterUser>> result = restTemplate.exchange(EndPointUri.USERDETAILS+"user/", HttpMethod.GET, null,
+				new ParameterizedTypeReference<List<RegisterUser>>() {
+				});
+
+		List<RegisterUser> registerList = result.getBody();
+		return registerList;
+	}
+	
+	
 
 }

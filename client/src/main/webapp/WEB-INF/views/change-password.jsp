@@ -205,7 +205,7 @@ img {
 	font-weight: 700;
 }
 
-input[type="email"] ,input[type="number"],input[type="text"]{
+input[type="email"], input[type="number"], input[type="text"] {
 	font-size: 15px;
 	color: #333;
 	text-align: left;
@@ -219,6 +219,7 @@ input[type="email"] ,input[type="number"],input[type="text"]{
 	background: transparent;
 	font-family: 'Raleway', sans-serif;
 }
+
 input[type="date"] {
 	font-size: 15px;
 	color: #333;
@@ -692,7 +693,8 @@ h5 {
 		padding: 13px 12px;
 		font-size: 13px;
 	}
-	input[type="text"], input[type="email"], input[type="number"], input[type="password"] {
+	input[type="text"], input[type="email"], input[type="number"], input[type="password"]
+		{
 		font-size: 13px;
 	}
 	.footer p {
@@ -845,7 +847,15 @@ h5 {
 
 
 
+
+
+
+
 :rotate(359deg)
+
+
+
+
 
 
 
@@ -864,7 +874,15 @@ transform
 
 
 
+
+
+
+
 :rotate(359deg)
+
+
+
+
 
 
 
@@ -891,7 +909,15 @@ keyframes fa-spin { 0%{
 
 
 
+
+
+
+
 :rotate(359deg)
+
+
+
+
 
 
 
@@ -910,7 +936,15 @@ transform
 
 
 
+
+
+
+
 :rotate(359deg)
+
+
+
+
 
 
 
@@ -3722,7 +3756,10 @@ transform
 <!-- google fonts -->
 <link href="resources/css" rel="stylesheet">
 <!-- //google fonts -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+	crossorigin="anonymous">
 
 </head>
 <body style="">
@@ -3747,20 +3784,27 @@ transform
 					<!---728x90--->
 
 					<h2>Forgot Password</h2>
-					<p>Enter your details to Change the password.</p>
-					<p style="color: red">${errorMsg}</p>
-					<form:form action="/forgotPassword" method="post" modelAttribute="forgotPassword">
-					
-						<label>Email Address</label>
+					<p>Enter your New password.</p>
+				
+					<form:form action="/changePassword" method="post"
+						modelAttribute="changePassword">
+						<form:input path="emailId" type="hidden"
+							placeholder="Enter Your Email" required="required" />
+						<label>Password</label>
 						<div class="input-group">
-							<span class="fa fa-envelope" aria-hidden="true"></span>
-							<form:input path="emailId" type="email" placeholder="Enter Your Email"
+							<span class="fa fa-lock" aria-hidden="true"></span>
+							<form:input path="password" type="password" id="password"
+								name="password" placeholder="Enter Your Password"
 								required="required" />
+							<br>
 						</div>
-					<label>DOB</label>
-						<div class="input-group  ">
-						<span class="fa fa-birthday-cake" aria-hidden="true"></span>
-							<form:input path="dateOfBirth" type="date" required=""  />
+						<label>Confirm Password <span id='message'></span></label>
+						<div class="input-group">
+							<span class="fa fa-lock" aria-hidden="true"></span>
+							<form:input path="confirmPassword" type="password"
+								name="confirm_password" id="confirm_password"
+								placeholder="Re-Enter Your Password" required="required" />
+							<br>
 						</div>
 						<button class="btn btn-danger btn-block" type="submit" id="submit">SUBMIT</button>
 					</form:form>
@@ -3776,6 +3820,7 @@ transform
 		</div>
 		<!-- footer -->
 	</div>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </body>
 </html>
