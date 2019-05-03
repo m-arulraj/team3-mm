@@ -332,7 +332,7 @@ form span {
 
 			<div>
 				<span>Amount:</span>
-				<form:input type="number" path="amount" name="amount"  min="1" max="10000"
+				<form:input type="number" path="amount" name="amount"  min="1" max="1000000"
 					value="${transaction.getAmount()}" />
 			</div>
 			<br>

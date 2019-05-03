@@ -351,7 +351,7 @@ form span {
 
 			<div>
 				<span>Amount:</span>
-				<form:input type="number" path="amount" name="amount"
+				<form:input type="number" path="amount" name="amount"  min="1" max="1000000"
 					placeholder="How much?" />
 			</div>
 			<br>

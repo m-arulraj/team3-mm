@@ -2,6 +2,7 @@ package com.moneymanager.client.resource;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +13,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.HttpClientErrorException;
 
+import com.google.gson.Gson;
+import com.moneymanager.client.domain.ErrorResponse;
+import com.moneymanager.client.domain.Message;
 import com.moneymanager.client.domain.UserTransaction;
 import com.moneymanager.client.service.TransactionService;
 
@@ -25,10 +30,21 @@ public class TransactionResource {
 
 	@GetMapping("/expense")
 	public String saveTransactionForExpense(@ModelAttribute("Transaction") UserTransaction userTransaction,
-			Principal principal) {
-		String name = principal.getName();
-		service.saveTransaction(userTransaction, name);
-		return "redirect:/expenseResource";
+			Principal principal,Model model) {
+		try {
+			String name = principal.getName();
+			service.saveTransaction(userTransaction, name);
+			return "redirect:/expenseResource";
+		} catch (HttpClientErrorException e) {
+
+			Gson gson = new Gson();
+			ErrorResponse convrted = gson.fromJson(e.getResponseBodyAsString(),ErrorResponse.class);
+			List<Message> messages = convrted.getMessages();
+			List<Message> newMessage = messages.stream().distinct().collect(Collectors.toList());
+			model.addAttribute("errorMsg", newMessage);
+			return "redirect:/expenseResource";
+		}
+
 	}
 
 	@GetMapping("/income")
@@ -51,7 +67,7 @@ public class TransactionResource {
 	@GetMapping("/all-transactions")
 	public String getTransactionsOfExpense(Principal principal, Model model) {
 		String name = principal.getName();
-		System.out.println(name);
+		
 		List<UserTransaction> transactionsList = service.getTransactions(name);
 		model.addAttribute("transactionsList", transactionsList);
 		return "user-transactions";

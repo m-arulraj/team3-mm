@@ -1,6 +1,7 @@
 <!DOCTYPE html><%@ taglib prefix="spring"
 	uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
@@ -317,7 +318,13 @@ body {
   </div>
   
   <div>
-    <span>Amount:</span> <form:input type="number" path="amount" name="amount" placeholder="How much?"/>
+    <span>Amount:</span> <h5 style="color: red">
+						<c:forEach var="msg" items="${errorMsg}">
+							<c:if test="${msg.getCode()=='MM0025'}">
+								<spring:message code="error.${msg.getCode()}"></spring:message>
+							</c:if>
+						</c:forEach>
+						</h5> <form:input type="number" path="amount" name="amount" placeholder="How much?"  min="1" max="1000000"/>
   </div>
   <br>
   <br><center><input  type="submit" id="button" value="Add Expense">

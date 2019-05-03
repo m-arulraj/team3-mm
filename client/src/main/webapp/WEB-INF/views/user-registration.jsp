@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- saved from url=(0106)https://demo.w3layouts.com/demos_new/template_demo/23-02-2019/business_login_form-demo_Free/123711373/web/ -->
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style class="vjs-styles-defaults">
 <
-
 link rel ="stylesheet " href ="https: //www.w3schools.com /w3css/4/w3.css
 	 ">.vdo-js {
 	width: 300px;
@@ -30,7 +31,7 @@ link rel ="stylesheet " href ="https: //www.w3schools.com /w3css/4/w3.css
 <title>Money Manager</title>
 <!-- css files -->
 <style type="text/css">
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h6, p,
 	blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
 	em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
 	b, u, i, dl, dt, dd, ol, nav ul, nav li, fieldset, form, label, legend,
@@ -44,11 +45,13 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	font: inherit;
 	vertical-align: baseline;
 }
+
 input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button
 	{
 	-webkit-appearance: none;
 	margin: 0;
 }
+
 article, aside, details, figcaption, figure, footer, header, hgroup,
 	menu, nav, section {
 	display: block;
@@ -155,7 +158,7 @@ input[type="button"], input[type="submit"] {
 	-ms-transition: 0.5s all;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h6 {
 	margin: 0;
 	padding: 0;
 	font-family: 'Raleway', sans-serif;
@@ -210,7 +213,7 @@ img {
 	font-weight: 700;
 }
 
-input[type="email"] ,input[type="number"],input[type="text"]{
+input[type="email"], input[type="number"], input[type="text"] {
 	font-size: 15px;
 	color: #333;
 	text-align: left;
@@ -224,6 +227,7 @@ input[type="email"] ,input[type="number"],input[type="text"]{
 	background: transparent;
 	font-family: 'Raleway', sans-serif;
 }
+
 input[type="date"] {
 	font-size: 15px;
 	color: #333;
@@ -450,8 +454,6 @@ h3.agileits {
 }
 
 h5 {
-	text-align: center;
-	margin: 10px 0px;
 	font-size: 15px;
 	font-weight: 600;
 	color: #000;
@@ -697,7 +699,8 @@ h5 {
 		padding: 13px 12px;
 		font-size: 13px;
 	}
-	input[type="text"], input[type="email"], input[type="number"], input[type="password"] {
+	input[type="text"], input[type="email"], input[type="number"], input[type="password"]
+		{
 		font-size: 13px;
 	}
 	.footer p {
@@ -850,7 +853,43 @@ h5 {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :rotate(359deg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -869,7 +908,43 @@ transform
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :rotate(359deg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -896,7 +971,43 @@ keyframes fa-spin { 0%{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :rotate(359deg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -915,7 +1026,43 @@ transform
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :rotate(359deg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3727,7 +3874,10 @@ transform
 <!-- google fonts -->
 <link href="resources/css" rel="stylesheet">
 <!-- //google fonts -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+	crossorigin="anonymous">
 
 </head>
 <body style="">
@@ -3754,57 +3904,99 @@ transform
 
 					<h2>User Registration</h2>
 					<p>Enter your details to SignUp.</p>
-					<h5 style="color: red">${error} </h5>
-					<form:form action="/user/register" method="post" modelAttribute="register">
+
+					<form:form action="/user/register" method="post"
+						modelAttribute="register">
 						<label>User Name</label>
 						<div class="input-group">
 							<span class="fa fa-user" aria-hidden="true"></span>
-							<form:input path="name" type="text"
-								placeholder="Enter Your Name" required="required" />
+							<form:input path="name" type="text" placeholder="Enter Your Name"
+								required="required" />
 						</div>
 						<label>Email Address</label>
 						<div class="input-group">
 							<span class="fa fa-envelope" aria-hidden="true"></span>
-							<form:input path="emailId" type="email" placeholder="Enter Your Email"
-								required="required" />
+							<form:input path="emailId" type="email"
+								placeholder="Enter Your Email" required="required" />
 						</div>
-						<label>Mobile Number</label>
+						<label>Mobile Number </label>
+						<h5 style="color: red">
+							<c:forEach var="msg" items="${mobile}">
+								<c:if test="${msg.getCode()=='MM0018'}">
+									<spring:message code="error.${msg.getCode()}"></spring:message>
+								</c:if>
+							</c:forEach>
+						</h5>
 						<div class="input-group">
-							<span class="fa fa-phone" aria-hidden="true"></span>
-							<form:input path="mobileNumber" type="number" id = "phone" name="phone" placeholder="Enter Your Mobile Number"
+							<span class="fa fa-phone" aria-hidden="true"> </span>
+							<form:input path="mobileNumber" type="number" id="phone"
+								name="phone" placeholder="Enter Your Mobile Number"
 								required="required" />
 						</div>
 						<label>DOB</label>
+						
+						<h5 style="color: red">
+							<c:forEach var="msg" items="${mobile}">
+								<c:if test="${msg.getCode()=='MM0024'}">
+									<spring:message code="error.${msg.getCode()}"></spring:message>
+								</c:if>
+							</c:forEach>
+						</h5>
 						<div class="input-group  ">
-						<span class="fa fa-birthday-cake" aria-hidden="true"></span>
+							<span class="fa fa-birthday-cake" aria-hidden="true"></span>
 							<form:input path="dateOfBirth" type="date" required="required" />
 						</div>
 						<label>Gender</label>
-						<br>
+						<br><h5 style="color: red">
+						<c:forEach var="msg" items="${mobile}">
+							<c:if test="${msg.getCode()=='MM0022'}">
+								<spring:message code="error.${msg.getCode()}"></spring:message>
+							</c:if>
+						</c:forEach>
+						</h5>
 						<br>
 						<div>
-							<form:radiobutton path="gender" value="male" checked="checked" />
+							<form:radiobutton path="gender" value="male" />
 							Male
 							<form:radiobutton path="gender" value="female" />
 							Female
 						</div>
 						<br>
 						<label>Password</label>
+						<h5 style="color: red">
+						<c:forEach var="msg" items="${mobile}">
+							<c:if test="${msg.getCode()=='MM0020'}">
+								<spring:message code="error.${msg.getCode()}"></spring:message>
+							</c:if>
+						</c:forEach>
+						</h5>
 						<div class="input-group">
 							<span class="fa fa-lock" aria-hidden="true"></span>
-							<form:input path="password" type="password" id="password" name="password" placeholder="Enter Your Password"
-								required="required" /><br>
-								</div>
-								<label>Confirm Password <span id='message'></span></label>
+							<form:input path="password" type="password" id="password"
+								name="password" placeholder="Enter Your Password"
+								required="required" />
+							<br>
+						</div>
+						<label>Confirm Password <span id='message'></span></label>
+						<h5 style="color: red">
+						<c:forEach var="msg" items="${mobile}">
+							<c:if test="${msg.getCode()=='MM0019'}">
+								<spring:message code="error.${msg.getCode()}"></spring:message>
+							</c:if>
+						</c:forEach>
+						</h5>
 						<div class="input-group">
 							<span class="fa fa-lock" aria-hidden="true"></span>
-							<form:input path="confirmPassword" type="password" name="confirm_password" id="confirm_password" placeholder="Re-Enter Your Password"
-								required="required" /><br>
-								</div>
-								<div>
-						 <br></div>
-						
-						
+							<form:input path="confirmPassword" type="password"
+								name="confirm_password" id="confirm_password"
+								placeholder="Re-Enter Your Password" required="required" />
+							<br>
+						</div>
+						<div>
+							<br>
+						</div>
+
+
 						<button class="btn btn-danger btn-block" type="submit" id="submit">REGISTER</button>
 					</form:form>
 					<p class="account">
@@ -3813,8 +4005,7 @@ transform
 							Conditions!</a>
 					</p>
 					<p class="account1">
-						I have an account <a href="/user-login">Login
-							here</a>
+						I have an account <a href="/user-login">Login here</a>
 					</p>
 
 				</div>
@@ -3829,16 +4020,21 @@ transform
 		</div>
 		<!-- footer -->
 	</div>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script type="text/javascript">
-		$('#password,#confirm_password').on('keyup', function() {
-			if ( $('#password').val() != "" && $('#password').val() == $('#confirm_password').val()) {
-				$('#message').html('Matched').css('color', 'green');
-			} else
-				$('#message').html('Not Matching').css('color', 'red');
-			document.getElementById('submit').disabled = "disabled";
-		});
-		
+		$('#password,#confirm_password').on(
+				'keyup',
+				function() {
+					if ($('#password').val() != ""
+							&& $('#password').val() == $('#confirm_password')
+									.val()) {
+						$('#message').html('Matched').css('color', 'green');
+
+					} else
+						$('#message').html('Not Matching').css('color', 'red');
+
+				});
 	</script>
 </body>
 </html>

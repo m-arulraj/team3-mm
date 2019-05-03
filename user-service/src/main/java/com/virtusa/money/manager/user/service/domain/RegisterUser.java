@@ -39,12 +39,12 @@ public class RegisterUser {
 	String gender;
 
 	@NotEmpty(message = "MM0015- Password can’t be empty")
-	@Size(min = 6, max = 12, message = "MM0018-Password should be 6-12 characters")
+	@Size(min = 6, max = 12, message = "MM0020-Password should be 6-12 characters")
 	@Transient
 	String password;
 
 	@NotEmpty(message = "MM0016-Confirm Password can’t be empty")
-	@Size(min = 6, max = 12, message = "MM0018-Password should be 6-12 characters")
+	@Size(min = 6, max = 12, message = "MM0019-Password should be 6-12 characters")
 	@Transient
 	String confirmPassword;
 	

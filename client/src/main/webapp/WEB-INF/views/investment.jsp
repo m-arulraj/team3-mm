@@ -347,7 +347,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 			</div> --%>
 			<div>
 				<span>Amount:</span>
-				<form:input path="amount" type="number" placeholder="How much ?" />
+				<form:input path="amount" type="number" placeholder="How much ?"  min="1" max="1000000" />
 			</div>
 			<br>
 			<br>

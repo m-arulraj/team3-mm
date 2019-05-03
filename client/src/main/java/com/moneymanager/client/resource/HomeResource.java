@@ -121,7 +121,7 @@ public class HomeResource  {
 		}catch (HttpClientErrorException e) {
 			model.addAttribute("error", e.getResponseBodyAsString());
 			Gson gson = new Gson();
-			ErrorResponse conerted = gson.fromJson(e.getResponseBodyAsString(),ErrorResponse.class);
+			ErrorResponse convrted = gson.fromJson(e.getResponseBodyAsString(),ErrorResponse.class);
 			
 			String emailId = principal.getName();
 			RegisterUser registerUser = clientService.getUserDetailsByEmailId(emailId);

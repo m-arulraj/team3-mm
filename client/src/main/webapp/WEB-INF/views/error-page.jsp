@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html>
 <html>
 
@@ -40,7 +41,7 @@
 </svg>
 <div class="message-box">
   <h1>500</h1>
-  <p>Internal Server Error</p>
+  <p> <spring:message code="error.500"></spring:message></p>
   <div class="buttons-con">
     <div class="action-link-wrap">
       <a href="/user-login" class="link-button">Go to Login Page</a>

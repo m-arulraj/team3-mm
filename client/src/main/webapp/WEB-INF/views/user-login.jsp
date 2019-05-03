@@ -1,4 +1,5 @@
-<!DOCTYPE html><%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<!DOCTYPE html><%@ taglib prefix="spring"
+	uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html lang="en">
 <head>
@@ -838,7 +839,11 @@ h5 {
 
 
 
+
+
 :rotate(359deg)
+
+
 
 
 
@@ -877,7 +882,11 @@ transform
 
 
 
+
+
 :rotate(359deg)
+
+
 
 
 
@@ -924,7 +933,11 @@ keyframes fa-spin { 0%{
 
 
 
+
+
 :rotate(359deg)
+
+
 
 
 
@@ -963,7 +976,11 @@ transform
 
 
 
+
+
 :rotate(359deg)
+
+
 
 
 
@@ -3780,8 +3797,12 @@ transform
 	clip: auto
 }
 </style>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body style="">
 	<script src="/jquery.min.js.download"></script>
@@ -3808,28 +3829,38 @@ transform
 
 					<h2>Login to your Account</h2>
 					<p>Enter your details to login.</p>
+					<h5 style="color: red">
+
+						<%
+							if (request.getParameter("errorLogin") != null) {
+								out.println("Please enter Correct Credential ");
+							} 
+						%>
+
+					</h5>
 					<p style="color: red">${error}</p>
 
-					<form action="/user-login" method="post"
-						>
+					<form action="/user-login" method="post">
 						<label>Email Address</label>
 						<div class="input-group">
-							<span class="fa fa-envelope" aria-hidden="true"></span>
-							<input   type="email" name="username"
-								placeholder="Enter Your Email" required="required" />
+							<span class="fa fa-envelope" aria-hidden="true"></span> <input
+								type="email" name="username" placeholder="Enter Your Email"
+								required="required" />
 						</div>
 						<label>Password</label>
 						<div class="input-group">
-							<span class="fa fa-lock" aria-hidden="true"></span>
-							<input  type="password" name="password"
-								placeholder="Enter Password" required="required"/>
+							<span class="fa fa-lock" aria-hidden="true"></span> <input
+								type="password" name="password" placeholder="Enter Password"
+								required="required" />
 						</div>
 						<div>
-										<p class="account" align="right">
-						Forgot Password? <a href="/forgot-password">Click
-							here</a>
+							<p class="account" align="right">
+								Forgot Password? <a href="/forgot-password">Click here</a>
 						</div>
-						<button class="btn btn-danger btn-block custom" type="submit"><i class="fa fa-sign-in" style="font-size:20px" aria-hidden="true"></i> LOGIN</button>
+						<button class="btn btn-danger btn-block custom" type="submit">
+							<i class="fa fa-sign-in" style="font-size: 20px"
+								aria-hidden="true"></i> LOGIN
+						</button>
 					</form>
 					<p class="account">
 						By clicking login, you agree to our <a

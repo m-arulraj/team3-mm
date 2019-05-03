@@ -39,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.authorizeRequests().antMatchers("/").permitAll().and().formLogin().loginPage("/user-login")
-				.defaultSuccessUrl("/user-home", true).failureUrl("/user-login").permitAll().and().logout()
+				.defaultSuccessUrl("/user-home", true).failureUrl("/user-login?errorLogin=hlo").permitAll().and().logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/welcome?logout=true")
 				.deleteCookies("JSESSIONID").invalidateHttpSession(true).and().exceptionHandling()
 				.accessDeniedPage("/error").and().csrf().disable();
