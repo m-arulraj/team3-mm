@@ -95,4 +95,26 @@ public class RegisterUserResource {
 		}
 
 	}
+	@PostMapping("/forgotPassword/{emailId}")
+	public ResponseEntity<?> forgotPassword(@Valid @RequestBody RegisterUser registerUser, BindingResult bindingResult,
+			@PathVariable("emailId") String emailId) {
+
+		if (bindingResult.hasErrors()) {
+			return ResponseEntity.status(422).body(populateErrorMessage(bindingResult.getAllErrors()));
+		} else {
+			RegisterUser user = registerUserService.forgotPassword(emailId, registerUser);
+			return ResponseEntity.ok().body(user);
+		}
+
+	}
+	
+	@GetMapping("/user/")
+	public ResponseEntity<List<RegisterUser>> getAllRegisteredUserByEmail() throws EntityNotFoundException {
+		List<RegisterUser> registerUser = registerUserService.retriveAllRegisteredUserByEmailId();
+		if (registerUser != null) {
+			return ResponseEntity.ok().body(registerUser);
+		} else {
+			 throw new EntityNotFoundException("User data not found", "MM0013");
+		}
+	}
 }
