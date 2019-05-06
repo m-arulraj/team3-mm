@@ -73,12 +73,12 @@ body {
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet"
+<!-- <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 <style type="text/css">
 body {
 	background-image:
@@ -220,6 +220,12 @@ table.table td i {
 	margin-top: 6px;
 	font-size: 95%;
 }
+.delete{
+padding: 0;
+border: none;
+background: none;
+color: red;
+}
 </style>
 
 <style type="text/css">
@@ -318,9 +324,9 @@ table.table td i {
 		$('[data-toggle="tooltip"]').tooltip();
 	});
 </script>
- <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+<!--  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <script type="text/javascript" src="http://johannburkard.de/resources/Johann/jquery.highlight-5.js"></script>
+    <script type="text/javascript" src="http://johannburkard.de/resources/Johann/jquery.highlight-5.js"></script> -->
 </head>
 <body>
 	<div class="header">
@@ -377,9 +383,10 @@ table.table td i {
 							<a  href="/user-transaction/update-transaction?id=${transactionsList.getId()}" class="edit" title="Edit"
 							
 								data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>	
-														
-								<a href="#myModal" class="trigger-btn" data-toggle="modal"  title="Delete" ><i
-									class="material-icons">&#xE872;</i></a>
+								<input type="hidden" value="${transactionsList.getId()}" id="transactionId">						
+								 <button onclick="openModal(${transactionsList.getId()})"   class="delete material-icons"   title="Delete" ><i
+									>&#xE872;</i></button> 
+								
 									
 							</td>
 									
@@ -398,13 +405,13 @@ table.table td i {
 											</div>
 											<div class="modal-body">
 												<p>Do you really want to delete this record? This
-													process cannot be undone.</p>
+													process cannot be undone. </p>
 											</div>
 											<div class="modal-footer" align="left">
 												<button type="button" class="btn btn-info"
 													data-dismiss="modal">Cancel</button>
-												<button
-													onclick="window.location.href = '/user-transaction/delete-transaction?id=${transactionsList.getId()}';"
+												<button id="deleteItemId"
+													
 													type="button" class="btn btn-danger">Delete</button>
 											</div>
 										</div>
@@ -435,6 +442,17 @@ $(document).ready(function(){
     });
   });
 });
+
+function openModal(id){
+	  $("#myModal").modal();
+	  document.querySelector("#deleteItemId").addEventListener("click",function(){
+		  console.log("deleted id"+id);
+			window.location.href = '/user-transaction/delete-transaction?id='+id;
+	  });
+	  
+}
+
+
 </script>
 </body>
 </html>
