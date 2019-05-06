@@ -157,4 +157,58 @@ public class HomeResource  {
 		return "forgot-password";
 	}
 	
+	
+	@RequestMapping("/budgetControl")
+	public String budgetControl(Model model) {
+		logger.info("home resource budgetControl page info");
+		logger.debug("home resource budgetControl page debugging");
+		model.addAttribute("forgotPassword", new RegisterUser());
+		return "budget-control-story";
+
+	}
+	
+	
+	@RequestMapping("/overspending")
+	public String overSpending(Model model) {
+		logger.info("home resource overspending page info");
+		logger.debug("home resource overspending page debugging");
+		model.addAttribute("forgotPassword", new RegisterUser());
+		return "overspending-story";
+
+	}
+	
+	
+	@RequestMapping("/splitexpense")
+	public String splitExpense(Model model) {
+		logger.info("home resource splitexpense page info");
+		logger.debug("home resource splitexpense page debugging");
+		model.addAttribute("forgotPassword", new RegisterUser());
+		return "split-expense-story";
+
+	}
+	
+	@RequestMapping("/purchase")
+	public String purchase(Model model) {
+		logger.info("home resource purchase page info");
+		logger.debug("home resource purchase page debugging");
+		model.addAttribute("forgotPassword", new RegisterUser());
+		return "purchase-story";
+
+	}
+	@RequestMapping("/broke")
+	public String broke(Model model) {
+		logger.info("home resource purchase page info");
+		logger.debug("home resource purchase page debugging");
+		model.addAttribute("forgotPassword", new RegisterUser());
+		return "broke-story";
+
+	}
+	@RequestMapping("/tripplanner")
+	public String tripPlanner(Model model) {
+		logger.info("home resource tripPlanner page info");
+		logger.debug("home resource tripPlanner page debugging");
+		model.addAttribute("forgotPassword", new RegisterUser());
+		return "trip-planner-story";
+
+	}
 }
