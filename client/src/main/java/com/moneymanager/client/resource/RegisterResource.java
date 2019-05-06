@@ -45,6 +45,6 @@ public class RegisterResource {
 			model.addAttribute("error", e.getResponseBodyAsByteArray());
 			model.addAttribute("mobile", newMessage);
 			return "user-registration";
-		}
+		}  
 	}
 }

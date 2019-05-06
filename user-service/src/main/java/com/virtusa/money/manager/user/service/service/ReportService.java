@@ -83,15 +83,15 @@ public class ReportService {
 		
 		allTransaction.stream().filter(i -> i.getCategoryList().getCategory().getCategory().equals("income"))
 				.sorted(Comparator.comparing(UserTransaction::getDate)).filter(basedOnYear(year))
-				.forEach(i -> incomeForYear.set(LocalDate.parse(i.getDate()).getMonthValue() -1, incomeForYear.get(LocalDate.parse(i.getDate()).getMonthValue())+i.getAmount()));
+				.forEach(i -> incomeForYear.set(LocalDate.parse(i.getDate()).getMonthValue() -1, incomeForYear.get(LocalDate.parse(i.getDate()).getMonthValue()-1) +i.getAmount()));
 		
 		allTransaction.stream().filter(i -> i.getCategoryList().getCategory().getCategory().equals("expense"))
 				.sorted(Comparator.comparing(UserTransaction::getDate)).filter(basedOnYear(year))
-				.forEach(i -> expenseForYear.set(LocalDate.parse(i.getDate()).getMonthValue()-1, expenseForYear.get(LocalDate.parse(i.getDate()).getMonthValue())+i.getAmount()));
+				.forEach(i -> expenseForYear.set(LocalDate.parse(i.getDate()).getMonthValue()-1, expenseForYear.get(LocalDate.parse(i.getDate()).getMonthValue()-1)+i.getAmount()));
 		
 		allTransaction.stream().filter(i -> i.getCategoryList().getCategory().getCategory().equals("investment"))
 				.sorted(Comparator.comparing(UserTransaction::getDate)).filter(basedOnYear(year))
-				.forEach(i -> investmentForYear.set(LocalDate.parse(i.getDate()).getMonthValue() -1, investmentForYear.get(LocalDate.parse(i.getDate()).getMonthValue())+i.getAmount()));
+				.forEach(i -> investmentForYear.set(LocalDate.parse(i.getDate()).getMonthValue() -1, investmentForYear.get(LocalDate.parse(i.getDate()).getMonthValue()-1)+i.getAmount()));
 
 		report.setIncomeForYear(incomeForYear);
 		report.setExpenseForYear(expenseForYear);
