@@ -29,7 +29,7 @@ body {
 	padding: 12px;
 	text-decoration: none;
 	font-size: 18px;
-	line-height: 25px;
+	line-height: 55px;
 	border-radius: 4px;
 }
 

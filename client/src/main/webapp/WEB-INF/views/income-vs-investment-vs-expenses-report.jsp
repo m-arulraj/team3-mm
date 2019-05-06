@@ -126,6 +126,5 @@ var myChart = new Chart(ctx, {
   } });
       //# sourceURL=pen.js
     </script>
-<script src="https://static.codepen.io/assets/editor/live/css_reload-5619dc0905a68b2e6298901de54f73cefe4e079f65a75406858d92924b4938bf.js"></script>
 </body>
 </html>

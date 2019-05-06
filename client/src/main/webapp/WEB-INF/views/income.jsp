@@ -33,7 +33,7 @@ body {
 	padding: 12px;
 	text-decoration: none;
 	font-size: 18px;
-	line-height: 25px;
+	line-height: 55px;
 	border-radius: 4px;
 }
 
@@ -315,8 +315,8 @@ form span {
 </div>
 
 <body>
-	<h1>Your Money Manager</h1>
-	<h2>Add an Income :</h2>
+	<h1 style="color: blue">Your Money Manager</h1>
+	<h2 style="color: blue">Add an Income :</h2>
 	<div style="text-align: center">
 		<button id="myBtn" class="button">Add Type</button>
 	</div>
@@ -341,18 +341,18 @@ form span {
 			<div>
 				<span>Note:</span>
 				<form:input path="note" type="text" name="item-name"
-					placeholder="What did you spend on?" />
+					placeholder="Source of income?" />
 			</div>
 
 			<div>
 				<span>Date:</span>
-				<form:input type="date" path="date" name="date" />
+				<form:input type="date" path="date" name="date" id=""/>
 			</div>
 
 			<div>
 				<span>Amount:</span>
 				<form:input type="number" path="amount" name="amount"  min="1" max="1000000"
-					placeholder="How much?" />
+					placeholder="How much?" id="" />
 			</div>
 			<br>
 			<br>
