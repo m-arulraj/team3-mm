@@ -11,12 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.virtusa.money.manager.user.service.domain.ErrorResponse;
@@ -27,6 +28,7 @@ import com.virtusa.money.manager.user.service.exception.EntityNotFoundException;
 import com.virtusa.money.manager.user.service.service.RegisterUserService;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*", methods = { RequestMethod.POST, RequestMethod.GET, RequestMethod.OPTIONS })
 @RequestMapping(value = "/api/client")
 public class RegisterUserResource {
 
@@ -108,7 +110,7 @@ public class RegisterUserResource {
 
 	}
 	
-	@GetMapping("/user/")
+	@GetMapping("/user")
 	public ResponseEntity<List<RegisterUser>> getAllRegisteredUserByEmail() throws EntityNotFoundException {
 		List<RegisterUser> registerUser = registerUserService.retriveAllRegisteredUserByEmailId();
 		if (registerUser != null) {
