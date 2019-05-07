@@ -310,7 +310,7 @@ body {
   </div>
   
   <div>
-    <span>Note:</span> <form:input path="note" type="text" name="item-name" placeholder="A quick note for expense?"/>
+    <span>Note:</span> <form:input path="note" type="text" name="item-name" placeholder="A quick note for expense?" id=""/>
   </div>
   
   <div>
@@ -319,13 +319,15 @@ body {
   </div>
   
   <div>
-    <span>Amount:</span> <h5 style="color: red">
+    <span>Amount:</span> 
+    <form:input type="number" path="amount" name="amount" placeholder="How much?"  min="1" max="1000000" id=""/>
+    <h5 style="color: red">
 						<c:forEach var="msg" items="${errorMsg}">
 							<c:if test="${msg.getCode()=='MM0025'}">
 								<spring:message code="error.${msg.getCode()}"></spring:message>
 							</c:if>
 						</c:forEach>
-						</h5> <form:input type="number" path="amount" name="amount" placeholder="How much?"  min="1" max="1000000"/>
+						</h5> 
   </div>
   <br>
   <br><center><input  type="submit" id="button" value="Add Expense">
