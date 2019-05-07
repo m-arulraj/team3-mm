@@ -3922,7 +3922,7 @@ transform
 				<h2>User Reports</h2>
 						<br><br>
 					<div class="bs-example" align="center">
-						&emsp;<a href='/income-vs-investment-vs-expenses-report'><button type="button" class="btn btn-primary btn-lg btn-block"><i class="fa fa-line-chart"></i> INCOME vs INVESTMENT vs EXPENSE</button></a>
+						&emsp;<a href='/income-vs-investment-vs-expenses-report?year=0'><button type="button" class="btn btn-primary btn-lg btn-block"><i class="fa fa-line-chart"></i> INCOME vs INVESTMENT vs EXPENSE</button></a>
 						&emsp;<a href='/income-vs-investment'><button type="button" class="btn btn-primary btn-lg btn-block"><i class="fa fa-pie-chart" style="font-size:28px;"></i> INCOME vs INVESTMENT</button></a>
 						&emsp;<a href='/expenses-report'><button type="button" class="btn btn-primary btn-lg btn-block"> <i class="fa fa-bar-chart"></i> EXPENSES</button></a>
 					

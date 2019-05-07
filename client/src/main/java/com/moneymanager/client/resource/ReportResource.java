@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.moneymanager.client.MoneyManagerApp;
 import com.moneymanager.client.domain.Report;
@@ -22,27 +23,28 @@ public class ReportResource {
 	final static Logger logger = Logger.getLogger(MoneyManagerApp.class);
 
 	@RequestMapping("/income-vs-investment")
-	public String expenseReport(Model model,Principal principal) {
+	public String expenseReport(Model model, Principal principal) {
 
 		logger.info("ReportResource income-vs-investment");
 		logger.debug("ReportResource income-vs-investment");
-		
+
 		String email = principal.getName();
 		Report report = reportService.getReport(email);
 		Collection<Long> income = report.getIncome().values();
 		Long incomeAmount = income.stream().mapToLong(Long::longValue).sum();
-		
+
 		Collection<Long> investment = report.getInversment().values();
 		Long investmentAmount = investment.stream().mapToLong(Long::longValue).sum();
 		model.addAttribute("income", incomeAmount);
 
 		model.addAttribute("investment", investmentAmount);
-		
+
 		return "INCOME vs INVESTMENT-report";
 
 	}
+
 	@RequestMapping("/expenses-report")
-	public String expensesReport(Model model,Principal principal) {
+	public String expensesReport(Model model, Principal principal) {
 
 		logger.info("ReportResource expenses-report");
 		logger.debug("ReportResource expenses-report");
@@ -53,26 +55,28 @@ public class ReportResource {
 		return "expenses-report";
 
 	}
-	
+
 	@RequestMapping("/income-vs-investment-vs-expenses-report")
-	public String iieReport(Model model,Principal principal) {
+	public String iieReport(@RequestParam("year") String yr, Model model, Principal principal) {
 
 		logger.info("ReportResource income-vs-investment-vs-expenses-report ");
 		logger.debug("ReportResource income-vs-investment-vs-expenses-report ");
 
-		Long year =null;
+		Long year = Long.parseLong(yr);
 		String email = principal.getName();
 		Report report = new Report();
-		if(year == null) {
-			report = reportService.getReport(2019L,email);
-		}else {
-			report = reportService.getReport(year,email);
+		if (year == 0L) {
+			report = reportService.getReport(2019L, email);
+		} else {
+			report = reportService.getReport(year, email);
 		}
-		
+
 		model.addAttribute("report", report);
+		model.addAttribute("year", year);
 		return "income-vs-investment-vs-expenses-report";
 
 	}
+
 	@ExceptionHandler(NullPointerException.class)
 	public String handleError() {
 
