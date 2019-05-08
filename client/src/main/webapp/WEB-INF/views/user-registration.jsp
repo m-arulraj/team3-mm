@@ -4191,9 +4191,9 @@ body {
 					$('#phoneMsg').html('').css('color', 'red');
 				}
 				else if(user.mobileNumber == mobile){
-					$('#phoneMsg').html('Already Exist').css('color', 'red');
+					$('#phoneMsg').html('MOBILE NUMBER ALREADY EXIST ').css('color', 'red');
 				}else{
-					$('#phoneMsg').html('Ok').css('color', 'green');
+					$('#phoneMsg').html('').css('color', 'green');
 				}
 			})
 		}
@@ -4203,9 +4203,9 @@ body {
 					$('#emailMsg').html('').css('color', 'red');
 				}
 				else if(user.emailId == email){
-					$('#emailMsg').html('Already Exist').css('color', 'red');
+					$('#emailMsg').html('EMAIL-ID ALREADY EXIST').css('color', 'red');
 				}else{
-					$('#emailMsg').html('Ok').css('color', 'green');
+					$('#emailMsg').html('EMAIL-ID IS AVAILABLE').css('color', 'green');
 				}
 			})
 		}
@@ -4221,9 +4221,9 @@ body {
 					$('#nameMsg').html('').css('color', 'red');
 				}
 				else if(user.name == name){
-					$('#nameMsg').html('Already Exist').css('color', 'red');
+					$('#nameMsg').html('USER NAME ALREADY EXIST').css('color', 'red');
 				}else{
-					$('#nameMsg').html('Ok').css('color', 'green');
+					$('#nameMsg').html('USER NAME IS AVAILABLE ').css('color', 'green');
 				}
 			})
 		}
