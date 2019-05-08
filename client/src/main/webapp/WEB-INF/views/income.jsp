@@ -5,6 +5,22 @@
 <html>
 <head>
 <style>
+.pop {
+	font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+		Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica,
+		Arial, sans-serif;
+}
+</style>
+<script>
+	window.console = window.console || function(t) {
+	};
+</script>
+<script>
+	if (document.location.search.match(/type=embed/gi)) {
+		window.parent.postMessage("resize", "*");
+	}
+</script>
+<style>
 * {
 	box-sizing: border-box;
 }
@@ -325,8 +341,7 @@ form span {
 	</script>
 	<div id="form-box">
 		<form:form modelAttribute="transaction"
-			action="/user-transaction/income" method="get"
-			onsubmit="myFunction()">
+			action="/user-transaction/income" method="get">
 			<div>
 				<span>Type:</span>
 				<form:select name="type" path="categoryListId">
@@ -341,18 +356,18 @@ form span {
 			<div>
 				<span>Note:</span>
 				<form:input path="note" type="text" name="item-name"
-					placeholder="Source of income?" />
+					placeholder="Source of income?" required="required" />
 			</div>
 
 			<div>
 				<span>Date:</span>
-				<form:input type="date" path="date" name="date" id=""/>
+				<form:input type="date" path="date" name="date" id="" required="required"/>
 			</div>
 
 			<div>
 				<span>Amount:</span>
-				<form:input type="number" path="amount" name="amount"  min="1" max="1000000"
-					placeholder="How much?" id="" />
+				<form:input type="number" path="amount" name="amount" min="1"
+					max="1000000" placeholder="How much?" id="" required="required"/>
 			</div>
 			<br>
 			<br>
@@ -360,14 +375,31 @@ form span {
 				<input type="submit" id="button" value="Add Income">
 			</center>
 		</form:form>
-		<script>
-			function myFunction() {
-				alert("Added Successfully.......");
-			}
-		</script>
+
 	</div>
 
+	<c:if test="${s==true}">
 
+		<div class="pop">
+			<script
+				src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
+			<script src='https://cdn.jsdelivr.net/npm/sweetalert2'></script>
+			<script id="rendered-js">
+				Swal.fire({
+					position : 'center',
+
+					type : 'success',
+					title : 'Your Income Transaction has been saved',
+					showConfirmButton : false,
+					timer : 3500
+				});
+			</script>
+			<script
+				src="https://static.codepen.io/assets/editor/live/css_reload-5619dc0905a68b2e6298901de54f73cefe4e079f65a75406858d92924b4938bf.js"></script>
+		</div>
+
+
+	</c:if>
 
 	<div id="myModal" class="modal">
 

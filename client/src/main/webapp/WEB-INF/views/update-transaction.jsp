@@ -4,6 +4,137 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link
+	href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
+	rel="stylesheet">
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<style>
+@import
+	url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400);
+
+.d {
+	height: 100%;
+	font-size: 20px;
+	font-family: Source Sans Pro;
+}
+
+#go {
+	position: absolute;
+	top: 30px;
+	left: 50%;
+	transform: translate(-50%, 0%);
+	color: white;
+	border: 0;
+	background: #71c341;
+	width: 100px;
+	height: 30px;
+	border-radius: 6px;
+	font-size: 1rem;
+	transition: background 0.2s ease;
+	outline: none;
+}
+
+#go:hover {
+	background: #8ecf68;
+}
+
+#go:active {
+	background: #5a9f32;
+}
+
+.message {
+	position: absolute;
+	top: -200px;
+	left: 50%;
+	transform: translate(-50%, 0%);
+	width: 300px;
+	background: white;
+	border-radius: 8px;
+	padding: 30px;
+	text-align: center;
+	font-weight: 300;
+	color: #2c2928;
+	opacity: 0;
+	padding: 30px;
+	text-align: center;
+	font-weight: 300;
+	color: #2c2928;
+	opacity: 0;
+	transition: top 0.5s cubic-bezier(0.31, 0.25, 0.5, 1.5), opacity 0.2s
+		ease-in-out;
+}
+
+.message .check {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translate(-50%, 50%) scale(10);
+	width: 120px;
+	height: 110px;
+	background: #71c341;
+	color: white;
+	font-size: 3.8rem;
+	padding-top: 25px;
+	border-radius: 50%;
+	opacity: 0;
+	transition: transform 0.2s 0.25s cubic-bezier(0.31, 0.25, 0.5, 1.5),
+		opacity 0.1s 0.25s ease-in-out;
+}
+
+.message .scaledown {
+	transform: translate(-50%, -50%) scale(1);
+	opacity: 1;
+}
+
+.message p {
+	font-size: 2.1rem;
+	margin: 25px 0px;
+	padding: 0;
+}
+
+.message button {
+	background: #71c341;
+	color: white;
+	border: none;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 20px;
+}
+
+.message p:nth-child(2) {
+	font-size: 2.3rem;
+	margin: 40px 0px 0px 0px;
+}
+
+.comein {
+	top: 150px;
+	opacity: 1;
+}
+</style>
+<script>
+	window.console = window.console || function(t) {
+	};
+</script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+<script>
+	if (document.location.search.match(/type=embed/gi)) {
+		window.parent.postMessage("resize", "*");
+	}
+</script>
+
 <style>
 * {
 	box-sizing: border-box;
@@ -349,11 +480,47 @@ form span {
 				<input type="submit" id="button" value="Update Transaction">
 			</center>
 		</form:form>
-		<script>
-			function myFunction() {
-				alert("Updated Successfully.......");
-			}
-		</script>
+		<c:if test="${s==true}">
+		<div class="d" translate="yes">
+
+			<div class='message'>
+				<div class='check'>&#10004;</div>
+				<p>Success</p>
+				<p>Your Investment Transaction added !</p>
+				<button id="ok">OKAY</button>
+			</div>
+		</div>
+		<script
+		src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
+	<script
+		src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+	<script id="rendered-js">
+		$('#go').click(function() {
+			go(50);
+		});
+		$('#ok').click(function() {
+			go(500);
+			location.reload(true);
+		});
+
+		setTimeout(function() {
+			go(100);
+		}, 700);
+		/* setTimeout(function() {
+			go(500);
+		}, 3000);
+ */
+		function go(nr) {
+			$('.bb').fadeToggle(200);
+			$('.message').toggleClass('comein');
+			$('.check').toggleClass('scaledown');
+			$('#go').fadeToggle(nr);
+
+		}
+
+		//# sourceURL=pen.js
+	</script>
+	</c:if>
 		<script type="text/javascript">
 		$('.keyup-date').keyup(function() {
     $('span.error-keyup-5').remove();

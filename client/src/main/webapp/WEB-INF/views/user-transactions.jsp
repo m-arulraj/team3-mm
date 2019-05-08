@@ -6,6 +6,13 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <style>
+.pop {
+	font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+		Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica,
+		Arial, sans-serif;
+}
+</style>
 <style>
 * {
 	box-sizing: border-box;
@@ -325,7 +332,7 @@ th:hover{
 					<div class="col-sm-6">
 						<div class="search-box">
 							<i class="fa fa-filter"></i> <input
-								class="form-control" id="myInput" type="text" list="types" 
+								class="form-control" id="filterData" type="text" list="types" 
 								>
 								<datalist id="types">
 								<option value="INCOME">
@@ -417,9 +424,50 @@ th:hover{
 		</div>
 	</div>
 
-<!-- Modal HTML -->
+<c:if test="${sUpdate==true}">
 
-	
+		<div class="pop">
+			<script
+				src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
+			<script src='https://cdn.jsdelivr.net/npm/sweetalert2'></script>
+			<script id="rendered-js">
+				Swal.fire({
+					position : 'center',
+
+					type : 'success',
+					title : 'Your Transaction has been Updated!',
+					showConfirmButton : false,
+					timer : 3500
+				});
+			</script>
+			<script
+				src="https://static.codepen.io/assets/editor/live/css_reload-5619dc0905a68b2e6298901de54f73cefe4e079f65a75406858d92924b4938bf.js"></script>
+		</div>
+
+
+	</c:if>
+
+	<c:if test="${sDelete==true}">
+
+		<div class="pop">
+			<script
+				src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
+			<script src='https://cdn.jsdelivr.net/npm/sweetalert2'></script>
+			<script id="rendered-js">
+				Swal.fire({
+					position : 'center',
+					type : 'success',
+					title : 'Your Transaction has been Deleted!',
+					showConfirmButton : false,
+					timer : 3500
+				});
+			</script>
+			<script
+				src="https://static.codepen.io/assets/editor/live/css_reload-5619dc0905a68b2e6298901de54f73cefe4e079f65a75406858d92924b4938bf.js"></script>
+		</div>
+
+
+	</c:if>
 	<script type="text/javascript">
 	$('#myInput').click(function(){
 		$('#myTable').removeHighlight().highlight($('#myInput').val());
@@ -428,6 +476,25 @@ th:hover{
 	<script>
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+
+function openModal(id){
+	  $("#myModal").modal();
+	  document.querySelector("#deleteItemId").addEventListener("click",function(){
+		  console.log("deleted id"+id);
+			window.location.href = '/user-transaction/delete-transaction?id='+id;
+	  });
+	  
+}
+</script>
+<script>
+$(document).ready(function(){
+  $("#filterData").on("keyup", function() {
     var value = $(this).val().toLowerCase();
     $("#myTable tr").filter(function() {
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)

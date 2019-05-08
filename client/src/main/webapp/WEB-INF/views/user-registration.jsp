@@ -7,7 +7,8 @@
 <head>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style class="vjs-styles-defaults">
 <
@@ -878,7 +879,11 @@ h5 {
 
 
 
+
+
 :rotate(359deg)
+
+
 
 
 
@@ -941,7 +946,11 @@ transform
 
 
 
+
+
 :rotate(359deg)
+
+
 
 
 
@@ -1012,7 +1021,11 @@ keyframes fa-spin { 0%{
 
 
 
+
+
 :rotate(359deg)
+
+
 
 
 
@@ -1075,7 +1088,11 @@ transform
 
 
 
+
+
 :rotate(359deg)
+
+
 
 
 
@@ -3949,6 +3966,7 @@ body {
 .header-right {
 	float: right;
 }
+
 #platformRating input, #platformRating span {
 	display: inline;
 	vertical-align: top;
@@ -4014,20 +4032,25 @@ body {
 					<p>Enter your details to SignUp.</p>
 
 					<form:form action="/user/register" method="post"
-						modelAttribute="register">
-						<label>User Name</label><span id='nameMsg'></span>
+						modelAttribute="register" name="">
+						<label>User Name</label>
+						<span id='nameMsg'></span>
 						<div class="input-group">
 							<span class="fa fa-user" aria-hidden="true"></span>
-							<form:input path="name" type="text" placeholder="Enter Your Name" id="name" onkeyup="checkName(event)" onchange="checkName(event)"
+							<form:input path="name" type="text" placeholder="Enter Your Name"
+								id="name" onkeyup="checkName(event)" onchange="checkName(event)"
 								required="required" />
 						</div>
-						<label>Email Address</label><span id='emailMsg'></span>
-						<div class="input-group" >
+						<label>Email Address</label>
+						<span id='emailMsg'></span>
+						<div class="input-group">
 							<span class="fa fa-envelope" aria-hidden="true"></span>
 							<form:input path="emailId" type="email" id="emailId"
-								placeholder="Enter Your Email" required="required" onkeyup="checkEmail(event)" onchange="checkEmail(event)"/>
+								placeholder="Enter Your Email" required="required"
+								onkeyup="checkEmail(event)" onchange="checkEmail(event)" />
 						</div>
-						<label>Mobile Number </label><span id='phoneMsg'></span>
+						<label>Mobile Number </label>
+						<span id='phoneMsg'></span>
 						<h5 style="color: red">
 							<c:forEach var="msg" items="${mobile}">
 								<c:if test="${msg.getCode()=='MM0018'}">
@@ -4038,7 +4061,8 @@ body {
 						<div class="input-group">
 							<span class="fa fa-phone" aria-hidden="true"> </span>
 							<form:input path="mobileNumber" type="number" id="phone"
-								name="phone" placeholder="Enter Your Mobile Number" onkeyup="checkMobileNo(event)" onchange="checkMobileNo(event)"
+								name="phone" placeholder="Enter Your Mobile Number"
+								onkeyup="checkMobileNo(event)" onchange="checkMobileNo(event)"
 								required="required" />
 						</div>
 						<label>DOB</label>
@@ -4066,7 +4090,7 @@ body {
 						</h5>
 						<br>
 						<div>
-							<form:radiobutton path="gender" value="male" />
+							<form:radiobutton path="gender" value="male" checked="checked"/>
 							Male
 							<form:radiobutton path="gender" value="female" />
 							Female
@@ -4107,7 +4131,8 @@ body {
 						</div>
 
 
-						<button class="btn btn-danger btn-block" type="submit" id="submit">REGISTER</button>
+						<button class="btn btn-danger btn-block" type="submit" id="submit"
+							OnClick="activateButton()">REGISTER</button>
 					</form:form>
 					<p class="account">
 						By clicking Register, you agree to our <a
@@ -4133,17 +4158,23 @@ body {
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script type="text/javascript">
-		
 		$('#password,#confirm_password').on(
 				'keyup',
 				function() {
-					if ($('#password').val() != ""
-							&& $('#password').val() == $('#confirm_password')
+					if ($('#password').val() == ""){
+						$('#message').html('').css('color', 'green');
+						$("#submit").html('REGISTER')
+						$("#submit").attr("disabled", false);
+					}else	if ( $('#password').val() == $('#confirm_password')
 									.val()) {
 						$('#message').html('Matched').css('color', 'green');
+						$("#submit").html('REGISTER')
+						$("#submit").attr("disabled", false);
 
 					} else
 						$('#message').html('Not Matching').css('color', 'red');
+					$("#submit").html('check the form')
+					$("#submit").attr("disabled", true);
 
 				});
 	</script>
@@ -4160,75 +4191,109 @@ body {
 			});
 		});
 		var registeredUsers;
-		function getUserEmail(){
+		function getUserEmail() {
 			let xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function(){
-				if(this.readyState == 4 && this.status == 200){
-					registeredUsers = JSON.parse(this.response);
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					registeredUsers = JSON.stringify(this.response);
 				}
 			}
-			
-			xhttp.open("get","http://localhost:7073/api/client/user",true);
+
+			xhttp.open("get", "http://localhost:7073/api/client/user", true);
 			xhttp.send();
+
 		}
 		getUserEmail();
-		function checkEmail(event){
-			
+		function checkEmail(event) {
+
 			var email = document.getElementById("emailId").value;
-			
-			compareEmail(registeredUsers,email);
-			
+
+			compareEmail(registeredUsers, email);
+
 		}
-		function checkMobileNo(event){
+		function checkMobileNo(event) {
 			var mobile = document.getElementById("phone").value;
-			
-			compareMobile(registeredUsers,mobile);
-			
+
+			compareMobile(registeredUsers, mobile);
+
 		}
-		function compareMobile(registeredUsers,mobile){
-			registeredUsers.forEach(function(user){
-				if(mobile ==''){
-					$('#phoneMsg').html('').css('color', 'red');
-				}
-				else if(user.mobileNumber == mobile){
-					$('#phoneMsg').html('MOBILE NUMBER ALREADY EXIST ').css('color', 'red');
-				}else{
-					$('#phoneMsg').html('').css('color', 'green');
-				}
-			})
+		function compareMobile(registeredUsers, mobile) {
+
+			if (mobile == '') {
+				$('#phoneMsg').html('').css('color', 'red');
+				$("#submit").html('check the form')
+				$("#submit").attr("disabled", true);
+			} else if (registeredUsers.includes(mobile)) {
+				$('#phoneMsg').html('Mobile Number Already Exist').css('color', 'red');
+				$("#submit").html('check the form')
+				$("#submit").attr("disabled", true);
+			} else {
+				$('#phoneMsg').html('Mobile Number Available').css('color', 'green');
+				$("#submit").html('REGISTER')
+				$("#submit").attr("disabled", false);
+
+			}
+
 		}
-		function compareEmail(registeredUsers,email){
+		/* function compareEmail(registeredUsers,email){
 			registeredUsers.forEach(function(user){
 				if(email == ''){
 					$('#emailMsg').html('').css('color', 'red');
+					$("#submit").attr("disabled", true);
+					$("#emailId").focus(); 
 				}
 				else if(user.emailId == email){
-					$('#emailMsg').html('EMAIL-ID ALREADY EXIST').css('color', 'red');
-				}else{
-					$('#emailMsg').html('EMAIL-ID IS AVAILABLE').css('color', 'green');
+					$('#emailMsg').html('Already Exist').css('color', 'red');
+					$("#submit").attr("disabled", true);
+					return;
+					
+				
+				}else if(user.emailId != email){
+					$('#emailMsg').html('Ok').css('color', 'green');
+					$("#submit").attr("disabled", false);
 				}
 			})
+		} */
+		function compareEmail(registeredUsers, email) {
+			if (email == '') {
+				$('#emailMsg').html('').css('color', 'red');
+				$("#submit").html('check the form');
+				$("#submit").attr("disabled", true);
+			} else if (registeredUsers.includes(email)) {
+				$('#emailMsg').html('Email-Id Already Exist').css('color', 'red');
+				$("#submit").html('check the form')
+				$("#submit").attr("disabled", true);
+			} else {
+				$('#emailMsg').html('Email-Id Available').css('color', 'green');
+				$("#submit").html('REGISTER')
+				$("#submit").attr("disabled", false);
+			}
 		}
-		function checkName(event){
+		function checkName(event) {
 			var name = document.getElementById("name").value;
-			
-			compareName(registeredUsers,name);
-			
+
+			compareName(registeredUsers, name);
+
 		}
-		function compareName(registeredUsers,name){
-			registeredUsers.forEach(function(user){
-				if(name == ''){
-					$('#nameMsg').html('').css('color', 'red');
-				}
-				else if(user.name == name){
-					$('#nameMsg').html('USER NAME ALREADY EXIST').css('color', 'red');
-				}else{
-					$('#nameMsg').html('USER NAME IS AVAILABLE ').css('color', 'green');
-				}
-			})
+		function compareName(registeredUsers, name) {
+
+			if (name == '') {
+				$('#nameMsg').html('').css('color', 'red');
+				$("#submit").html('check the form')
+				$("#submit").attr("disabled", true);
+			} else if (registeredUsers.includes(name)) {
+				$('#nameMsg').html('Name Already Exist').css('color', 'red');
+				$("#submit").html('check the form')
+				$("#submit").attr("disabled", true);
+			} else {
+				$('#nameMsg').html('Name Available').css('color', 'green');
+				$("#submit").html('REGISTER')
+				$("#submit").attr("disabled", false);
+			}
+
 		}
 	</script>
-	
+
 
 </body>
 </html>
