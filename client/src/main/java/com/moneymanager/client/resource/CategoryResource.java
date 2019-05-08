@@ -81,7 +81,8 @@ public class CategoryResource {
 		CategoryList categoryList = new CategoryList();
 		categoryList.setName(name);
 		categoryService.saveCategory(1L, categoryList);
-		attributes.addFlashAttribute("success", "Object has been removed successfully.");
+		model.addAttribute("sucess", name);
+		//attributes.addFlashAttribute("success", "Object has been removed successfully.");
 		return "redirect:/expenseResource";
 
 	}

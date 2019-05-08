@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
 import com.moneymanager.client.domain.ErrorResponse;
@@ -28,12 +29,16 @@ public class TransactionResource {
 	@Autowired
 	TransactionService service;
 
-	@GetMapping("/expense")
+
+	@PostMapping("/expense")
 	public String saveTransactionForExpense(@ModelAttribute("Transaction") UserTransaction userTransaction,
-			Principal principal,Model model) {
+			Principal principal,RedirectAttributes attributes ,Model model) {
 		try {
 			String name = principal.getName();
 			service.saveTransaction(userTransaction, name);
+			
+			
+			attributes.addFlashAttribute("s", true);
 			return "redirect:/expenseResource";
 		} catch (HttpClientErrorException e) {
 
@@ -49,18 +54,22 @@ public class TransactionResource {
 
 	@GetMapping("/income")
 	public String saveTransactionForIncome(@ModelAttribute("Transaction") UserTransaction userTransaction,
-			Principal principal) {
+			Principal principal,Model model,RedirectAttributes attributes) {
 		String name = principal.getName();
 
 		service.saveTransaction(userTransaction, name);
+		model.addAttribute("sucess", "sucess");
+		attributes.addFlashAttribute("s", true);
 		return "redirect:/incomeResource";
 	}
 
 	@GetMapping("/investment")
 	public String saveTransactionForInverstment(@ModelAttribute("Transaction") UserTransaction userTransaction,
-			Principal principal) {
+			Principal principal,Model model,RedirectAttributes attributes) {
 		String name = principal.getName();
 		service.saveTransaction(userTransaction, name);
+		model.addAttribute("sucess", name);
+		attributes.addFlashAttribute("s", true);
 		return "redirect:/investmentResource";
 	}
 
@@ -85,10 +94,11 @@ public class TransactionResource {
 
 	@PostMapping("/update-transaction")
 	public String updateTransaction(@ModelAttribute("transaction") UserTransaction transaction, Model model,
-			Principal principal) {
+			Principal principal,RedirectAttributes attributes) {
 		String email = principal.getName();
 		transaction.setUserEmail(email);
 		service.updateTransaction(transaction);
+		attributes.addFlashAttribute("s", true);
 		return "redirect:/user-transaction/all-transactions";
 	}
 
