@@ -99,13 +99,15 @@ public class TransactionResource {
 		String email = principal.getName();
 		transaction.setUserEmail(email);
 		service.updateTransaction(transaction);
-		attributes.addFlashAttribute("s", true);
+		attributes.addFlashAttribute("sUpdate", true);
+		
 		return "redirect:/user-transaction/all-transactions";
 	}
 
 	@GetMapping("/delete-transaction")
-	public String deleteTransaction(@RequestParam("id") Long id) {
+	public String deleteTransaction(@RequestParam("id") Long id,RedirectAttributes attributes) {
 		service.deleteTransaction(id);
+		attributes.addFlashAttribute("sDelete", true);
 		return "redirect:/user-transaction/all-transactions";
 	}
 
