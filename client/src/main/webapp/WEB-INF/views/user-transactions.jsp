@@ -108,7 +108,7 @@ body {
 }
 
 .search-box {
-	position: relative;
+	position: inherit;
 	float: right;
 }
 
@@ -174,45 +174,6 @@ table.table td a.delete {
 
 table.table td i {
 	font-size: 19px;
-}
-
-.pagination {
-	float: right;
-	margin: 0 0 5px;
-}
-
-.pagination li a {
-	border: none;
-	font-size: 95%;
-	width: 30px;
-	height: 30px;
-	color: #999;
-	margin: 0 2px;
-	line-height: 30px;
-	border-radius: 30px !important;
-	text-align: center;
-	padding: 0;
-}
-
-.pagination li a:hover {
-	color: #666;
-}
-
-.pagination li.active a {
-	background: #03A9F4;
-}
-
-.pagination li.active a:hover {
-	background: #0397d6;
-}
-
-.pagination li.disabled i {
-	color: #ccc;
-}
-
-.pagination li i {
-	font-size: 16px;
-	padding-top: 6px
 }
 
 .hint-text {
@@ -372,6 +333,7 @@ th:hover{
 								<option value="EXPENSE">
 								</datalist>
 						</div>
+				
 					</div>
 					<div class="col-sm-4">
 						<div class="search-box">
@@ -380,7 +342,9 @@ th:hover{
 								placeholder="Search..">
 						</div>
 					</div>
+				
 				</div>
+				
 			</div>
 			<table class="table table-striped table-hover table-bordered" id="t_table">
 				<thead>
@@ -510,6 +474,7 @@ function sortTable(f,n){
 		$('#t_table').children('tbody').append(row);
 	});
 }
+
 var f_sl = 1;
 var f_nm = 1;
 $("#sl").click(function(){
