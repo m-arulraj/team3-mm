@@ -2,7 +2,6 @@ package com.moneymanager.client.resource;
 
 import java.security.Principal;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;

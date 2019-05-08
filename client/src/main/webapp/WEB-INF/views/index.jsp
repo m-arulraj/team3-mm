@@ -543,7 +543,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 							<!-- <img src="assets/upload/f1.png" alt="img"> -->
 						</div>
 						<h1 class="services-title">
-							<a href="feature/balance" class="services-title-btn">Know
+							<a  class="services-title-btn">Know
 								your balances</a> <span class="services-effect"></span>
 						</h1>
 						<div class="servide-desc">
@@ -559,10 +559,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 						<div class="newservices-img">
 							<img alt="Track your expenses"
 								src="https://www.expensebit.com/assets/upload/f1-299f2fe65d66cd5352755f7d81dfe41c6c89e30f8d3692dc21c096a724412650.png" />
-							<!-- <img src="assets/upload/f2.png" alt="img"> -->
+							
 						</div>
 						<h1 class="services-title">
-							<a href="feature/trackexpense" class="services-title-btn">Track
+							<a  class="services-title-btn">Track
 								your expenses</a> <span class="services-effect"></span>
 						</h1>
 						<div class="servide-desc">
@@ -580,7 +580,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 							<!-- <img src="assets/upload/f3.png" alt="img"> -->
 						</div>
 						<h1 class="services-title">
-							<a href="feature/history" class="services-title-btn">Know
+							<a  class="services-title-btn">Know
 								your history</a> <span class="services-effect"></span>
 						</h1>
 						<div class="servide-desc">
@@ -599,7 +599,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 							<!-- <img src="assets/upload/f6.png" alt="img"> -->
 						</div>
 						<h1 class="services-title">
-							<a href="feature/paperless" class="services-title-btn">Travel
+							<a  class="services-title-btn">Travel
 								Paperless</a> <span class="services-effect"></span>
 						</h1>
 						<div class="servide-desc">
@@ -617,7 +617,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 							<!-- <img src="assets/upload/f7.png" alt="img"> -->
 						</div>
 						<h1 class="services-title">
-							<a href="feature/shopping" class="services-title-btn">Know
+							<a  class="services-title-btn">Know
 								what to shop</a> <span class="services-effect"></span>
 						</h1>
 						<div class="servide-desc">

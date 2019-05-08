@@ -90,7 +90,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 }
 
 h1, h2 {
-	color: white;
+	color: blue;
 	text-align: center;
 }
 
@@ -194,7 +194,8 @@ form div {
 }
 
 form span {
-	color: white;
+	color: #27AE60;
+	font-family:sans-serif;
 	font-size: 1.5em;
 	font-weight: 100;
 	display: inline-block;

@@ -229,6 +229,21 @@ color: red;
 </style>
 
 <style type="text/css">
+thead {color:green;}
+tbody {color:blue;}
+tfoot {color:red;}
+table,th,td
+{
+border:1px solid black;
+}
+th:hover{
+     cursor:pointer;
+    background:#AAA;
+    
+}
+</style>
+
+<style type="text/css">
     body {
 		font-family: 'Varela Round', sans-serif;
 	}
@@ -346,25 +361,38 @@ color: red;
 							User <b>Transactions</b>
 						</h2>
 					</div>
-
+					<div class="col-sm-6">
+						<div class="search-box">
+							<i class="fa fa-filter"></i> <input
+								class="form-control" id="myInput" type="text" list="types" 
+								>
+								<datalist id="types">
+								<option value="INCOME">
+								<option value="INVESTMENT">
+								<option value="EXPENSE">
+								</datalist>
+						</div>
+					</div>
 					<div class="col-sm-4">
 						<div class="search-box">
-							<i class="material-icons">&#xE8B6;</i> <input class="form-control" id="myInput" type="text" placeholder="Search..">
+							<i class="material-icons">&#xE8B6;</i> <input
+								class="form-control" id="myInput" type="text"
+								placeholder="Search..">
 						</div>
 					</div>
 				</div>
 			</div>
-			<table class="table table-striped table-hover table-bordered">
+			<table class="table table-striped table-hover table-bordered" id="t_table">
 				<thead>
 					<%!int data = 1;%>
 					<tr>
-						<th>#</th>
+						<th >#</th>
 						<th align="center">TYPE</th>
-						<th align="center">AMOUNT</th>
-						<th align="center">DATE</th>
+						<th id="sl" align="center">AMOUNT <i class="fa fa-sort" aria-hidden="true" style="font-size:18px"></i></th>
+						<th id="nm" align="center">DATE <i class="fa fa-sort" aria-hidden="true" style="font-size:18px"></i></th>
 						<th align="center">NOTE</th>
 						<th align="center">CATEGORY</th>
-						<th align="center">Actions</th>
+						<th align="center">TO - DO's</th>
 					</tr>
 				</thead>
 				<tbody id="myTable">
@@ -451,8 +479,49 @@ function openModal(id){
 	  });
 	  
 }
+</script>
+<script type="text/javascript">
+function sortTable(f,n){
+	var rows = $('#t_table tbody  tr').get();
 
+	rows.sort(function(a, b) {
 
+		var A = getVal(a);
+		var B = getVal(b);
+
+		if(A < B) {
+			return -1*f;
+		}
+		if(A > B) {
+			return 1*f;
+		}
+		return 0;
+	});
+
+	function getVal(elm){
+		var v = $(elm).children('td').eq(n).text().toUpperCase();
+		if($.isNumeric(v)){
+			v = parseInt(v,10);
+		}
+		return v;
+	}
+
+	$.each(rows, function(index, row) {
+		$('#t_table').children('tbody').append(row);
+	});
+}
+var f_sl = 1;
+var f_nm = 1;
+$("#sl").click(function(){
+    f_sl *= -1;
+    var n = $(this).prevAll().length;
+    sortTable(f_sl,n);
+});
+$("#nm").click(function(){
+    f_nm *= -1;
+    var n = $(this).prevAll().length;
+    sortTable(f_nm,n);
+});
 </script>
 </body>
 </html>

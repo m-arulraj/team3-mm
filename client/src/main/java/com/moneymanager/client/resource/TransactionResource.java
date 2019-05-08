@@ -79,6 +79,7 @@ public class TransactionResource {
 		
 		List<UserTransaction> transactionsList = service.getTransactions(name);
 		model.addAttribute("transactionsList", transactionsList);
+		model.addAttribute("types", "income");
 		return "user-transactions";
 		// return "sample";
 	}
