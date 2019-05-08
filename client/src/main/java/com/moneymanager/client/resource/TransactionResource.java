@@ -72,7 +72,6 @@ public class TransactionResource {
 		model.addAttribute("transactionsList", transactionsList);
 		model.addAttribute("types", "income");
 		return "user-transactions";
-		// return "sample";
 	}
 
 	@GetMapping("/update-transaction")
