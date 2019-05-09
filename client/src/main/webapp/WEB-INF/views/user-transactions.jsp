@@ -25,7 +25,7 @@ body {
 
 .header {
 	overflow: hidden;
-	background-color: #2A201E;
+	background-color: black;
 	padding: 5px 10px;
 }
 
@@ -89,7 +89,8 @@ body {
 <style type="text/css">
 body {
 	background-image:
-		url("http://3.bp.blogspot.com/-7_SL72jHg-Y/ThFs5MwZUBI/AAAAAAAAAJ8/GLV1x9j__8I/s400/blue-serenity-animated-wavy+2.gif");
+		url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjlXg-LaHC1xsNLZmonhgAVwppk13reHw1xx8jYMz3zfi-ISrK");
+		
 	height: 100%;
 	/* Center and scale the image nicely */
 	background-repeat: no-repeat;
@@ -329,10 +330,10 @@ th:hover{
 							User <b>Transactions</b>
 						</h2>
 					</div>
-					<div class="col-sm-6">
+				<div class="col-sm-6">
 						<div class="search-box">
 							<i class="fa fa-filter"></i> <input
-								class="form-control" id="filterData" type="text" list="types" 
+								class="form-control" id="filterData" type="text" list="types" placeholder="SELECT CATEGORY"
 								>
 								<datalist id="types">
 								<option value="INCOME">
@@ -342,7 +343,7 @@ th:hover{
 						</div>
 				
 					</div>
-					<div class="col-sm-4">
+			<div class="col-sm-4">
 						<div class="search-box">
 							<i class="material-icons">&#xE8B6;</i> <input
 								class="form-control" id="myInput" type="text"

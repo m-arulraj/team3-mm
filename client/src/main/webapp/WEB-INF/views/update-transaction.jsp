@@ -416,6 +416,27 @@ form span {
 	box-shadow: 0 0;
 }
 </style>
+	<!-- Date validations -->
+	<script>
+
+		function getConcatParam(max, value) {
+			if (value < max)
+				concatParam1 = "-0" + value;
+			else
+				concatParam1 = "-" + value;
+			return concatParam1;
+		}
+		today = new Date();
+		
+		maxYear = today.getFullYear();
+		month = getConcatParam(9, (today.getMonth() + 1))
+		day = getConcatParam(10, today.getDay());
+		maxDateValue = maxYear + month + day;
+		console.log(maxDateValue);
+		document.getElementById("datepicker").max = maxDateValue;
+	</script>
+	<!-- End of Date validations -->
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -466,7 +487,7 @@ form span {
 			<div>
 				<span>Date:</span>
 				<form:input type="date" path="date" name="date"
-					value="${transaction.getDate()}" class="keyup-date text-input" id=""/>
+					value="${transaction.getDate()}" class="keyup-date text-input" id="datepicker"/>
 			</div>
 
 			<div>
