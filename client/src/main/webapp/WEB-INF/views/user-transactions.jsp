@@ -248,6 +248,7 @@ th:hover{
     background:#AAA;
     
 }
+
 </style>
 
 <style type="text/css">
@@ -395,8 +396,8 @@ th:hover{
 					<tr>
 						<th >#</th>
 						<th align="center">TYPE</th>
-						<th id="sl" align="center">AMOUNT <i class="fa fa-sort" aria-hidden="true" style="font-size:18px"></i></th>
-						<th id="nm" align="center">DATE <i class="fa fa-sort" aria-hidden="true" style="font-size:18px"></i></th>
+						<th id="sl" align="center" >AMOUNT <i id="s11" class="fa fa-sort" aria-hidden="true" style="font-size:18px"></i></th>
+						<th id="nm" align="center">DATE <i  id="s22" class="fa fa-sort" aria-hidden="true" style="font-size:18px"></i></th>
 						<th align="center">NOTE</th>
 						<th align="center">CATEGORY</th>
 						<th align="center">TO - DO's</th>
@@ -502,7 +503,7 @@ th:hover{
 				src="https://static.codepen.io/assets/editor/live/css_reload-5619dc0905a68b2e6298901de54f73cefe4e079f65a75406858d92924b4938bf.js"></script>
 		</div>
 
-
+<span ></span>
 	</c:if>
 	<script type="text/javascript">
 	$('#myInput').click(function(){
@@ -548,7 +549,7 @@ function openModal(id){
 }
 </script>
 <script type="text/javascript">
-function sortTable(f,n){
+function sortTable(f,n,id){
 	var rows = $('#t_table tbody  tr').get();
 
 	rows.sort(function(a, b) {
@@ -557,14 +558,49 @@ function sortTable(f,n){
 		var B = getVal(b);
 
 		if(A < B) {
+			$("#s11").attr('class', 'fa fa-sort-asc');
+			
 			return -1*f;
 		}
 		if(A > B) {
+			$("#s11").attr('class', 'fa fa-sort-desc');
 			return 1*f;
 		}
 		return 0;
 	});
+	
+	function getVal(elm){
+		var v = $(elm).children('td').eq(n).text().toUpperCase();
+		if($.isNumeric(v)){
+			v = parseInt(v,10);
+		}
+		return v;
+	}
 
+	$.each(rows, function(index, row) {
+		$('#t_table').children('tbody').append(row);
+	});
+}
+function sortTable2(f,n,id){
+	var rows = $('#t_table tbody  tr').get();
+
+	rows.sort(function(a, b) {
+
+		var A = getVal(a);
+		var B = getVal(b);
+
+		if(A < B) {
+			$("#s22").attr('class', 'fa fa-sort-asc');
+			
+			return -1*f;
+		}
+		if(A > B) {
+			$("#s22").attr('class', 'fa fa-sort-desc');
+			return 1*f;
+		}
+		return 0;
+	});
+	
 	function getVal(elm){
 		var v = $(elm).children('td').eq(n).text().toUpperCase();
 		if($.isNumeric(v)){
@@ -579,15 +615,18 @@ function sortTable(f,n){
 }
 var f_sl = 1;
 var f_nm = 1;
+var editid;
 $("#sl").click(function(){
     f_sl *= -1;
+    editid = $("#s11").attr("id");
     var n = $(this).prevAll().length;
-    sortTable(f_sl,n);
+    sortTable(f_sl,n,editid);
 });
 $("#nm").click(function(){
     f_nm *= -1;
+    editid = $("#s22").attr("id");
     var n = $(this).prevAll().length;
-    sortTable(f_nm,n);
+    sortTable2(f_nm,n,editid);
 });
 </script>
 </body>

@@ -1,6 +1,8 @@
 package com.moneymanager.client.resource;
 
 import java.security.Principal;
+import java.util.List;
+import java.util.Optional;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -145,20 +147,44 @@ public class HomeResource  {
 		logger.debug("home resource forgot-password page debugging");
 		model.addAttribute("forgotPassword", new RegisterUser());
 		return "forgot-password";
-
 	}
 	@PostMapping("/forgotPassword")
-	public String forgotUserPassword(@ModelAttribute("forgotPassword")RegisterUser registerUser) {
+	public String forgotUserPassword(@ModelAttribute("forgotPassword")RegisterUser registerUser,Model model) {
 		String emailId=registerUser.getEmailId();
 		
-		RegisterUser  object=clientService.getUserDetailsByEmailId(emailId);
-		 System.out.println(object);
-		logger.info("home resource forgot-password page info");
-		logger.debug("home resource forgot-password page debugging");
-		return "forgot-password";
+		List<RegisterUser>  users =clientService.getAllUserDetails();
+		Optional<RegisterUser> registeredUser = users.stream().filter(i -> i.getEmailId().equalsIgnoreCase(registerUser.getEmailId())).findAny();
+		if(registeredUser.isPresent()) {
+			if(registeredUser.get().getDateOfBirth().equalsIgnoreCase(registerUser.getDateOfBirth())) {
+				model.addAttribute("changePassword", registeredUser);
+				return "change-password";
+			}else {
+				model.addAttribute("errorMsg", "Date of Birth does not match");
+				return "forgot-password";
+			}
+		}else {
+			model.addAttribute("errorMsg", "Email-Id does not exist");
+			return "forgot-password";
+		}
+		
+		/*
+		 * if(object==null) { model.addAttribute("error","Email" ); return
+		 * "change-password"; }else
+		 * if(!object.getDateOfBirth().equals(registerUser.getDateOfBirth())) {
+		 * model.addAttribute("forgotPassword", new RegisterUser());
+		 * model.addAttribute("error","" ); return "forgot-password"; }else {
+		 * model.addAttribute("changePassword", object); return "change-password"; }
+		 */
+		
 	}
 	
-	
+	@PostMapping("/changePassword")
+	public String changeUserPassword(@ModelAttribute("changePassword")RegisterUser registerUser,Model model) {
+		
+		clientService.forgotPassword(registerUser);
+		model.addAttribute("s", true);
+		return "user-login";
+	}
 	@RequestMapping("/budgetControl")
 	public String budgetControl(Model model) {
 		logger.info("home resource budgetControl page info");

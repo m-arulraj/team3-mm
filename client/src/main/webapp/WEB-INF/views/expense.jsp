@@ -455,7 +455,7 @@ body {
 		<div>
 			<span>Note:</span>
 			<form:input path="note" type="text" name="item-name"
-				placeholder="A quick note for expense?"  required="required"/>
+				placeholder="A quick note for expense?"  required="required" maxlength="50"/>
 		</div>
 
 		<div>

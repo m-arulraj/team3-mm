@@ -4171,11 +4171,13 @@ body {
 						$("#submit").html('REGISTER')
 						$("#submit").attr("disabled", false);
 
-					} else
+					} else{
 						$('#message').html('Not Matching').css('color', 'red');
-					$("#submit").html('check the form')
-					$("#submit").attr("disabled", true);
+						$("#submit").html('check the form')
+						$("#submit").attr("disabled", true);
 
+					}
+					
 				});
 	</script>
 	<!--restricting the user to select future date  -->

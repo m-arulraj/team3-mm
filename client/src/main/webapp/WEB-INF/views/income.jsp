@@ -356,7 +356,7 @@ form span {
 			<div>
 				<span>Note:</span>
 				<form:input path="note" type="text" name="item-name"
-					placeholder="Source of income?" required="required" />
+					placeholder="Source of income?" required="required" maxlength="50" />
 			</div>
 
 			<div>

@@ -341,7 +341,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 			<div>
 				<span>Note:</span>
 				<form:input path="note" type="text" name="item-name"
-					placeholder="Where did you Invest?" required="required" />
+					placeholder="Where did you Invest?" required="required" maxlength="50"/>
 			</div>
 
 			<div>

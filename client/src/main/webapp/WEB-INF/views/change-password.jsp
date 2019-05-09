@@ -3806,7 +3806,7 @@ transform
 								placeholder="Re-Enter Your Password" required="required" />
 							<br>
 						</div>
-						<button class="btn btn-danger btn-block" type="submit" id="submit">SUBMIT</button>
+						<button class="btn btn-danger btn-block" type="submit" id="submit" disabled="disabled">SUBMIT</button>
 					</form:form>
 				</div>
 			</div>
@@ -3822,5 +3822,26 @@ transform
 	</div>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$('#password,#confirm_password').on('keyup', function() {
+			if ($('#password').val() == "") {
+				$("#submit").html('Fill the Form');
+				$('#message').html('').css('color', 'green');
+				$("#submit").attr("disabled", true);
+
+				$("#submit").attr("disabled", true);
+			} else if ($('#password').val() == $('#confirm_password').val()) {
+				$('#message').html('Matched').css('color', 'green')
+				$("#submit").html('REGISTER');
+				$("#submit").attr("disabled", false);
+
+			} else {
+				$('#message').html('Not Matching').css('color', 'red');
+				$("#submit").html('check the form');
+				$("#submit").attr("disabled", true);
+			}
+
+		});
+	</script>
 </body>
 </html>

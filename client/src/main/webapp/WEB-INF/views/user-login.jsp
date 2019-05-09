@@ -1,9 +1,17 @@
 <!DOCTYPE html><%@ taglib prefix="spring"
 	uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style>
+.pop {
+	font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+		Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica,
+		Arial, sans-serif;
+}
+</style>
 <style class="vjs-styles-defaults">
 .vdo-js {
 	width: 300px;
@@ -3937,6 +3945,28 @@ body {
 			<!-- //main content -->
 		</div>
 		<!---728x90--->
+<c:if test="${s==true}">
+
+		<div class="pop">
+			<script
+				src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
+			<script src='https://cdn.jsdelivr.net/npm/sweetalert2'></script>
+			<script id="rendered-js">
+				Swal.fire({
+					position : 'center',
+
+					type : 'success',
+					title : 'Your Password has been changed',
+					showConfirmButton : false,
+					timer : 3500
+				});
+			</script>
+			<script
+				src="https://static.codepen.io/assets/editor/live/css_reload-5619dc0905a68b2e6298901de54f73cefe4e079f65a75406858d92924b4938bf.js"></script>
+		</div>
+
+
+	</c:if>
 
 		<!-- footer -->
 		<div class="footer">
