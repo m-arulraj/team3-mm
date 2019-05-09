@@ -20,6 +20,27 @@
 		window.parent.postMessage("resize", "*");
 	}
 </script>
+	<!-- Date validations -->
+	<script>
+
+		function getConcatParam(max, value) {
+			if (value < max)
+				concatParam1 = "-0" + value;
+			else
+				concatParam1 = "-" + value;
+			return concatParam1;
+		}
+		today = new Date();
+		
+		maxYear = today.getFullYear();
+		month = getConcatParam(9, (today.getMonth() + 1))
+		day = getConcatParam(10, today.getDay());
+		maxDateValue = maxYear + month + day;
+		console.log(maxDateValue);
+		document.getElementById("datepicker").max = maxDateValue;
+	</script>
+	<!-- End of Date validations -->
+
 <style>
 * {
 	box-sizing: border-box;
@@ -361,7 +382,7 @@ form span {
 
 			<div>
 				<span>Date:</span>
-				<form:input type="date" path="date" name="date" id="" required="required"/>
+				<form:input type="date" path="date" name="date" id="datepicket" required="required"/>
 			</div>
 
 			<div>

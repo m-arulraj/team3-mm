@@ -25,7 +25,7 @@ body {
 
 .header {
 	overflow: hidden;
-	background-color: #2A201E;
+	background-color: black;
 	padding: 5px 10px;
 }
 
@@ -89,7 +89,8 @@ body {
 <style type="text/css">
 body {
 	background-image:
-		url("http://3.bp.blogspot.com/-7_SL72jHg-Y/ThFs5MwZUBI/AAAAAAAAAJ8/GLV1x9j__8I/s400/blue-serenity-animated-wavy+2.gif");
+		url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjlXg-LaHC1xsNLZmonhgAVwppk13reHw1xx8jYMz3zfi-ISrK");
+		
 	height: 100%;
 	/* Center and scale the image nicely */
 	background-repeat: no-repeat;
@@ -115,7 +116,7 @@ body {
 }
 
 .search-box {
-	position: relative;
+	position: inherit;
 	float: right;
 }
 
@@ -181,45 +182,6 @@ table.table td a.delete {
 
 table.table td i {
 	font-size: 19px;
-}
-
-.pagination {
-	float: right;
-	margin: 0 0 5px;
-}
-
-.pagination li a {
-	border: none;
-	font-size: 95%;
-	width: 30px;
-	height: 30px;
-	color: #999;
-	margin: 0 2px;
-	line-height: 30px;
-	border-radius: 30px !important;
-	text-align: center;
-	padding: 0;
-}
-
-.pagination li a:hover {
-	color: #666;
-}
-
-.pagination li.active a {
-	background: #03A9F4;
-}
-
-.pagination li.active a:hover {
-	background: #0397d6;
-}
-
-.pagination li.disabled i {
-	color: #ccc;
-}
-
-.pagination li i {
-	font-size: 16px;
-	padding-top: 6px
 }
 
 .hint-text {
@@ -369,10 +331,10 @@ th:hover{
 							User <b>Transactions</b>
 						</h2>
 					</div>
-					<div class="col-sm-6">
+				<div class="col-sm-6">
 						<div class="search-box">
 							<i class="fa fa-filter"></i> <input
-								class="form-control" id="filterData" type="text" list="types" 
+								class="form-control" id="filterData" type="text" list="types" placeholder="SELECT CATEGORY"
 								>
 								<datalist id="types">
 								<option value="INCOME">
@@ -380,15 +342,18 @@ th:hover{
 								<option value="EXPENSE">
 								</datalist>
 						</div>
+				
 					</div>
-					<div class="col-sm-4">
+			<div class="col-sm-4">
 						<div class="search-box">
 							<i class="material-icons">&#xE8B6;</i> <input
 								class="form-control" id="myInput" type="text"
 								placeholder="Search..">
 						</div>
 					</div>
+				
 				</div>
+				
 			</div>
 			<table class="table table-striped table-hover table-bordered" id="t_table">
 				<thead>
@@ -613,6 +578,7 @@ function sortTable2(f,n,id){
 		$('#t_table').children('tbody').append(row);
 	});
 }
+
 var f_sl = 1;
 var f_nm = 1;
 var editid;

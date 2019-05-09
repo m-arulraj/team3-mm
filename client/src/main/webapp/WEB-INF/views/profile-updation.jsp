@@ -3819,6 +3819,26 @@ body {
 	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
 	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
 	crossorigin="anonymous">
+	<!-- Date validations -->
+	<script>
+
+		function getConcatParam(max, value) {
+			if (value < max)
+				concatParam1 = "-0" + value;
+			else
+				concatParam1 = "-" + value;
+			return concatParam1;
+		}
+		today = new Date();
+		
+		maxYear = today.getFullYear();
+		month = getConcatParam(9, (today.getMonth() + 1))
+		day = getConcatParam(10, today.getDay());
+		maxDateValue = maxYear + month + day;
+		console.log(maxDateValue);
+		document.getElementById("datepicker").max = maxDateValue;
+	</script>
+	<!-- End of Date validations -->
 
 </head>
 <body style="">
@@ -3878,7 +3898,7 @@ body {
 						<label>DOB</label>
 						<div class="input-group  ">
 							<span class="fa fa-birthday-cake" aria-hidden="true"></span>
-							<form:input path="dateOfBirth" type="date" required="" 
+							<form:input path="dateOfBirth" type="date" required="" id="datepicker"
 							/>
 						</div>
 
